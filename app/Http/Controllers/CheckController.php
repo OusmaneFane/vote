@@ -19,6 +19,9 @@ class CheckController extends Controller
         $userInfo = DB::table('students')
                   ->where('matricule', $request->matricule )
                   ->first();
+                 if(!$userInfo) {
+                    return back()->with('fail', 'Ce matricule n\'existe pas');
+                }
 
 
 
