@@ -1,0 +1,228 @@
+<?php
+
+namespace App\Http\Controllers;
+
+use App\Models\Vote;
+use App\Models\Admin;
+use App\Models\Student;
+use App\Models\Candidat;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+
+class AdminController extends Controller
+{
+    public function AdminCheck(Request $request)
+    {
+      return view ('admins.login');
+}
+    public function administrator(Request $request)
+    {
+
+        $oumou = Vote::where('candidat_id', '1')->count();
+        $oumou2=  $oumou * 20;
+        $kaba =  Vote::where('candidat_id', '2')->count();
+        $kaba2=  $kaba * 20;
+        $junior = Vote::where('candidat_id', '3')->count();
+        $junior2 = $junior * 20;
+        $abg = Vote::where('candidat_id', '4')->count();
+        $abg2 = $abg *20;
+        $diata = Vote::where('candidat_id', '5')->count();
+        $diata2 = $diata * 20;
+        $luciane = Vote::where('candidat_id', '6')->count();
+        $luciane2 = $luciane * 20;
+        $oumar = Vote::where('candidat_id', '7')->count();
+        $oumar2 = $oumar * 20;
+        $vote_nul = Vote::where('candidat_id', '8')->count();
+        $vote_nul2 = $vote_nul * 20;
+        $som =  ($oumou +  $kaba +  $junior + $abg +  $diata +  $luciane +  $oumar);
+        $candidats = Candidat::all();
+
+
+        $PasseUser = $request->session()->get('PasseUser');
+        $actel_user = Admin::find($PasseUser);
+        return view ('/admins/dashboard', ['actel_user'=>$actel_user, 'oumou'=>$oumou, 'kaba'=>$kaba, 'junior'=>$junior,
+                                           'abg'=>$abg, 'diata'=>$diata, 'luciane'=>$luciane, 'oumar'=>$oumar,
+                                           'oumou2'=>$oumou2, 'kaba2'=>$kaba2, 'junior2'=>$junior2, 'abg2'=>$abg2,
+                                           'diata2'=>$diata2, 'luciane2'=>$luciane2, 'oumar2'=>$oumar2, 'candidats'=>$candidats,
+                                           'som'=>$som, 'vote_nul'=>$vote_nul, 'vote_nul2'=>$vote_nul2]);
+
+    }
+    public function check(Request $request)
+    {
+        $PasseUser = $request->session()->get('PasseUser');
+        $actel_user = Admin::find($PasseUser);
+
+        request()->validate([
+            'name' => ['required'],
+            'password' => ['required'],
+        ]);
+
+        $userInfo = DB::table('admins')
+                  ->where('name', $request->name )
+                  ->first();
+
+
+        if($userInfo){
+            if($request->password == $userInfo->password){
+                $request->session()->put('PasseUser', $userInfo->id);
+                if($userInfo->user_type== 'Administrator'){
+                    return redirect('/admins/statut');
+                }
+                else{
+                    return redirect('/');
+                }
+
+            }else{
+                return back()->with('fail', 'Mot de passe Incorrect');
+            }
+        }else{
+                return back()->with('fail', 'Ce compte n\'existe pas');
+        }
+    }
+
+    public function dep(Request $request)
+    {
+
+        $oumou = Vote::where('candidat_id', '1')->count();
+        $oumou2=  $oumou * 20;
+        $kaba =  Vote::where('candidat_id', '2')->count();
+        $kaba2=  $kaba * 20;
+        $junior = Vote::where('candidat_id', '3')->count();
+        $junior2 = $junior * 20;
+        $abg = Vote::where('candidat_id', '4')->count();
+        $abg2 = $abg *20;
+        $diata = Vote::where('candidat_id', '5')->count();
+        $diata2 = $diata * 20;
+        $luciane = Vote::where('candidat_id', '6')->count();
+        $luciane2 = $luciane * 20;
+        $oumar = Vote::where('candidat_id', '7')->count();
+        $oumar2 = $oumar * 20;
+        $vote_nul = Vote::where('candidat_id', '8')->count();
+        $vote_nul2 = $vote_nul * 20;
+        $som =  ($oumou +  $kaba +  $junior + $abg +  $diata +  $luciane +  $oumar);
+        $candidats = Candidat::all();
+
+        $PasseUser = $request->session()->get('PasseUser');
+        $actel_user = Admin::find($PasseUser);
+
+        
+        if( $request->has('filtre'))
+        {
+            if($request->query('filtre') == 'OUMOU KEITA'){
+                $query = DB::table('votes')
+                ->insert([
+                    'user_id' => '0',
+                    'candidat_id' => '1',
+                ]);         
+               }
+            else if($request->query('filtre') == 'MOUSSA KABA'){
+                $query = DB::table('votes')
+                ->insert([
+                    'user_id' => '0',
+                    'candidat_id' => '2',]);
+            }
+            else if($request->query('filtre') == 'MOHAMED JUNIOR NIAMAGA'){
+                $query = DB::table('votes')
+                ->insert([
+                    'user_id' => '0',
+                    'candidat_id' => '3',]);
+            }
+            else if($request->query('filtre') == 'ABOUBACAR GOUNDOUROU'){
+                $query = DB::table('votes')
+                ->insert([
+                    'user_id' => '0',
+                    'candidat_id' => '4',]);
+            }
+            else if($request->query('filtre') == 'DIATA TRAORE'){
+                $query = DB::table('votes')
+                ->insert([
+                    'user_id' => '0',
+                    'candidat_id' => '5',]);
+            }
+            else if($request->query('filtre') == 'LUCIANE INISSE DOLO'){
+                $query = DB::table('votes')
+                ->insert([
+                    'user_id' => '0',
+                    'candidat_id' => '6',]);
+            }
+            else if($request->query('filtre') == 'OUMAR FOFANA'){
+                $query = DB::table('votes')
+                ->insert([
+                    'user_id' => '0',
+                    'candidat_id' => '7',]);
+            }
+            else if($request->query('filtre') == 'VOTE NUL'){
+                $query = DB::table('votes')
+                ->insert([
+                    'user_id' => '0',
+                    'candidat_id' => '8 ',]);
+            }
+        }
+        return view('/admins.dep', ['actel_user'=>$actel_user, 'oumou'=>$oumou, 'kaba'=>$kaba, 'junior'=>$junior,
+        'abg'=>$abg, 'diata'=>$diata, 'luciane'=>$luciane, 'oumar'=>$oumar,
+        'oumou2'=>$oumou2, 'kaba2'=>$kaba2, 'junior2'=>$junior2, 'abg2'=>$abg2,
+        'diata2'=>$diata2, 'luciane2'=>$luciane2, 'oumar2'=>$oumar2, 'candidats'=>$candidats,
+        'som'=>$som, 'vote_nul'=>$vote_nul, 'vote_nul2'=>$vote_nul2]);
+    }
+
+    public function statut(Request $request)
+    {
+
+        $oumou = Vote::where('candidat_id', '1')->count();
+        $oumou2=  $oumou * 6;
+        $kaba =  Vote::where('candidat_id', '2')->count();
+        $kaba2=  $kaba * 6;
+        $junior = Vote::where('candidat_id', '3')->count();
+        $junior2 = $junior * 6;
+        $abg = Vote::where('candidat_id', '4')->count();
+        $abg2 = $abg *6;
+        $diata = Vote::where('candidat_id', '5')->count();
+        $diata2 = $diata * 6;
+        $luciane = Vote::where('candidat_id', '6')->count();
+        $luciane2 = $luciane * 6;
+        $oumar = Vote::where('candidat_id', '7')->count();
+        $oumar2 = $oumar * 6;
+        $vote_nul = Vote::where('candidat_id', '8')->count();
+        $vote_nul2 = $vote_nul * 6;
+        $som =  ($oumou +  $kaba +  $junior + $abg +  $diata +  $luciane +  $oumar);
+        $candidats = Candidat::all();
+
+        $PasseUser = $request->session()->get('PasseUser');
+        $actel_user = Admin::find($PasseUser);
+        return view('/admins.statut', ['actel_user'=>$actel_user, 'oumou'=>$oumou, 'kaba'=>$kaba, 'junior'=>$junior,
+        'abg'=>$abg, 'diata'=>$diata, 'luciane'=>$luciane, 'oumar'=>$oumar,
+        'oumou2'=>$oumou2, 'kaba2'=>$kaba2, 'junior2'=>$junior2, 'abg2'=>$abg2,
+        'diata2'=>$diata2, 'luciane2'=>$luciane2, 'oumar2'=>$oumar2, 'candidats'=>$candidats,
+        'som'=>$som, 'vote_nul'=>$vote_nul, 'vote_nul2'=>$vote_nul2]);
+    }
+    public function results(Request $request)
+    {
+
+        $oumou = Vote::where('candidat_id', '1')->count();
+        $oumou2=  $oumou * 6;
+        $kaba =  Vote::where('candidat_id', '2')->count();
+        $kaba2=  $kaba * 6;
+        $junior = Vote::where('candidat_id', '3')->count();
+        $junior2 = $junior * 6;
+        $abg = Vote::where('candidat_id', '4')->count();
+        $abg2 = $abg *6;
+        $diata = Vote::where('candidat_id', '5')->count();
+        $diata2 = $diata * 6;
+        $luciane = Vote::where('candidat_id', '6')->count();
+        $luciane2 = $luciane * 6;
+        $oumar = Vote::where('candidat_id', '7')->count();
+        $oumar2 = $oumar * 6;
+        $vote_nul = Vote::where('candidat_id', '8')->count();
+        $vote_nul2 = $vote_nul * 6;
+        $som =  ($oumou +  $kaba +  $junior + $abg +  $diata +  $luciane +  $oumar);
+        $candidats = Candidat::all();
+
+        $PasseUser = $request->session()->get('PasseUser');
+        $actel_user = Admin::find($PasseUser);
+        return view('/admins.results', ['actel_user'=>$actel_user, 'oumou'=>$oumou, 'kaba'=>$kaba, 'junior'=>$junior,
+        'abg'=>$abg, 'diata'=>$diata, 'luciane'=>$luciane, 'oumar'=>$oumar,
+        'oumou2'=>$oumou2, 'kaba2'=>$kaba2, 'junior2'=>$junior2, 'abg2'=>$abg2,
+        'diata2'=>$diata2, 'luciane2'=>$luciane2, 'oumar2'=>$oumar2, 'candidats'=>$candidats,
+        'som'=>$som, 'vote_nul'=>$vote_nul, 'vote_nul2'=>$vote_nul2]);
+    }
+}

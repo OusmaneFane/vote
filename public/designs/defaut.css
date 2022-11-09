@@ -1,0 +1,92 @@
+input {
+	border: 1px solid black;
+	padding: 5px 10px;
+	margin-left: 10px;
+}
+html {
+	font-family: arial;
+	background-color: #ECECEC;
+	font-size: 16px;
+}
+header {
+	text-align: center;
+	background-color: silver;
+	padding: 10px;
+}
+
+.container {
+	width: 1000px;
+	margin: 0 auto;
+	padding: 15px;
+}
+header h1 {
+	color: #FDE3A7;
+	margin-top: 0;
+	color: white;
+
+
+}
+h1 {
+	color: orange;
+}
+body {
+	padding: 0;
+	margin: 0;
+	text-align: center;
+}
+form {
+	text-align: left;
+	display: inline-block;
+
+}
+#form {
+	text-align: center;
+	
+}
+button {
+	margin: auto;
+	background-color: orange;
+	border: 0;
+	text-align: center;
+	padding: 15px;
+	cursor: pointer;
+	border: 8px #2C3E50 solid;
+	border-radius: 15px;
+	cursor: pointer;
+	color: white;
+	margin-top: 40px;
+	font-size: 20px;
+
+}
+#button {
+	text-align: center;
+	margin-top: 5px;
+}
+* {
+	box-sizing: border-box;
+}
+#error {
+	background-color: red;
+	color: white;
+	text-align: center;
+	padding: 5px;
+}
+#accueil {
+	text-align: center;
+}
+h2 {
+	color: black; 
+	text-align: center;
+	font-size: 30px;
+	font-family: Arial; 
+}
+#hello {
+	background-image: url('../pictures/hello.jpg');
+	background-size: cover;
+	height: 300px;
+}
+h4 {
+	color: black;
+	font-size: 25px;
+	margin: 5px;
+}

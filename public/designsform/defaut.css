@@ -1,0 +1,288 @@
+#logo {
+	float: left;
+}
+#sup {
+	float: right;
+}
+#btnPopup {
+	text-align: center;
+}
+h1 {
+	border-bottom: 1px black solid;
+	box-shadow: 0px 5px 5px black;
+	border: 1px black solid;
+	font-size: 0.9em;
+	background: orange;
+	text-align: center;
+	font-size: 2em;
+	clear: both;
+}
+p {
+
+	clear: both;
+
+}
+h2 {
+	text-align: center;
+}
+h3 {
+	text-align: center;
+	background: #2C3E50;
+	color: white;
+	margin-top: 300px;
+	border: 2px black solid;
+	border-radius: 20px;
+	font-size: 40px;
+	border: 0;
+
+}
+footer {
+	background: #1D1D1D;
+	color: white;
+	text-align: center;
+}
+.services {
+	width: 400px;
+	margin: 30px;
+	display: inline-block;
+	background: white;
+	padding-bottom: 15px;
+	border: 0px black solid;
+	border-radius: 10px;
+	overflow: hidden;
+	box-shadow: 0px 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.16);
+}
+.junior{
+	width: 400px;
+	margin: 20px;
+	display: inline-block;
+	background: #CBFAFB;
+	padding-bottom: 15px;
+	border: 0px black solid;
+	border-radius: 10px;
+	overflow: hidden;
+	box-shadow: 0px 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.16);
+}
+.dep{
+	width: 200px;
+	margin: 20px;
+	display: inline-block;
+    padding-bottom: 15px;
+	border-radius: 10px;
+}
+.kaba {
+	width: 400px;
+	margin: 20px;
+	display: inline-block;
+	background: black;
+	padding-bottom: 15px;
+	border: 0px black solid;
+	border-radius: 10px;
+	overflow: hidden;
+	box-shadow: 0px 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.16);
+}
+.services4 {
+	width: 400px;
+	margin: 20px;
+	display: inline-block;
+	background: red;
+	padding-bottom: 15px;
+	border: 0px black solid;
+	border-radius: 10px;
+	overflow: hidden;
+	box-shadow: 0px 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.16);
+}
+.oumou {
+	width: 400px;
+	margin: 20px;
+	display: inline-block;
+	background: yellow;
+	padding-bottom: 15px;
+	border: 0px black solid;
+	border-radius: 10px;
+	overflow: hidden;
+	box-shadow: 0px 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.16);
+}
+.goundourou {
+	width: 400px;
+	margin: 20px;
+	display: inline-block;
+	background: green0;
+	padding-bottom: 15px;
+	border: 0px black solid;
+	border-radius: 10px;
+	overflow: hidden;
+	box-shadow: 0px 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.16);
+}
+.diata{
+	width: 400px;
+	margin: 20px;
+	display: inline-block;
+	background: white;
+	padding-bottom: 15px;
+	border: 0px black solid;
+	border-radius: 10px;
+	overflow: hidden;
+	box-shadow: 0px 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.16);
+}
+.luciane {
+	width: 400px;
+	margin: 20px;
+	display: inline-block;
+	background: white;
+	padding-bottom: 15px;
+	border: 0px black solid;
+	border-radius: 10px;
+	overflow: hidden;
+	box-shadow: 0px 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.16);
+}
+.oumar {
+	width: 400px;
+	margin: 20px;
+	display: inline-block;
+	background: white;
+	padding-bottom: 15px;
+	border: 0px black solid;
+	border-radius: 10px;
+	overflow: hidden;
+	box-shadow: 0px 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.16);
+}
+
+.services:hover {
+	box-shadow: 0 14px 26px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.25);
+}
+.Picture {
+	width: 400px;
+	height: 266px;
+	overflow: hidden;
+	margin-bottom: 15px;
+}
+.Pictures2 {
+	width: 400px;
+	height: 266px;
+	overflow: hidden;
+	margin-bottom: 15px;
+}
+.Pictures3 {
+	width: 400px;
+	height: 266px;
+	overflow: hidden;
+	margin-bottom: 15px;
+}
+.Pictures4 {
+	width: 400px;
+	height: 266px;
+	overflow: hidden;
+	margin-bottom: 15px;
+}
+.Pictures5 {
+	width: 400px;
+	height: 266px;
+	overflow: hidden;
+	margin-bottom: 15px;
+}
+.Pictures5 {
+	width: 400px;
+	height: 266px;
+	overflow: hidden;
+	margin-bottom: 15px;
+}
+.Pictures6 {
+	width: 400px;
+	height: 266px;
+	overflow: hidden;
+	margin-bottom: 15px;
+}
+.Pictures7 {
+	width: 400px;
+	height: 266px;
+	overflow: hidden;
+	margin-bottom: 15px;
+}
+.Pictures8 {
+	width: 400px;
+	height: 266px;
+	overflow: hidden;
+	margin-bottom: 15px;
+}
+.Pictures9 {
+	width: 400px;
+	height: 266px;
+	overflow: hidden;
+	margin-bottom: 15px;
+}
+.btnPopup{
+background-color: orangered;
+padding: 1em 2em;
+cursor: pointer;
+
+}
+.btnPopup:hover{
+background-color: rgb(192, 192, 192);
+}
+.overlay {
+position: fixed;
+left: 0px;
+top:0px;
+background-color: rgba(0,0 ,0 , 0.5);
+width: 100%;
+height: 100%;
+z-index:1;
+display:none;
+}
+.popup{
+margin: 10% auto;
+width : 70%;
+background-color: rgb(243, 243, 243);
+padding: 1em;
+box-shadow: 0 15px 20px rgba(0, 0, 0, 0.3);
+border-radius: 5px;
+}
+.btnClose {
+float: right;
+font-size:16pt;
+cursor: pointer;
+color: rgb(26, 26, 26);
+}
+
+#connect{
+	background-color: red;
+	color: white;
+	text-align: center;
+	padding: 5px;
+}
+
+
+#error {
+	background-color: red;
+	color: white;
+	text-align: center;
+	padding: 5px;
+}
+#merci {
+	border-bottom: 1px black solid;
+	box-shadow: 0px 5px 5px black;
+	border: 1px black solid;
+	font-size: 0.9em;
+	background: orange;
+	text-align: center;
+	font-size: 2em;
+	clear: both;
+}
+h4 {
+	text-align: center;
+	border: 8px #2C3E50 solid;
+	border-radius: 10px;
+}
+button {
+	margin: auto;
+	background-color: orange;
+	border: 0;
+	padding: 10px;
+	border: 8px #2C3E50 solid;
+	border-radius: 15px;
+	cursor: pointer;
+	color: white;
+	text-align: center;
+
+}
