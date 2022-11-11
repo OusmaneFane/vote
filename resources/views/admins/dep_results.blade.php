@@ -1,7 +1,7 @@
 @extends('admins.dashboard')
 
 @section("content")
-<h3>Resultats finaux des votes en ligne</h3>
+<h3>Resultats finaux des decomptes</h3>
 </div>
 <div class="custom-bar-chart">
   {{-- <ul class="y-axis">
@@ -14,35 +14,35 @@
   </ul> --}}
   <div class="bar">
     <div class="title"><b>Mohamed<br>Nimaga</b></div>
-    <div class="value tooltips bg-slate-400" data-original-title="{{ $junior }}" data-toggle="tooltip" data-placement="top">{{ $junior2   }}</div>
+    <div class="value tooltips bg-slate-400" data-original-title="{{ $junior_dec }}" data-toggle="tooltip" data-placement="top">{{ $junior2   }}</div>
   </div>
   <div class="bar ">
     <div class="title">Moussa<br>KABA</div>
-    <div class="value tooltips" data-original-title="{{ $kaba  }}" data-toggle="tooltip" data-placement="top">{{ $kaba2  }}</div>
+    <div class="value tooltips" data-original-title="{{ $kaba_dec  }}" data-toggle="tooltip" data-placement="top">{{ $kaba2  }}</div>
   </div>
   <div class="bar ">
     <div class="title">Luciane<br>Dolo</div>
-    <div class="value tooltips" data-original-title="{{ $luciane  }}" data-toggle="tooltip" data-placement="top">{{ $luciane2  }}</div>
+    <div class="value tooltips" data-original-title="{{ $luciane_dec  }}" data-toggle="tooltip" data-placement="top">{{ $luciane2  }}</div>
   </div>
   <div class="bar ">
     <div class="title">Abdoulaye<br>Goundourou</div>
-    <div class="value tooltips" data-original-title="{{ $abg  }}" data-toggle="tooltip" data-placement="top">{{ $abg2  }}</div>
+    <div class="value tooltips" data-original-title="{{ $abg_dec  }}" data-toggle="tooltip" data-placement="top">{{ $abg2  }}</div>
   </div>
   <div class="bar">
     <div class="title">Diata<br>TRAORE</div>
-    <div class="value tooltips" data-original-title="{{ $diata  }}" data-toggle="tooltip" data-placement="top">{{ $diata2  }}</div>
+    <div class="value tooltips" data-original-title="{{ $diata_dec  }}" data-toggle="tooltip" data-placement="top">{{ $diata2  }}</div>
   </div>
   <div class="bar ">
     <div class="title">Oumar<br>FOFANA</div>
-    <div class="value tooltips" data-original-title="{{ $oumar  }}" data-toggle="tooltip" data-placement="top">{{ $oumar2  }}</div>
+    <div class="value tooltips" data-original-title="{{ $oumar_dec  }}" data-toggle="tooltip" data-placement="top">{{ $oumar2  }}</div>
   </div>
   <div class="bar">
     <div class="title">Oumou<br>KEITA</div>
-    <div class="value tooltips" data-original-title="{{ $oumou }}" data-toggle="tooltip" data-placement="top">{{ $oumou2  }}</div>
+    <div class="value tooltips" data-original-title="{{ $oumou_dec }}" data-toggle="tooltip" data-placement="top">{{ $oumou2  }}</div>
   </div>
   <div class="bar">
     <div class="title">VOTE<br>NUL</div>
-    <div class="value tooltips" data-original-title="{{ $vote_nul }}" data-toggle="tooltip" data-placement="top">{{ $vote_nul2  }}</div>
+    <div class="value tooltips" data-original-title="{{ $vote_nul_dec }}" data-toggle="tooltip" data-placement="top">{{ $vote_nul2  }}</div>
   </div>
 </div>
 <!--custom chart end-->
@@ -56,7 +56,7 @@
       <canvas id="serverstatus01" height="120" width="120"></canvas>
       <script>
         var doughnutData = [{
-            value: {{ $junior }},
+            value: {{ $junior_dec }},
             color: "green"
           },
           {
@@ -71,7 +71,7 @@
           <p>Nombre de<br/>Votes:</p>
         </div>
         <div class="col-sm-6 col-xs-6">
-          <h2>{{ $junior  }}  </h2>
+          <h2>{{ $junior_dec  }}  </h2>
         </div>
       </div>
     </div>
@@ -86,7 +86,7 @@
         <canvas id="serverstatus02" height="120" width="120"></canvas>
         <script>
           var doughnutData = [{
-              value: {{ $kaba }},
+              value: {{ $kaba_dec }},
               color: "yellow"
             },
             {
@@ -101,7 +101,7 @@
             <p class="info">Nombre de<br/>Votes:</p>
           </div>
           <div class="col-sm-6 col-xs-6">
-            <h2>{{ $kaba  }}  </h2>
+            <h2>{{ $kaba_dec  }}  </h2>
           </div>
         </div>
       </div>
@@ -118,7 +118,7 @@
             <canvas id="serverstatus03" height="120" width="120"></canvas>
             <script>
               var doughnutData = [{
-                  value: {{ $oumou }},
+                  value: {{ $oumou_dec }},
                   color: "pink"
                 },
                 {
@@ -133,7 +133,7 @@
                 <p>Nombre de<br/>Votes:</p>
               </div>
               <div class="col-sm-6 col-xs-6">
-                <h2>{{ $oumou  }}  </h2>
+                <h2>{{ $oumou_dec  }}  </h2>
               </div>
             </div>
           </div>
@@ -234,7 +234,7 @@
         <canvas id="serverstatus04" height="120" width="120"></canvas>
         <script>
           var doughnutData = [{
-              value: {{ $abg }},
+              value: {{ $abg_dec }},
               color: "orange"
             },
             {
@@ -249,7 +249,7 @@
             <p>Nombre de<br/>Votes:</p>
           </div>
           <div class="col-sm-6 col-xs-6">
-            <h2>{{ $abg  }}  </h2>
+            <h2>{{ $abg_dec  }}  </h2>
           </div>
         </div>
       </div>
@@ -264,7 +264,7 @@
         <canvas id="serverstatus05" height="120" width="120"></canvas>
         <script>
           var doughnutData = [{
-              value: {{ $luciane }},
+              value: {{ $luciane_dec }},
               color: "blue"
             },
             {
@@ -279,7 +279,7 @@
             <p>Nombre de<br/>Votes:</p>
           </div>
           <div class="col-sm-6 col-xs-6">
-            <h2>{{ $luciane  }}  </h2>
+            <h2>{{ $luciane_dec  }}  </h2>
           </div>
         </div>
       </div>
@@ -294,7 +294,7 @@
         <canvas id="serverstatus06" height="120" width="120"></canvas>
         <script>
           var doughnutData = [{
-              value: {{ $oumar }},
+              value: {{ $oumar_dec }},
               color: "silver"
             },
             {
@@ -309,7 +309,7 @@
             <p>Nombre de<br/>Votes:</p>
           </div>
           <div class="col-sm-6 col-xs-6">
-            <h2>{{ $oumar  }}  </h2>
+            <h2>{{ $oumar_dec  }}  </h2>
           </div>
         </div>
       </div>
@@ -322,7 +322,7 @@
         <canvas id="serverstatus07" height="120" width="120"></canvas>
         <script>
           var doughnutData = [{
-              value: {{ $diata }},
+              value: {{ $diata_dec }},
               color: "#FF6B6B"
             },
             {
@@ -337,7 +337,7 @@
             <p>Nombre de<br/>Votes:</p>
           </div>
           <div class="col-sm-6 col-xs-6">
-            <h2>{{ $diata  }}  </h2>
+            <h2>{{ $diata_dec  }}  </h2>
           </div>
         </div>
       </div>
@@ -350,7 +350,7 @@
         <canvas id="serverstatus08" height="120" width="120"></canvas>
         <script>
           var doughnutData = [{
-              value: {{ $vote_nul }},
+              value: {{ $vote_nul_dec }},
               color: "black"
             },
             {
@@ -368,7 +368,7 @@
             <p>Nombre de<br/>Votes:</p>
           </div>
           <div class="col-sm-6 col-xs-6">
-            <h2>{{ $vote_nul  }}  </h2>
+            <h2>{{ $vote_nul_dec  }}  </h2>
           </div>
         </div>
       </div>
@@ -385,7 +385,7 @@
 <div class="col-lg-3 ds">
 <!--COMPLETED ACTIONS DONUTS CHART-->
 <div class="donut-main">
-  <h4>Nombre total de vote : {{ $som+$vote_nul }}</h4>
+  <h4>Nombre total de vote : {{ $som+$vote_nul_dec }}</h4>
   <canvas id="newchart" height="130" width="130"></canvas>
   <script>
     var doughnutData = [{
@@ -410,7 +410,7 @@
       </div>
       <div class="centered">
         <span>Vote nul : </span>
-        <strong>{{ $vote_nul }}</strong>
+        <strong>{{ $vote_nul_dec }}</strong>
       </div>
       <br>
       <div class="sparkline" data-type="line" data-resize="true" data-height="75" data-width="90%" data-line-width="1" data-line-color="#fff" data-spot-color="#fff" data-fill-color="" data-highlight-line-color="#fff" data-spot-radius="4" data-data="[200,135,667,333,526,996,564,123,890,564,455]"></div>

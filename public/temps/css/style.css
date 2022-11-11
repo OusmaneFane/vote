@@ -400,6 +400,7 @@ ul.sidebar-menu li a.active i {
 /* MAIN CONTENT CONFIGURATION */
 #main-content {
     margin-left: 210px;
+   
 }
 
 .header, .footer {
@@ -841,6 +842,7 @@ ul.top-menu > li > a:hover, ul.top-menu > li > a:focus {
     margin-left: 10px;
     position: relative;
     border-bottom: 1px solid #c9cdd7;
+    background-color: rgb(43, 39, 39);
 }
 
 .custom-bar-chart .bar {
@@ -859,6 +861,7 @@ ul.top-menu > li > a:hover, ul.top-menu > li > a:focus {
     width: 100%;
     text-align: center;
     font-size: 11px;
+    color: black;
 }
 
 .custom-bar-chart .bar .value {
@@ -876,14 +879,12 @@ ul.top-menu > li > a:hover, ul.top-menu > li > a:focus {
     -o-transition: all .3s ease;
     transition: all .3s ease;
 }
-.bar-nim{
-    
-}
+
 
 
 
 .custom-bar-chart .bar .value:hover {
-    background: #2f2f2f;
+    background: #ffffff;
     color: #fff;
 }
 

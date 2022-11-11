@@ -250,12 +250,8 @@
         <ul class="sidebar-menu" id="nav-accordion">
           <p class="centered"><a href="profile.html"><img src="/temps/img/ui-sam.jpg" class="img-circle" width="80"></a></p>
           <h5 class="centered">{{ $actel_user->name }}</h5>
-          <li class="mt">
-            <a class="active" href="/admins/statut">
-              <i class="fa fa-dashboard"></i>
-              <span>Dashboard</span>
-              </a>
-          </li>
+
+         
           <li class="sub-menu">
             <a href="/posts/inscrit">
               <i class="fa fa-desktop"></i>
@@ -287,11 +283,29 @@
             </ul>
           </li>
           <li class="sub-menu">
-            <a href="/admins/results">
-              <i class="fa fa-tasks"></i>
-              <span>Resultats</span>
+            <a href="/admins/final_results">
+              <i class="fa fa-desktop"></i>
+              <span>Resultat final</span>
+              </a>
+
+          </li><br>
+          <p class="text-center" style="color: orange">Décompte</p>
+          <li class="mt">
+            <a class="" href="/admins/dep_results">
+              <i class="fa fa-dashboard"></i>
+              <span>Resultats des decomptes </span>
               </a>
           </li>
+          
+          <p class="text-center" style="color: orange">En ligne</p>
+          <li class="mt">
+            <a class="" href="/admins/statut">
+              <i class="fa fa-dashboard"></i>
+              <span>Resultats des votes en ligne</span>
+              </a>
+          </li>
+        
+
           {{-- <li class="sub-menu">
             <a href="javascript:;">
               <i class="fa fa-th"></i>
@@ -355,7 +369,7 @@
           <div class="col-lg-9 main-chart">
             <!--CUSTOM CHART START -->
             <div class="border-head">
-@yield('content')
+                 @yield('content')
 
             </div>
             <!-- / calendar -->
@@ -365,7 +379,7 @@
         <!-- /row -->
       </section>
     </section>
-    
+
     <!--main content end-->
     <!--footer start-->
     <footer class="site-footer">

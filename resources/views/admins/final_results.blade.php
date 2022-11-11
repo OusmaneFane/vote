@@ -1,7 +1,7 @@
 @extends('admins.dashboard')
 
 @section("content")
-<h3>Resultats finaux des votes en ligne</h3>
+<h3>Resultats finaux</h3>
 </div>
 <div class="custom-bar-chart">
   {{-- <ul class="y-axis">
@@ -40,10 +40,7 @@
     <div class="title">Oumou<br>KEITA</div>
     <div class="value tooltips" data-original-title="{{ $oumou }}" data-toggle="tooltip" data-placement="top">{{ $oumou2  }}</div>
   </div>
-  <div class="bar">
-    <div class="title">VOTE<br>NUL</div>
-    <div class="value tooltips" data-original-title="{{ $vote_nul }}" data-toggle="tooltip" data-placement="top">{{ $vote_nul2  }}</div>
-  </div>
+ 
 </div>
 <!--custom chart end-->
 <div class="row mt">
@@ -57,7 +54,7 @@
       <script>
         var doughnutData = [{
             value: {{ $junior }},
-            color: "green"
+            color: "green"  
           },
           {
             value: 50,

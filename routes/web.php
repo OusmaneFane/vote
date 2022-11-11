@@ -43,6 +43,8 @@ Route::middleware(['isAdmin'])->group(function () {
     Route::get('/admins/dep', [AdminController::class, 'dep']);
     Route::get('/admins/statut', [AdminController::class, 'statut']);
     Route::get('/admins/results', [AdminController::class, 'results']);
+    Route::get('/admins/dep_results', [AdminController::class, 'dep_results']);
+    Route::get('/admins/final_results', [AdminController::class, 'final_results']);
     Route::get('/posts/inscrit', [LoginController::class, 'inscription']);
 
   });
