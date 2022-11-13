@@ -36,7 +36,7 @@ class AdminController extends Controller
         $vote_nul2 = $vote_nul * 20;
         $som =  ($oumou +  $kaba +  $junior + $abg +  $diata +  $luciane +  $oumar);
         $candidats = Candidat::all();
-
+        $votes = Vote::all();
 
         $PasseUser = $request->session()->get('PasseUser');
         $actel_user = Admin::find($PasseUser);
@@ -101,7 +101,7 @@ class AdminController extends Controller
         $vote_nul2 = $vote_nul * 20;
         $som =  ($oumou +  $kaba +  $junior + $abg +  $diata +  $luciane +  $oumar);
         $candidats = Candidat::all();
-
+        $votes = Vote::all();   
         $PasseUser = $request->session()->get('PasseUser');
         $actel_user = Admin::find($PasseUser);
 
@@ -161,7 +161,7 @@ class AdminController extends Controller
         return view('/admins.dep', ['actel_user'=>$actel_user, 'oumou'=>$oumou, 'kaba'=>$kaba, 'junior'=>$junior,
         'abg'=>$abg, 'diata'=>$diata, 'luciane'=>$luciane, 'oumar'=>$oumar,
         'oumou2'=>$oumou2, 'kaba2'=>$kaba2, 'junior2'=>$junior2, 'abg2'=>$abg2,
-        'diata2'=>$diata2, 'luciane2'=>$luciane2, 'oumar2'=>$oumar2, 'candidats'=>$candidats,
+        'diata2'=>$diata2, 'luciane2'=>$luciane2, 'oumar2'=>$oumar2, 'candidats'=>$candidats, 'votes'=>$votes,
         'som'=>$som, 'vote_nul'=>$vote_nul, 'vote_nul2'=>$vote_nul2]);
     }
 

@@ -1231,7 +1231,7 @@ h6 {
 .hero {
   width: 100%;
   min-height: 30vh;
- background: rgb(104, 93, 93);
+ background-image: url(/picturesform/loin.jpg);
   background-size: cover;
   position: relative;
   padding: 140px 0 60px 0;
@@ -1319,3 +1319,4 @@ h6 {
 .footer .credits a {
   color: var(--color-primary);
 }
+
