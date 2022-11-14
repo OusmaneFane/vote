@@ -24,13 +24,36 @@
 
 
 <div class="row">
+    <div class="results">
+        @if(Session::get('fail'))
+        <div class="alert alert-danger">
+            {{ Session::get('fail') }}
+        </div>
+        @endif
+    </div>
+        <div class="results">
+            @if(Session::get('success'))
+            <div class="alert alert-success">
+                {{ Session::get('success') }}
+            </div>
+             @endif
+       </div>
 
     @foreach ($candidats as  $candidat)
     <div class="dep">
-        <img class="image-ronde" src="/{{ $candidat['photo']  }}" alt="" >
+        <h5 class="border border-success p-2 mb-2 bg-secondary text-center">{{ $candidat['nom'] }}</h5>
+        <div class="text-center">
 
-           <a href="?filtre={{ $candidat['nom'] }}" class="btn btn-success btn-lg  gap-2 col-4 mx-auto">V</a>
-           <a href="?delete={{ $candidat['id'] }}" class="danger"><button class="btn btn-danger btn-lg  gap-2 col-4 mx-auto">X</button></a><br>
+        <img class="image-ronde" src="/{{ $candidat['photo']  }}" alt="" ><br>
+           <a href="?filtre={{ $candidat['nom'] }}" class="btn btn-success btn-lg  gap-2 col-3 mx-auto mt-2"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-fill-add" viewBox="0 0 16 16">
+            <path d="M12.5 16a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7Zm.5-5v1h1a.5.5 0 0 1 0 1h-1v1a.5.5 0 0 1-1 0v-1h-1a.5.5 0 0 1 0-1h1v-1a.5.5 0 0 1 1 0Zm-2-6a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z"/>
+            <path d="M2 13c0 1 1 1 1 1h5.256A4.493 4.493 0 0 1 8 12.5a4.49 4.49 0 0 1 1.544-3.393C9.077 9.038 8.564 9 8 9c-5 0-6 3-6 4Z"/>
+          </svg></a>
+           <a href="?delete={{ $candidat['id'] }}" class="danger"><button class="btn btn-danger btn-lg  gap-2 col-3 mx-auto mt-2"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-fill-dash" viewBox="0 0 16 16">
+            <path d="M12.5 16a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7ZM11 12h3a.5.5 0 0 1 0 1h-3a.5.5 0 0 1 0-1Zm0-7a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z"/>
+            <path d="M2 13c0 1 1 1 1 1h5.256A4.493 4.493 0 0 1 8 12.5a4.49 4.49 0 0 1 1.544-3.393C9.077 9.038 8.564 9 8 9c-5 0-6 3-6 4Z"/>
+          </svg></button></a><br>
+        </div>
     </div>
 
     @endforeach
@@ -79,7 +102,7 @@
 </div>
 <!--new earning end-->
 <!-- RECENT ACTIVITIES SECTION -->
-<h4 class="centered mt">RECENT ACTIVITY</h4>
+{{-- <h4 class="centered mt">RECENT ACTIVITY</h4> --}}
 <!-- First Activity -->
 {{-- <div class="desc">
   <div class="thumb">
@@ -133,7 +156,7 @@
   </div>
 </div> --}}
 <!-- USERS ONLINE SECTION -->
-<h4 class="centered mt">TEAM MEMBERS ONLINE</h4>
+{{-- <h4 class="centered mt">TEAM MEMBERS ONLINE</h4> --}}
 <!-- First Member -->
 {{-- <div class="desc">
   <div class="thumb">

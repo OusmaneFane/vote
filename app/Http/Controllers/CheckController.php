@@ -38,6 +38,14 @@ class CheckController extends Controller
                 }else{
                     $request->session()->put('PasseUser', $userInfo->id);
                     $matricule = $userInfo->id;
+                    $PasseUser = $request->session()->get('PasseUser');
+                    $actel_user = Student::find($PasseUser);
+
+                    $query = DB::table('addresses')
+                    ->insert([
+                        'user_id' => $actel_user->id,
+                        'ip_address' => $userInfo->ip = request()->ip(),
+                   ]);
                     return redirect('/posts/form');
                 }
             }else{

@@ -163,7 +163,7 @@ class AdminController extends Controller
 
 
         if($request->query('filtre')){
-            return redirect('/admins/dep');
+            return redirect('/admins/dep')->with('success', 'Un vote pour '.$request->query('filtre'));
         }
         if($request->has('delete')){
             $query = DB::table('votes')
@@ -172,7 +172,7 @@ class AdminController extends Controller
                     ->orderBy("id", "DESC")
                     ->take(1)
                     ->delete();
-         return redirect('/admins/dep');
+         return redirect('/admins/dep')->with('fail', 'Retrait d\'un vote pour le candidat N°'.$request->query('delete') );
 
         }
 
