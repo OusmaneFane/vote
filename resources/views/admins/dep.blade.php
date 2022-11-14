@@ -15,8 +15,9 @@
     }
     </style>
 
-       <a href="delete?id=" class="danger"><button class="btn btn-danger">Annuler l'action</button></a><br>
 </div>
+
+
 
 
 <!--custom chart end-->
@@ -29,7 +30,7 @@
         <img class="image-ronde" src="/{{ $candidat['photo']  }}" alt="" >
 
            <a href="?filtre={{ $candidat['nom'] }}" class="btn btn-success btn-lg  gap-2 col-4 mx-auto">V</a>
-           <a href="delete?id=" class="danger"><button class="btn btn-danger btn-lg  gap-2 col-4 mx-auto">X</button></a><br>
+           <a href="?delete={{ $candidat['id'] }}" class="danger"><button class="btn btn-danger btn-lg  gap-2 col-4 mx-auto">X</button></a><br>
     </div>
 
     @endforeach
