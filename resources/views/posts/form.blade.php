@@ -293,10 +293,7 @@ article.card .infos .details {
                     </h2>
 
                 <button type="button" class="date btnDesc">Details campagne</button>
-                <p class="txt">Join us for our Live Infinity Session in
-                    beautiful New York City. This is a 3 day
-                    intensive workshop where you'll learn
-                    how to become a better version of...</p>
+                <p class="txt" style="color: orange"><b>{{ $candidat['slogan']  }}</b></p>
                 <h3 class="details btnTextVote">Choisir</h3>
             </div>
         </article>

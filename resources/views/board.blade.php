@@ -9,6 +9,9 @@
   <link rel="stylesheet" href="https://cdn.materialdesignicons.com/4.8.95/css/materialdesignicons.min.css">
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
   <link rel="stylesheet" href="css/login.css">
+  <link href="{{ url('picturesform/sup.jpg') }}" rel="icon">
+  <link href="{{ url('picturesform/sup.jpg') }}" rel="apple-touch-icon">
+
 </head>
 <body>
   <main class="d-flex align-items-center min-vh-100 py-3 py-md-0">
