@@ -292,7 +292,7 @@ article.card .infos .details {
 
                     </h2>
 
-                <button type="button" class="date btnDesc">Details campagne</button>
+                <button type="button" class="date btnDesc">Slogan</button>
                 <p class="txt" style="color: orange"><b>{{ $candidat['slogan']  }}</b></p>
                 <h3 class="details btnTextVote">Choisir</h3>
             </div>
