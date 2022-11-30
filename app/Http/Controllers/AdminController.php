@@ -7,7 +7,9 @@ use App\Models\Admin;
 use App\Models\Student;
 use App\Models\Candidat;
 use Illuminate\Http\Request;
+use App\Imports\StudentImport;
 use Illuminate\Support\Facades\DB;
+use Maatwebsite\Excel\Facades\Excel;
 
 class AdminController extends Controller
 {
@@ -217,6 +219,24 @@ class AdminController extends Controller
                                            'vote_nul'=>$vote_nul,'demba2'=>$demba2, 'abibatou2'=>$abibatou2, 'kader2'=>$kader2,
                                            'vote_nul2'=>$vote_nul2,'candidats'=>$candidats,'som'=>$som, ]);
 
+    }
+
+    public function import(Request $request) 
+    {
+        $request->validate([
+            'excel_file' => 'required|mimes:xlsx',
+        ]);
+        Excel::import(new StudentImport,request()->file('excel_file'));
+
+     
+        return redirect()->back()->with('success', 'fichier importé avec succès');
+    }
+    
+    public function file(Request $request){
+        $PasseUser = $request->session()->get('PasseUser');
+        $actel_user = Admin::find($PasseUser);
+
+        return view('/admins/import_file', ['actel_user'=>$actel_user]);
     }
 
 
