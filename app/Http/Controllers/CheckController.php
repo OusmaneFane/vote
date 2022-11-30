@@ -78,12 +78,6 @@ class CheckController extends Controller
         $matricule = $actel_user->matricule;
 
 
-        // $users = Student::join('votes', 'votes.user_id', '=', 'students.id')->where('matricule', '?')->get();
-        // $users = [array($matricule)];
-        //  if($users > 0){
-        //     return redirect()->back()->with('fail', 'Ce matricule a déjà voté');
-
-        // }else if(!$users) {
             $query = DB::table('votes')
                ->insert([
             'user_id' => $actel_user->id,

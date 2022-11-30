@@ -251,7 +251,7 @@
           <p class="centered"><a href="profile.html"><img src="/temps/img/ui-sam.jpg" class="img-circle" width="80"></a></p>
           <h5 class="centered">{{ $actel_user->name }}</h5>
 
-         
+
           <li class="sub-menu">
             <a href="/posts/inscrit">
               <i class="fa fa-desktop"></i>
@@ -296,7 +296,7 @@
               <span>Resultats des decomptes </span>
               </a>
           </li>
-          
+
           <p class="text-center" style="color: orange">En ligne</p>
           <li class="mt">
             <a class="" href="/admins/statut">
@@ -304,7 +304,7 @@
               <span>Resultats des votes en ligne</span>
               </a>
           </li>
-        
+
 
           {{-- <li class="sub-menu">
             <a href="javascript:;">

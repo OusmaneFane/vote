@@ -13,33 +13,26 @@
     <li><span>0</span></li>
   </ul> --}}
   <div class="bar">
-    <div class="title"><b>Mohamed<br>Nimaga</b></div>
-    <div class="value tooltips bg-slate-400" data-original-title="{{ $junior_dec }}" data-toggle="tooltip" data-placement="top">{{ $junior2   }}</div>
-  </div>
-  <div class="bar ">
-    <div class="title">Moussa<br>KABA</div>
-    <div class="value tooltips" data-original-title="{{ $kaba_dec  }}" data-toggle="tooltip" data-placement="top">{{ $kaba2  }}</div>
-  </div>
-  <div class="bar ">
-    <div class="title">Luciane<br>Dolo</div>
-    <div class="value tooltips" data-original-title="{{ $luciane_dec  }}" data-toggle="tooltip" data-placement="top">{{ $luciane2  }}</div>
-  </div>
-  <div class="bar ">
-    <div class="title">Abdoulaye<br>Goundourou</div>
-    <div class="value tooltips" data-original-title="{{ $abg_dec  }}" data-toggle="tooltip" data-placement="top">{{ $abg2  }}</div>
+    <div class="title"></b></div>
+    <div class="value tooltips bg-slate-400" data-original-title="" data-toggle="tooltip" data-placement="top"></div>
   </div>
   <div class="bar">
-    <div class="title">Diata<br>TRAORE</div>
-    <div class="value tooltips" data-original-title="{{ $diata_dec  }}" data-toggle="tooltip" data-placement="top">{{ $diata2  }}</div>
-  </div>
-  <div class="bar ">
-    <div class="title">Oumar<br>FOFANA</div>
-    <div class="value tooltips" data-original-title="{{ $oumar_dec  }}" data-toggle="tooltip" data-placement="top">{{ $oumar2  }}</div>
+    <div class="title"></b></div>
+    <div class="value tooltips bg-slate-400" data-original-title="" data-toggle="tooltip" data-placement="top"></div>
   </div>
   <div class="bar">
-    <div class="title">Oumou<br>KEITA</div>
-    <div class="value tooltips" data-original-title="{{ $oumou_dec }}" data-toggle="tooltip" data-placement="top">{{ $oumou2  }}</div>
+    <div class="title"><b>Demba<br>TOUNKARA</b></div>
+    <div class="value tooltips bg-slate-400" data-original-title="{{ $demba_dec }}" data-toggle="tooltip" data-placement="top">{{ $demba2    }}</div>
   </div>
+  <div class="bar ">
+    <div class="title">Abibatou<br></div>
+    <div class="value tooltips" data-original-title="{{ $abiba_dec  }}" data-toggle="tooltip" data-placement="top">{{ $abiba2  }}</div>
+  </div>
+  <div class="bar ">
+    <div class="title">Kader<br>DOUCOURE</div>
+    <div class="value tooltips" data-original-title="{{ $kader_dec  }}" data-toggle="tooltip" data-placement="top">{{ $kader2  }}</div>
+  </div>
+  
   <div class="bar">
     <div class="title">VOTE<br>NUL</div>
     <div class="value tooltips" data-original-title="{{ $vote_nul_dec }}" data-toggle="tooltip" data-placement="top">{{ $vote_nul2  }}</div>
@@ -51,12 +44,12 @@
   <div class="col-md-4 col-sm-4 mb">
     <div class="grey-panel pn donut-chart">
       <div class="grey-header">
-        <h5>Junior</h5>
+        <h5>Demba TOUNKARA</h5>
       </div>
       <canvas id="serverstatus01" height="120" width="120"></canvas>
       <script>
         var doughnutData = [{
-            value: {{ $junior_dec }},
+            value: {{ $demba_dec }},
             color: "green"
           },
           {
@@ -71,7 +64,7 @@
           <p>Nombre de<br/>Votes:</p>
         </div>
         <div class="col-sm-6 col-xs-6">
-          <h2>{{ $junior_dec  }}  </h2>
+          <h2>{{ $demba_dec  }}  </h2>
         </div>
       </div>
     </div>
@@ -81,12 +74,12 @@
   <div class="col-md-4 col-sm-4 mb">
     <div class="grey-panel pn donut-chart">
         <div class="grey-header">
-          <h5>Kaba</h5>
+          <h5>Abibatou</h5>
         </div>
         <canvas id="serverstatus02" height="120" width="120"></canvas>
         <script>
           var doughnutData = [{
-              value: {{ $kaba_dec }},
+              value: {{ $abiba_dec }},
               color: "yellow"
             },
             {
@@ -101,14 +94,14 @@
             <p class="info">Nombre de<br/>Votes:</p>
           </div>
           <div class="col-sm-6 col-xs-6">
-            <h2>{{ $kaba_dec  }}  </h2>
+            <h2>{{ $abiba_dec  }}  </h2>
           </div>
         </div>
       </div>
     <!--  /darkblue panel -->
   </div>
   <!-- /col-md-4 -->
-  <div class="col-md-4 col-sm-4 mb">
+   {{-- <div class="col-md-4 col-sm-4 mb">
     <!-- REVENUE PANEL -->
     <div class="green-panel pn">
         <div class="grey-panel pn donut-chart">
@@ -118,7 +111,7 @@
             <canvas id="serverstatus03" height="120" width="120"></canvas>
             <script>
               var doughnutData = [{
-                  value: {{ $oumou_dec }},
+                  value: ,
                   color: "pink"
                 },
                 {
@@ -133,14 +126,14 @@
                 <p>Nombre de<br/>Votes:</p>
               </div>
               <div class="col-sm-6 col-xs-6">
-                <h2>{{ $oumou_dec  }}  </h2>
+                <h2>  </h2>
               </div>
             </div>
           </div>
     </div>
-  </div>
+  </div>  --}}
   <!-- /col-md-4 -->
-</div>
+
 <!-- /row -->
 {{-- <div class="row">
   <!-- WEATHER PANEL -->
@@ -225,8 +218,8 @@
   <!-- /col-md-4 -->
 </div> --}}
 <!-- /row -->
-<div class="row">
-  <div class="col-lg-4 col-md-4 col-sm-4 mb">
+
+  {{-- <div class="col-lg-4 col-md-4 col-sm-4 mb">
     <div class="grey-panel pn donut-chart">
         <div class="grey-header">
           <h5>Goundourou</h5>
@@ -253,18 +246,18 @@
           </div>
         </div>
       </div>
-  </div>
+  </div> --}}
   <!-- /col-md-4 -->
   <!--  PROFILE 02 PANEL -->
   <div class="col-lg-4 col-md-4 col-sm-4 mb">
     <div class="grey-panel pn donut-chart">
         <div class="grey-header">
-          <h5>Luciane</h5>
+          <h5>Abdoul Kader DOUCOURE</h5>
         </div>
         <canvas id="serverstatus05" height="120" width="120"></canvas>
         <script>
           var doughnutData = [{
-              value: {{ $luciane_dec }},
+              value: {{ $kader_dec }},
               color: "blue"
             },
             {
@@ -279,14 +272,14 @@
             <p>Nombre de<br/>Votes:</p>
           </div>
           <div class="col-sm-6 col-xs-6">
-            <h2>{{ $luciane_dec  }}  </h2>
+            <h2>{{ $kader_dec  }}  </h2>
           </div>
         </div>
       </div>
     <!-- /panel -->
   </div>
   <!--/ col-md-4 -->
-  <div class="col-md-4 col-sm-4 mb">
+  {{-- <div class="col-md-4 col-sm-4 mb">
     <div class="grey-panel pn donut-chart">
         <div class="grey-header">
           <h5>Oumar</h5>
@@ -313,8 +306,8 @@
           </div>
         </div>
       </div>
-  </div>
-  <div class="col-md-4 col-sm-4 mb">
+  </div> --}}
+  {{-- <div class="col-md-4 col-sm-4 mb">
     <div class="grey-panel pn donut-chart">
         <div class="grey-header">
           <h5>Diata</h5>
@@ -341,7 +334,7 @@
           </div>
         </div>
       </div>
-  </div>
+  </div> --}}
   <div class="col-md-4 col-sm-4 mb">
     <div class="darkblue-panel pn donut-chart">
         <div class="grey-header">

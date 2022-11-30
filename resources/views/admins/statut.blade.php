@@ -13,32 +13,25 @@
     <li><span>0</span></li>
   </ul> --}}
   <div class="bar">
-    <div class="title"><b>Mohamed<br>Nimaga</b></div>
-    <div class="value tooltips bg-slate-400" data-original-title="{{ $junior }}" data-toggle="tooltip" data-placement="top">{{ $junior2   }}</div>
-  </div>
-  <div class="bar ">
-    <div class="title">Moussa<br>KABA</div>
-    <div class="value tooltips" data-original-title="{{ $kaba  }}" data-toggle="tooltip" data-placement="top">{{ $kaba2  }}</div>
-  </div>
-  <div class="bar ">
-    <div class="title">Luciane<br>Dolo</div>
-    <div class="value tooltips" data-original-title="{{ $luciane  }}" data-toggle="tooltip" data-placement="top">{{ $luciane2  }}</div>
-  </div>
-  <div class="bar ">
-    <div class="title">Abdoulaye<br>Goundourou</div>
-    <div class="value tooltips" data-original-title="{{ $abg  }}" data-toggle="tooltip" data-placement="top">{{ $abg2  }}</div>
+    <div class="title"></b></div>
+    <div class="value tooltips bg-slate-400" data-original-title="" data-toggle="tooltip" data-placement="top"></div>
   </div>
   <div class="bar">
-    <div class="title">Diata<br>TRAORE</div>
-    <div class="value tooltips" data-original-title="{{ $diata  }}" data-toggle="tooltip" data-placement="top">{{ $diata2  }}</div>
-  </div>
-  <div class="bar ">
-    <div class="title">Oumar<br>FOFANA</div>
-    <div class="value tooltips" data-original-title="{{ $oumar  }}" data-toggle="tooltip" data-placement="top">{{ $oumar2  }}</div>
+    <div class="title"></b></div>
+    <div class="value tooltips bg-slate-400" data-original-title="" data-toggle="tooltip" data-placement="top"></div>
   </div>
   <div class="bar">
-    <div class="title">Oumou<br>KEITA</div>
-    <div class="value tooltips" data-original-title="{{ $oumou }}" data-toggle="tooltip" data-placement="top">{{ $oumou2  }}</div>
+    <div class="title"><b>Kader<br>DOUCOURE</b></div>
+    <div class="value tooltips bg-slate-400" data-original-title="{{ $kader }}" data-toggle="tooltip" data-placement="top">{{ $kader2   }}</div>
+  </div>
+  <div class="bar ">
+    <div class="title">abibatou <br> </div>
+    <div class="value tooltips" data-original-title="{{ $abibatou   }}" data-toggle="tooltip" data-placement="top">{{ $abibatou2  }}</div>
+  </div>
+ 
+  <div class="bar">
+    <div class="title">Demba<br>TOUNKARA</div>
+    <div class="value tooltips" data-original-title="{{ $demba }}" data-toggle="tooltip" data-placement="top">{{ $demba2  }}</div>
   </div>
   <div class="bar">
     <div class="title">VOTE<br>NUL</div>
@@ -51,12 +44,12 @@
   <div class="col-md-4 col-sm-4 mb">
     <div class="grey-panel pn donut-chart">
       <div class="grey-header">
-        <h5>Junior</h5>
+        <h5>Abdoul kader DOUCOURE</h5>
       </div>
       <canvas id="serverstatus01" height="120" width="120"></canvas>
       <script>
         var doughnutData = [{
-            value: {{ $junior }},
+            value: {{ $kader }},
             color: "green"
           },
           {
@@ -71,7 +64,7 @@
           <p>Nombre de<br/>Votes:</p>
         </div>
         <div class="col-sm-6 col-xs-6">
-          <h2>{{ $junior  }}  </h2>
+          <h2>{{ $kader  }}  </h2>
         </div>
       </div>
     </div>
@@ -81,12 +74,12 @@
   <div class="col-md-4 col-sm-4 mb">
     <div class="grey-panel pn donut-chart">
         <div class="grey-header">
-          <h5>Kaba</h5>
+          <h5>abibatou </h5>
         </div>
         <canvas id="serverstatus02" height="120" width="120"></canvas>
         <script>
           var doughnutData = [{
-              value: {{ $kaba }},
+              value: {{ $abibatou  }},
               color: "yellow"
             },
             {
@@ -101,7 +94,7 @@
             <p class="info">Nombre de<br/>Votes:</p>
           </div>
           <div class="col-sm-6 col-xs-6">
-            <h2>{{ $kaba  }}  </h2>
+            <h2>{{ $abibatou   }}  </h2>
           </div>
         </div>
       </div>
@@ -113,12 +106,12 @@
     <div class="green-panel pn">
         <div class="grey-panel pn donut-chart">
             <div class="grey-header">
-              <h5>Oumou</h5>
+              <h5>demba</h5>
             </div>
             <canvas id="serverstatus03" height="120" width="120"></canvas>
             <script>
               var doughnutData = [{
-                  value: {{ $oumou }},
+                  value: {{ $demba }},
                   color: "pink"
                 },
                 {
@@ -133,7 +126,7 @@
                 <p>Nombre de<br/>Votes:</p>
               </div>
               <div class="col-sm-6 col-xs-6">
-                <h2>{{ $oumou  }}  </h2>
+                <h2>{{ $demba  }}  </h2>
               </div>
             </div>
           </div>
@@ -226,7 +219,7 @@
 </div> --}}
 <!-- /row -->
 <div class="row">
-  <div class="col-lg-4 col-md-4 col-sm-4 mb">
+  {{-- <div class="col-lg-4 col-md-4 col-sm-4 mb">
     <div class="grey-panel pn donut-chart">
         <div class="grey-header">
           <h5>Goundourou</h5>
@@ -253,10 +246,10 @@
           </div>
         </div>
       </div>
-  </div>
+  </div> --}}
   <!-- /col-md-4 -->
   <!--  PROFILE 02 PANEL -->
-  <div class="col-lg-4 col-md-4 col-sm-4 mb">
+  {{-- <div class="col-lg-4 col-md-4 col-sm-4 mb">
     <div class="grey-panel pn donut-chart">
         <div class="grey-header">
           <h5>Luciane</h5>
@@ -284,9 +277,9 @@
         </div>
       </div>
     <!-- /panel -->
-  </div>
+  </div> --}}
   <!--/ col-md-4 -->
-  <div class="col-md-4 col-sm-4 mb">
+  {{-- <div class="col-md-4 col-sm-4 mb">
     <div class="grey-panel pn donut-chart">
         <div class="grey-header">
           <h5>Oumar</h5>
@@ -313,8 +306,8 @@
           </div>
         </div>
       </div>
-  </div>
-  <div class="col-md-4 col-sm-4 mb">
+  </div> --}}
+  {{-- <div class="col-md-4 col-sm-4 mb">
     <div class="grey-panel pn donut-chart">
         <div class="grey-header">
           <h5>Diata</h5>
@@ -341,7 +334,7 @@
           </div>
         </div>
       </div>
-  </div>
+  </div> --}}
   <div class="col-md-4 col-sm-4 mb">
     <div class="darkblue-panel pn donut-chart">
         <div class="grey-header">
