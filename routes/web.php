@@ -36,6 +36,8 @@ Route::post('/posts/validate', [CheckController::class, 'valide'])->name('valida
 //Admin
 Route::get('/admins/login', [AdminController::class, 'Admincheck']);
 Route::post('/admins/check', [AdminController::class, 'check']);
+Route::post('/import', [AdminController::class, 'import']);
+
 
 Route::middleware(['isAdmin'])->group(function () {
     Route::get('/admins/dashboard', [AdminController::class, 'administrator']);
@@ -46,6 +48,7 @@ Route::middleware(['isAdmin'])->group(function () {
     Route::get('/admins/dep_results', [AdminController::class, 'dep_results']);
     Route::get('/admins/final_results', [AdminController::class, 'final_results']);
     Route::get('/posts/inscrit', [LoginController::class, 'inscription']);
+    Route::get('/import_file', [AdminController::class, 'file']);
 
   });
 
