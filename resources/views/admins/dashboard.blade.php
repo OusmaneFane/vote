@@ -248,7 +248,7 @@
       <div id="sidebar" class="nav-collapse ">
         <!-- sidebar menu start-->
         <ul class="sidebar-menu" id="nav-accordion">
-          <p class="centered"><a href="profile.html"><img src="/temps/img/ui-sam.jpg" class="img-circle" width="80"></a></p>
+          <p class="centered"><a href="profile.html"><img src="/picturesform/sup.jpg" class="img-circle" width="80"></a></p>
           <h5 class="centered">{{ $actel_user->name }}</h5>
 
 

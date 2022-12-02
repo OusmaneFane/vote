@@ -28,7 +28,7 @@
     <div class="title">abibatou <br> </div>
     <div class="value tooltips" data-original-title="{{ $abibatou   }}" data-toggle="tooltip" data-placement="top">{{ $abibatou2  }}</div>
   </div>
- 
+
   <div class="bar">
     <div class="title">Demba<br>TOUNKARA</div>
     <div class="value tooltips" data-original-title="{{ $demba }}" data-toggle="tooltip" data-placement="top">{{ $demba2  }}</div>
@@ -366,7 +366,7 @@
         </div>
       </div>
   </div>
-  
+
   <!-- /col-md-4 -->
 </div>
 <!-- /row -->
