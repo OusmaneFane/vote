@@ -20,21 +20,21 @@
     <div class="title"></b></div>
     <div class="value tooltips bg-slate-400" data-original-title="" data-toggle="tooltip" data-placement="top"></div>
   </div>
-  
+
   <div class="bar">
     <div class="title"><b>Demba<br>TOUNKARA</b></div>
     <div class="value tooltips bg-slate-400" data-original-title="{{ $demba }}" data-toggle="tooltip" data-placement="top">{{ $demba2   }}</div>
   </div>
   <div class="bar ">
-    <div class="title">Abibatou<br></div>
+    <div class="title"><b>Abibatou<br>TRAORE</b></div>
     <div class="value tooltips" data-original-title="{{ $abibatou  }}" data-toggle="tooltip" data-placement="top">{{ $abibatou2  }}</div>
   </div>
   <div class="bar ">
-    <div class="title">Kader<br>DOUCOURE</div>
+    <div class="title"><b>Kader<br>DOUCOURE</b></div>
     <div class="value tooltips" data-original-title="{{ $kader  }}" data-toggle="tooltip" data-placement="top">{{ $kader2  }}</div>
   </div>
- 
- 
+
+
 </div>
 <!--custom chart end-->
 <div class="row mt">
@@ -48,7 +48,7 @@
       <script>
         var doughnutData = [{
             value: {{ $demba }},
-            color: "green"  
+            color: "green"
           },
           {
             value: 50,
@@ -72,7 +72,7 @@
   <div class="col-md-4 col-sm-4 mb">
     <div class="grey-panel pn donut-chart">
         <div class="grey-header">
-          <h5>Abibatou</h5>
+          <h5>Abibatou TRAORE</h5>
         </div>
         <canvas id="serverstatus02" height="120" width="120"></canvas>
         <script>
@@ -364,7 +364,7 @@
         </div>
       </div>
   </div>
-  
+
   <!-- /col-md-4 -->
 </div>
 <!-- /row -->

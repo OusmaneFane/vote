@@ -25,12 +25,12 @@
     <div class="value tooltips bg-slate-400" data-original-title="{{ $kader }}" data-toggle="tooltip" data-placement="top">{{ $kader2   }}</div>
   </div>
   <div class="bar ">
-    <div class="title">abibatou <br> </div>
+    <div class="title"><b>Abibatou <br>TRAORE</b></div>
     <div class="value tooltips" data-original-title="{{ $abibatou   }}" data-toggle="tooltip" data-placement="top">{{ $abibatou2  }}</div>
   </div>
 
   <div class="bar">
-    <div class="title">Demba<br>TOUNKARA</div>
+    <div class="title"><b>Demba<br>TOUNKARA</b></div>
     <div class="value tooltips" data-original-title="{{ $demba }}" data-toggle="tooltip" data-placement="top">{{ $demba2  }}</div>
   </div>
   <div class="bar">
@@ -74,7 +74,7 @@
   <div class="col-md-4 col-sm-4 mb">
     <div class="grey-panel pn donut-chart">
         <div class="grey-header">
-          <h5>abibatou </h5>
+          <h5>Abibatou TRAORE</h5>
         </div>
         <canvas id="serverstatus02" height="120" width="120"></canvas>
         <script>
