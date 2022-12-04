@@ -51,7 +51,7 @@
             color: "green"
           },
           {
-            value: 50,
+            value: 300,
             color: "#fdfdfd"
           }
         ];
@@ -81,7 +81,7 @@
               color: "yellow"
             },
             {
-              value: 50,
+              value: 300,
               color: "#fdfdfd"
             }
           ];
@@ -259,7 +259,7 @@
               color: "blue"
             },
             {
-              value: 50,
+              value: 300,
               color: "#fdfdfd"
             }
           ];
@@ -345,7 +345,7 @@
               color: "black"
             },
             {
-              value: 50,
+              value: 1000,
               color: "#fdfdfd"
             }
           ];
@@ -384,7 +384,7 @@
         color: "red"
       },
       {
-        value: 20,
+        value: 1000,
         color: "#fdfdfd"
       }
     ];

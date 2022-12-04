@@ -91,30 +91,38 @@ class AdminController extends Controller
         $votes = Vote::all();
         $PasseUser = $request->session()->get('PasseUser');
         $actel_user = Admin::find($PasseUser);
+        $demba = Vote::where('candidat_id', '1')->count();
+        $demba2=  $demba * 6;
+        $abibatou =  Vote::where('candidat_id', '2')->count();
+        $abibatou2=  $abibatou * 6;
+        $kader = Vote::where('candidat_id', '3')->count();
+        $kader2 = $kader * 6;
+        $vote_nul = Vote::where('candidat_id', '5')->count();
+        $vote_nul2 = $vote_nul *6;
 
 
         if( $request->has('filtre'))
         {
-            if($request->query('filtre') == 'Demba TOUNKARA'){
+            if($request->query('filtre') == 'DEMBA TOUNKARA'){
                 $query = DB::table('votes')
                 ->insert([
                     'user_id' => '0',
                     'candidat_id' => '1',
                 ]);
                }
-            else if($request->query('filtre') == 'Abibatou'){
+            else if($request->query('filtre') == 'ABIBATOU TRAORE'){
                 $query = DB::table('votes')
                 ->insert([
                     'user_id' => '0',
                     'candidat_id' => '2',]);
             }
-            else if($request->query('filtre') == 'Abdoul Kader DOUCOURE'){
+            else if($request->query('filtre') == 'ABDOUL KADER DOUCOURE'){
                 $query = DB::table('votes')
                 ->insert([
                     'user_id' => '0',
                     'candidat_id' => '3',]);
             }
-            else if($request->query('filtre') == 'Vote NUL'){
+            else if($request->query('filtre') == 'VOTE NUL'){
                 $query = DB::table('votes')
                 ->insert([
                     'user_id' => '0',
@@ -141,7 +149,9 @@ class AdminController extends Controller
         }
 
         return view('/admins.dep', ['actel_user'=>$actel_user, 'oumou'=>$oumou, 'kaba'=>$kaba, 'junior'=>$junior,
-        'candidats'=>$candidats, 'votes'=>$votes,'som'=>$som, 'vote_nul'=>$vote_nul, 'vote_nul2'=>$vote_nul2]);
+        'candidats'=>$candidats, 'votes'=>$votes,'som'=>$som, 'vote_nul'=>$vote_nul, 'vote_nul2'=>$vote_nul2,
+    'demba'=>$demba, 'demba2'=>$demba2, 'abibatou'=>$abibatou, 'abibatou2'=>$abibatou2,
+ 'kader'=>$kader, 'kader2'=>$kader2, ]);
     }
 
     public function statut(Request $request)
@@ -173,22 +183,22 @@ class AdminController extends Controller
         $demba_dec = Vote::where('candidat_id', '1')
                        ->where('user_id', '0')
                        ->count();
-        $demba2=  $demba_dec * 6;
+        $demba2=  $demba_dec * 1/2;
         $abiba_dec =  Vote::where('candidat_id', '2')
                         ->where('user_id', '0')
                         ->count();
-        $abiba2=  $abiba_dec * 6;
+        $abiba2=  $abiba_dec * 1/2;
         $kader_dec = Vote::where('candidat_id', '3')
                         ->where('user_id', '0')
                         ->count();
-        $kader2 = $kader_dec * 6;
+        $kader2 = $kader_dec * 1/2;
         $vote_nul_dec = Vote::where('candidat_id', '5')
                         ->where('user_id', '0')
                         ->count();
-        $vote_nul2 = $vote_nul_dec *6;
+        $vote_nul2 = $vote_nul_dec *1/2;
 
 
-        $vote_nul2 = $vote_nul_dec * 6;
+        $vote_nul2 = $vote_nul_dec * 1/2;
         $som =  ($demba_dec +  $abiba_dec +  $kader_dec );
         $candidats = Candidat::all();
 
@@ -203,13 +213,13 @@ class AdminController extends Controller
     {
 
         $demba = Vote::where('candidat_id', '1')->count();
-        $demba2=  $demba * 6;
+        $demba2=  $demba * 1/2;
         $abibatou =  Vote::where('candidat_id', '2')->count();
-        $abibatou2=  $abibatou * 6;
+        $abibatou2=  $abibatou * 1/2;
         $kader = Vote::where('candidat_id', '3')->count();
-        $kader2 = $kader * 6;
+        $kader2 = $kader * 1/2;
         $vote_nul = Vote::where('candidat_id', '5')->count();
-        $vote_nul2 = $vote_nul *6;
+        $vote_nul2 = $vote_nul *1/2;
 
         $som =  ($demba +  $abibatou +  $kader );
         $candidats = Candidat::all();
@@ -221,17 +231,17 @@ class AdminController extends Controller
 
     }
 
-    public function import(Request $request) 
+    public function import(Request $request)
     {
         $request->validate([
             'excel_file' => 'required|mimes:xlsx',
         ]);
         Excel::import(new StudentImport,request()->file('excel_file'));
 
-     
+
         return redirect()->back()->with('success', 'fichier importé avec succès');
     }
-    
+
     public function file(Request $request){
         $PasseUser = $request->session()->get('PasseUser');
         $actel_user = Admin::find($PasseUser);

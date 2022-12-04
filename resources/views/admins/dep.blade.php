@@ -39,13 +39,136 @@
              @endif
        </div>
 
+       <div class="row mt  ">
+       <div class="col-md-3 col-sm-4 mb">
+        <div class="grey-panel pn donut-chart">
+          <div class="grey-header">
+            <h5>Demba TOUNKARA</h5>
+          </div>
+          <canvas id="serverstatus01" height="120" width="120"></canvas>
+          <script>
+            var doughnutData = [{
+                value: {{ $demba }},
+                color: "green"
+              },
+              {
+                value: 300,
+                color: "#fdfdfd"
+              }
+            ];
+            var myDoughnut = new Chart(document.getElementById("serverstatus01").getContext("2d")).Doughnut(doughnutData);
+          </script>
+          <div class="row">
+            <div class="col-sm-6 col-xs-6 goleft">
+              <p>Nombre de<br/>Votes:</p>
+            </div>
+            <div class="col-sm-6 col-xs-6">
+              <h2>{{ $demba  }}  </h2>
+            </div>
+          </div>
+        </div>
+        <!-- /grey-panel -->
+      </div>
+      <div class="col-md-3 col-sm-4 mb">
+        <div class="grey-panel pn donut-chart">
+            <div class="grey-header">
+              <h5>Abibatou TRAORE</h5>
+            </div>
+            <canvas id="serverstatus02" height="120" width="120"></canvas>
+            <script>
+              var doughnutData = [{
+                  value: {{ $abibatou }},
+                  color: "yellow"
+                },
+                {
+                  value: 300,
+                  color: "#fdfdfd"
+                }
+              ];
+              var myDoughnut = new Chart(document.getElementById("serverstatus02").getContext("2d")).Doughnut(doughnutData);
+            </script>
+            <div class="row">
+              <div class="col-sm-6 col-xs-6 goleft">
+                <p class="info">Nombre de<br/>Votes:</p>
+              </div>
+              <div class="col-sm-6 col-xs-6">
+                <h2>{{ $abibatou  }}  </h2>
+              </div>
+            </div>
+          </div>
+        <!--  /darkblue panel -->
+      </div>
+      <div class="col-md-3 col-sm-4 mb">
+        <div class="grey-panel pn donut-chart">
+            <div class="grey-header">
+              <h5>Abdoul Kader DOUCOURE </h5>
+            </div>
+            <canvas id="serverstatus05" height="120" width="120"></canvas>
+            <script>
+              var doughnutData = [{
+                  value: {{ $kader }},
+                  color: "blue"
+                },
+                {
+                  value: 300,
+                  color: "#fdfdfd"
+                }
+              ];
+              var myDoughnut = new Chart(document.getElementById("serverstatus05").getContext("2d")).Doughnut(doughnutData);
+            </script>
+            <div class="row">
+              <div class="col-sm-6 col-xs-6 goleft">
+                <p>Nombre de<br/>Votes:</p>
+              </div>
+              <div class="col-sm-6 col-xs-6">
+                <h2>{{ $kader  }}  </h2>
+              </div>
+            </div>
+          </div>
+        <!-- /panel -->
+      </div>
+      <div class="col-md-3 col-sm-4 mb">
+        <div class="grey-panel pn donut-chart">
+            <div class="grey-header">
+              <h5>VOTE NUL</h5>
+            </div>
+            <canvas id="serverstatus08" height="120" width="120"></canvas>
+            <script>
+              var doughnutData = [{
+                  value: {{ $vote_nul }},
+                  color: "black"
+                },
+                {
+                  value: 300,
+                  color: "#fdfdfd"
+                }
+              ];
+              var myDoughnut = new Chart(document.getElementById("serverstatus08").getContext("2d")).Doughnut(doughnutData);
+            </script>
+
+
+
+            <div class="row">
+              <div class="col-sm-6 col-xs-6 goleft">
+                <p>Nombre de<br/>Votes:</p>
+              </div>
+              <div class="col-sm-6 col-xs-6">
+                <h2>{{ $vote_nul  }}  </h2>
+              </div>
+            </div>
+          </div>
+      </div>
+       </div>
+
+
+
     @foreach ($candidats as  $candidat)
     <div class="dep">
-        <h5 class="border border-success p-2 mb-2 bg-secondary text-center">{{ $candidat['nom'] }}</h5>
+        <h5 class="rounded-5 p-2 mb-2 bg-secondary text-center text-white">{{ $candidat['nom'] }}</h5>
         <div class="text-center">
 
         <img class="image-ronde" src="/{{ $candidat['photo']  }}" alt="" ><br>
-           <a href="?filtre={{ $candidat['nom'] }}" class="btn btn-success btn-lg  gap-2 col-3 mx-auto mt-2"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-fill-add" viewBox="0 0 16 16">
+           <a href="?filtre={{ $candidat['nom'] }}" class="btn btn-success btn-lg  gap-2 col-3 mx-auto mt-2 text-white"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-fill-add" viewBox="0 0 16 16">
             <path d="M12.5 16a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7Zm.5-5v1h1a.5.5 0 0 1 0 1h-1v1a.5.5 0 0 1-1 0v-1h-1a.5.5 0 0 1 0-1h1v-1a.5.5 0 0 1 1 0Zm-2-6a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z"/>
             <path d="M2 13c0 1 1 1 1 1h5.256A4.493 4.493 0 0 1 8 12.5a4.49 4.49 0 0 1 1.544-3.393C9.077 9.038 8.564 9 8 9c-5 0-6 3-6 4Z"/>
           </svg></a>
@@ -76,7 +199,7 @@
         color: "red"
       },
       {
-        value: 20,
+        value: 1000,
         color: "#fdfdfd"
       }
     ];
@@ -218,4 +341,5 @@
     </div>
   </div>
 
+</div>
 @endsection
