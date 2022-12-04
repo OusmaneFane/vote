@@ -22,9 +22,9 @@ class AdminController extends Controller
 
         $demba = Vote::where('candidat_id', '1')->count();
         $demba2=  $demba * 20;
-        $abibatou =  Vote::where('candidat_id', '2')->count();
+        $abibatou =  Vote::where('candidat_id', '3')->count();
         $abibatou2=  $abibatou * 20;
-        $kader = Vote::where('candidat_id', '3')->count();
+        $kader = Vote::where('candidat_id', '2')->count();
         $kader2 = $kader * 20;
 
         $vote_nul = Vote::where('candidat_id', '5')->count();
@@ -93,9 +93,9 @@ class AdminController extends Controller
         $actel_user = Admin::find($PasseUser);
         $demba = Vote::where('candidat_id', '1')->count();
         $demba2=  $demba * 6;
-        $abibatou =  Vote::where('candidat_id', '2')->count();
+        $abibatou =  Vote::where('candidat_id', '3')->count();
         $abibatou2=  $abibatou * 6;
-        $kader = Vote::where('candidat_id', '3')->count();
+        $kader = Vote::where('candidat_id', '2')->count();
         $kader2 = $kader * 6;
         $vote_nul = Vote::where('candidat_id', '5')->count();
         $vote_nul2 = $vote_nul *6;
@@ -114,13 +114,13 @@ class AdminController extends Controller
                 $query = DB::table('votes')
                 ->insert([
                     'user_id' => '0',
-                    'candidat_id' => '2',]);
+                    'candidat_id' => '3',]);
             }
             else if($request->query('filtre') == 'ABDOUL KADER DOUCOURE'){
                 $query = DB::table('votes')
                 ->insert([
                     'user_id' => '0',
-                    'candidat_id' => '3',]);
+                    'candidat_id' => '2',]);
             }
             else if($request->query('filtre') == 'VOTE NUL'){
                 $query = DB::table('votes')
@@ -159,9 +159,9 @@ class AdminController extends Controller
 
         $demba = Vote::where('candidat_id', '1') ->where('user_id', '!=', '0')->count();
         $demba2=  $demba * 20;
-        $abibatou =  Vote::where('candidat_id', '2') ->where('user_id', '!=', '0')->count();
+        $abibatou =  Vote::where('candidat_id', '3') ->where('user_id', '!=', '0')->count();
         $abibatou2=  $abibatou * 20;
-        $kader = Vote::where('candidat_id', '3') ->where('user_id', '!=', '0')->count();
+        $kader = Vote::where('candidat_id', '2') ->where('user_id', '!=', '0')->count();
         $kader2 = $kader * 20;
         $vote_nul = Vote::where('candidat_id', '5') ->where('user_id', '!=', '0')->count();
         $vote_nul2 = $vote_nul * 20;
@@ -184,11 +184,11 @@ class AdminController extends Controller
                        ->where('user_id', '0')
                        ->count();
         $demba2=  $demba_dec * 1/2;
-        $abiba_dec =  Vote::where('candidat_id', '2')
+        $abiba_dec =  Vote::where('candidat_id', '3')
                         ->where('user_id', '0')
                         ->count();
         $abiba2=  $abiba_dec * 1/2;
-        $kader_dec = Vote::where('candidat_id', '3')
+        $kader_dec = Vote::where('candidat_id', '2')
                         ->where('user_id', '0')
                         ->count();
         $kader2 = $kader_dec * 1/2;
@@ -214,9 +214,9 @@ class AdminController extends Controller
 
         $demba = Vote::where('candidat_id', '1')->count();
         $demba2=  $demba * 1/2;
-        $abibatou =  Vote::where('candidat_id', '2')->count();
+        $abibatou =  Vote::where('candidat_id', '3')->count();
         $abibatou2=  $abibatou * 1/2;
-        $kader = Vote::where('candidat_id', '3')->count();
+        $kader = Vote::where('candidat_id', '2')->count();
         $kader2 = $kader * 1/2;
         $vote_nul = Vote::where('candidat_id', '5')->count();
         $vote_nul2 = $vote_nul *1/2;

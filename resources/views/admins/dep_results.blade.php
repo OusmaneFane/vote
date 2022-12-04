@@ -25,16 +25,17 @@
     <div class="value tooltips bg-slate-400" data-original-title="{{ $demba_dec }}" data-toggle="tooltip" data-placement="top">{{ $demba2    }}</div>
   </div>
   <div class="bar ">
-    <div class="title">Abibatou TRAORE<br>TRAORE</div>
-    <div class="value tooltips" data-original-title="{{ $abiba_dec  }}" data-toggle="tooltip" data-placement="top">{{ $abiba2  }}</div>
-  </div>
-  <div class="bar ">
-    <div class="title">Kader<br>DOUCOURE</div>
+    <div class="title"><b>Kader<br>DOUCOURE</b></div>
     <div class="value tooltips" data-original-title="{{ $kader_dec  }}" data-toggle="tooltip" data-placement="top">{{ $kader2  }}</div>
   </div>
+  <div class="bar ">
+    <div class="title"><b>Abibatou<br>TRAORE</b></div>
+    <div class="value tooltips" data-original-title="{{ $abiba_dec  }}" data-toggle="tooltip" data-placement="top">{{ $abiba2  }}</div>
+  </div>
+  
 
   <div class="bar">
-    <div class="title">VOTE<br>NUL</div>
+    <div class="title"><b>VOTE<br>NUL</b></div>
     <div class="value tooltips" data-original-title="{{ $vote_nul_dec }}" data-toggle="tooltip" data-placement="top">{{ $vote_nul2  }}</div>
   </div>
 </div>

@@ -26,13 +26,14 @@
     <div class="value tooltips bg-slate-400" data-original-title="{{ $demba }}" data-toggle="tooltip" data-placement="top">{{ $demba2   }}</div>
   </div>
   <div class="bar ">
-    <div class="title"><b>Abibatou<br>TRAORE</b></div>
-    <div class="value tooltips" data-original-title="{{ $abibatou  }}" data-toggle="tooltip" data-placement="top">{{ $abibatou2  }}</div>
-  </div>
-  <div class="bar ">
     <div class="title"><b>Kader<br>DOUCOURE</b></div>
     <div class="value tooltips" data-original-title="{{ $kader  }}" data-toggle="tooltip" data-placement="top">{{ $kader2  }}</div>
   </div>
+  <div class="bar ">
+    <div class="title"><b>Abibatou<br>TRAORE</b></div>
+    <div class="value tooltips" data-original-title="{{ $abibatou  }}" data-toggle="tooltip" data-placement="top">{{ $abibatou2  }}</div>
+  </div>
+  
 
 
 </div>
@@ -67,6 +68,35 @@
       </div>
     </div>
     <!-- /grey-panel -->
+  </div>
+  <div class="col-lg-4 col-md-4 col-sm-4 mb">
+    <div class="grey-panel pn donut-chart">
+        <div class="grey-header">
+          <h5>Abdoul Kader DOUCOURE </h5>
+        </div>
+        <canvas id="serverstatus05" height="120" width="120"></canvas>
+        <script>
+          var doughnutData = [{
+              value: {{ $kader }},
+              color: "blue"
+            },
+            {
+              value: 300,
+              color: "#fdfdfd"
+            }
+          ];
+          var myDoughnut = new Chart(document.getElementById("serverstatus05").getContext("2d")).Doughnut(doughnutData);
+        </script>
+        <div class="row">
+          <div class="col-sm-6 col-xs-6 goleft">
+            <p>Nombre de<br/>Votes:</p>
+          </div>
+          <div class="col-sm-6 col-xs-6">
+            <h2>{{ $kader  }}  </h2>
+          </div>
+        </div>
+      </div>
+    <!-- /panel -->
   </div>
   <!-- /col-md-4-->
   <div class="col-md-4 col-sm-4 mb">
@@ -247,35 +277,7 @@
   </div> --}}
   <!-- /col-md-4 -->
   <!--  PROFILE 02 PANEL -->
-  <div class="col-lg-4 col-md-4 col-sm-4 mb">
-    <div class="grey-panel pn donut-chart">
-        <div class="grey-header">
-          <h5>Abdoul Kader DOUCOURE </h5>
-        </div>
-        <canvas id="serverstatus05" height="120" width="120"></canvas>
-        <script>
-          var doughnutData = [{
-              value: {{ $kader }},
-              color: "blue"
-            },
-            {
-              value: 300,
-              color: "#fdfdfd"
-            }
-          ];
-          var myDoughnut = new Chart(document.getElementById("serverstatus05").getContext("2d")).Doughnut(doughnutData);
-        </script>
-        <div class="row">
-          <div class="col-sm-6 col-xs-6 goleft">
-            <p>Nombre de<br/>Votes:</p>
-          </div>
-          <div class="col-sm-6 col-xs-6">
-            <h2>{{ $kader  }}  </h2>
-          </div>
-        </div>
-      </div>
-    <!-- /panel -->
-  </div>
+  
   <!--/ col-md-4 -->
   {{-- <div class="col-md-4 col-sm-4 mb">
     <div class="grey-panel pn donut-chart">

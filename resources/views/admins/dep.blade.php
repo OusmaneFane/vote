@@ -69,35 +69,7 @@
         </div>
         <!-- /grey-panel -->
       </div>
-      <div class="col-md-3 col-sm-4 mb">
-        <div class="grey-panel pn donut-chart">
-            <div class="grey-header">
-              <h5>Abibatou TRAORE</h5>
-            </div>
-            <canvas id="serverstatus02" height="120" width="120"></canvas>
-            <script>
-              var doughnutData = [{
-                  value: {{ $abibatou }},
-                  color: "yellow"
-                },
-                {
-                  value: 300,
-                  color: "#fdfdfd"
-                }
-              ];
-              var myDoughnut = new Chart(document.getElementById("serverstatus02").getContext("2d")).Doughnut(doughnutData);
-            </script>
-            <div class="row">
-              <div class="col-sm-6 col-xs-6 goleft">
-                <p class="info">Nombre de<br/>Votes:</p>
-              </div>
-              <div class="col-sm-6 col-xs-6">
-                <h2>{{ $abibatou  }}  </h2>
-              </div>
-            </div>
-          </div>
-        <!--  /darkblue panel -->
-      </div>
+
       <div class="col-md-3 col-sm-4 mb">
         <div class="grey-panel pn donut-chart">
             <div class="grey-header">
@@ -126,6 +98,35 @@
             </div>
           </div>
         <!-- /panel -->
+      </div>
+      <div class="col-md-3 col-sm-4 mb">
+        <div class="grey-panel pn donut-chart">
+            <div class="grey-header">
+              <h5>Abibatou TRAORE</h5>
+            </div>
+            <canvas id="serverstatus02" height="120" width="120"></canvas>
+            <script>
+              var doughnutData = [{
+                  value: {{ $abibatou }},
+                  color: "yellow"
+                },
+                {
+                  value: 300,
+                  color: "#fdfdfd"
+                }
+              ];
+              var myDoughnut = new Chart(document.getElementById("serverstatus02").getContext("2d")).Doughnut(doughnutData);
+            </script>
+            <div class="row">
+              <div class="col-sm-6 col-xs-6 goleft">
+                <p class="info">Nombre de<br/>Votes:</p>
+              </div>
+              <div class="col-sm-6 col-xs-6">
+                <h2>{{ $abibatou  }}  </h2>
+              </div>
+            </div>
+          </div>
+        <!--  /darkblue panel -->
       </div>
       <div class="col-md-3 col-sm-4 mb">
         <div class="grey-panel pn donut-chart">
