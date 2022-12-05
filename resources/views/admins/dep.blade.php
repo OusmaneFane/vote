@@ -42,8 +42,8 @@
        <div class="row mt  ">
        <div class="col-md-3 col-sm-4 mb">
         <div class="grey-panel pn donut-chart">
-          <div class="grey-header">
-            <h5>Demba TOUNKARA</h5>
+          <div class="text-bg-success p-3">
+            <h5><b>DEMBA TOUNKARA</b></h5>
           </div>
           <canvas id="serverstatus01" height="120" width="120"></canvas>
           <script>
@@ -72,8 +72,8 @@
 
       <div class="col-md-3 col-sm-4 mb">
         <div class="grey-panel pn donut-chart">
-            <div class="grey-header">
-              <h5>Abdoul Kader DOUCOURE </h5>
+            <div class="text-bg-primary p-3">
+              <h5><b>ABDOUL KADER DOUCOURE</b></h5>
             </div>
             <canvas id="serverstatus05" height="120" width="120"></canvas>
             <script>
@@ -101,8 +101,8 @@
       </div>
       <div class="col-md-3 col-sm-4 mb">
         <div class="grey-panel pn donut-chart">
-            <div class="grey-header">
-              <h5>Abibatou TRAORE</h5>
+            <div class="text-bg-warning p-3">
+              <h5><b>ABIBATOU TRAORE</b></h5>
             </div>
             <canvas id="serverstatus02" height="120" width="120"></canvas>
             <script>
@@ -130,8 +130,8 @@
       </div>
       <div class="col-md-3 col-sm-4 mb">
         <div class="grey-panel pn donut-chart">
-            <div class="grey-header">
-              <h5>VOTE NUL</h5>
+            <div class="text-bg-dark p-3">
+              <h5><b>VOTE NUL</b></h5>
             </div>
             <canvas id="serverstatus08" height="120" width="120"></canvas>
             <script>
