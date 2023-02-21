@@ -61,7 +61,7 @@
         <div class="fa fa-bars tooltips" data-placement="right" data-original-title="Toggle Navigation"></div>
       </div>
       <!--logo start-->
-       <a href="/dashboard" class="logo"><b>SUP<span>'MANAGEMENT</span></b></a>
+       <a href="/admins/dashboard" class="logo"><b>SUP<span>'MANAGEMENT</span></b></a>
       <!--logo end-->
 
 
@@ -79,7 +79,14 @@
           <p class="centered"><a href="profile.html"><img src="/picturesform/sup.jpg" class="img-circle" width="80"></a></p>
           <h5 class="centered">{{ $actel_user->name }}</h5>
 
+            {{-- dashboard --}}
 
+            <li class="sub-menu">
+                <a href="/admins/dashboard" class="{{ request()->routeIs('dashboard') ? 'active' : '' }}">
+                    <i class="fa fa-dashboard"></i>
+                    <span>Dashboard</span>
+                    </a>
+            </li>
           <li class="sub-menu">
             <a href="/posts/inscrit" class="{{ request()->routeIs('add_student') ? 'active' : '' }}">
               <i class="fa fa-desktop"></i>
@@ -94,18 +101,6 @@
               </a>
 
           </li>
-
-         <li class="sub-menu">
-            <a class="{{ request()->routeIs('') ? 'active' : '' }}" href="javascript:;">
-              <i class="fa fa-th"></i>
-              <span>Candidats</span>
-              </a>
-            <ul class="sub">
-                <li><a  href="/create_candidat">Create</a></li>
-                <li><a href="/edit_candidat">Edit</a></li>
-                <li><a href="/delete_candidat">Delete</a></li>
-            </ul>
-        </li>
           <li class="sub-menu">
             <a href="/admins/final_results" class="{{ request()->routeIs('re_final') ? 'active' : '' }}">
               <i class="fa fa-desktop"></i>
@@ -113,16 +108,33 @@
               </a>
 
           </li><br>
-          <p class="text-center" style="color: orange">Décompte</p>
-          <li class="mt">
+        {{-- create candidat --}}
+        <span style="color: orange">Candidats</span>
+          <li class="sub-menu">
+            <a href="/create_candidat" class="{{ request()->routeIs('candidats.create') ? 'active' : '' }}">
+              <i class="fa fa-plus"></i>
+              <span>ADD a Candidat</span>
+              </a>
+          </li>
+          <li class="sub-menu">
+            <a href="/edit_candidat" class="{{ request()->routeIs('candidats.edit_candidat') ? 'active' : '' }}">
+                <i class="fa fa-edit"></i>
+                <span>EDIT a Candidat</span>
+                </a>
+            </a>
+          </li>
+
+
+          <p  style="color: orange">Décompte</p>
+          <li class="sub-menu">
             <a class="{{ request()->routeIs('re_dep') ? 'active' : '' }}" href="/admins/dep_results">
               <i class="fa fa-dashboard"></i>
               <span>Resultats des decomptes </span>
               </a>
           </li>
 
-          <p class="text-center" style="color: orange">En ligne</p>
-          <li class="mt">
+          <p  style="color: orange">En ligne</p>
+          <li class="sub-menu">
             <a class="{{ request()->routeIs('re_online') ? 'active' : '' }}" href="/admins/statut">
               <i class="fa fa-dashboard"></i>
               <span>Resultats des votes en ligne</span>
