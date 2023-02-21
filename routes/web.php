@@ -41,7 +41,7 @@ Route::post('/import', [AdminController::class, 'import']);
 
 
 Route::middleware(['isAdmin'])->group(function () {
-    Route::get('/admins/dashboard', [AdminController::class, 'administrator']);
+    Route::get('/admins/dashboard', [AdminController::class, 'administrator'])->name('dashboard');
     Route::post('/admins/dashboard', [AdminController::class, 'administrator']);
     Route::get('/admins/dep', [AdminController::class, 'dep'])->name('depouillement');
     Route::get('/admins/statut', [AdminController::class, 'statut'])->name('re_online');
@@ -54,7 +54,7 @@ Route::middleware(['isAdmin'])->group(function () {
     Route::get('/create_candidat', [CandidatController::class, 'create'])->name('candidats.create');
     Route::post('/admins/store', [CandidatController::class, 'store'])->name('candidats.store');
     //edit candidat
-    Route::get('/edit_candidat', [CandidatController::class, 'edit_candidat']);
+    Route::get('/edit_candidat', [CandidatController::class, 'edit_candidat'])->name('candidats.edit_candidat');
     Route::get('/admins/edit/{id}', [CandidatController::class, 'edit'])->name('candidats.edit');
     Route::put('/admins/update/{id}', [CandidatController::class, 'update'])->name('candidats.update');
     //delete candidat
