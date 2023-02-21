@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\CheckController;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\CandidatController;
 
 /*
 |--------------------------------------------------------------------------
@@ -42,13 +43,24 @@ Route::post('/import', [AdminController::class, 'import']);
 Route::middleware(['isAdmin'])->group(function () {
     Route::get('/admins/dashboard', [AdminController::class, 'administrator']);
     Route::post('/admins/dashboard', [AdminController::class, 'administrator']);
-    Route::get('/admins/dep', [AdminController::class, 'dep']);
-    Route::get('/admins/statut', [AdminController::class, 'statut']);
+    Route::get('/admins/dep', [AdminController::class, 'dep'])->name('depouillement');
+    Route::get('/admins/statut', [AdminController::class, 'statut'])->name('re_online');
     Route::get('/admins/results', [AdminController::class, 'results']);
-    Route::get('/admins/dep_results', [AdminController::class, 'dep_results']);
-    Route::get('/admins/final_results', [AdminController::class, 'final_results']);
-    Route::get('/posts/inscrit', [LoginController::class, 'inscription']);
+    Route::get('/admins/dep_results', [AdminController::class, 'dep_results'])->name('re_dep');
+    Route::get('/admins/final_results', [AdminController::class, 'final_results'])->name('re_final');
+    Route::get('/posts/inscrit', [LoginController::class, 'inscription'])->name('add_student');
     Route::get('/import_file', [AdminController::class, 'file']);
+    // create candidat
+    Route::get('/create_candidat', [CandidatController::class, 'create'])->name('candidats.create');
+    Route::post('/admins/store', [CandidatController::class, 'store'])->name('candidats.store');
+    //edit candidat
+    Route::get('/edit_candidat', [CandidatController::class, 'edit_candidat']);
+    Route::get('/admins/edit/{id}', [CandidatController::class, 'edit'])->name('candidats.edit');
+    Route::put('/admins/update/{id}', [CandidatController::class, 'update'])->name('candidats.update');
+    //delete candidat
+    Route::delete('/admins/delete/{id}', [CandidatController::class, 'delete'])->name('candidats.destroy');
+
 
   });
+
 

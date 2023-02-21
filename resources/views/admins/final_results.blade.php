@@ -33,7 +33,7 @@
     <div class="title"><b>Abibatou<br>TRAORE</b></div>
     <div class="value tooltips" data-original-title="{{ $abibatou  }}" data-toggle="tooltip" data-placement="top">{{ $abibatou2  }}</div>
   </div>
-  
+
 
 
 </div>
@@ -277,7 +277,7 @@
   </div> --}}
   <!-- /col-md-4 -->
   <!--  PROFILE 02 PANEL -->
-  
+
   <!--/ col-md-4 -->
   {{-- <div class="col-md-4 col-sm-4 mb">
     <div class="grey-panel pn donut-chart">
@@ -337,7 +337,7 @@
   </div> --}}
   <div class="col-md-4 col-sm-4 mb">
     <div class="darkblue-panel pn donut-chart">
-        <div class="grey-header">
+        <div class="text-bg-dark p-3">
           <h5>VOTE NUL</h5>
         </div>
         <canvas id="serverstatus08" height="120" width="120"></canvas>
