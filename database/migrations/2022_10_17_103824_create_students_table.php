@@ -17,7 +17,7 @@ class CreateStudentsTable extends Migration
             $table->id();
             $table->string('matricule');
             $table->string('password');
-            $table->string('ip_address');
+            $table->string('ip_address')->nullable();
             $table->timestamps();
 
         });

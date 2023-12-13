@@ -10,6 +10,7 @@ use Illuminate\Http\Request;
 use App\Imports\StudentImport;
 use Illuminate\Support\Facades\DB;
 use Maatwebsite\Excel\Facades\Excel;
+use Illuminate\Support\Facades\Hash;
 
 class AdminController extends Controller
 {
@@ -56,7 +57,7 @@ class AdminController extends Controller
 
 
         if($userInfo){
-            if($request->password == $userInfo->password){
+            if (Hash::check($request->password, $userInfo->password)) {
                 $request->session()->put('PasseUser', $userInfo->id);
                 if($userInfo->user_type== 'Administrator'){
                     return redirect('/admins/statut');

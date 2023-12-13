@@ -1,8 +1,12 @@
 @extends('admins.dashboard')
 
 @section('content')
-    <h3><i class="fa fa-angle-right"></i> Liste des candidats</h3>
-    <div class="results">
+
+
+    <div class="page-header">
+            <h3 class="page-title">
+              Liste des candidats
+               <div class="results">
         @if(Session::get('fail'))
         <div class="alert alert-danger">
             {{ Session::get('fail') }}
@@ -16,25 +20,33 @@
             </div>
              @endif
        </div>
-    <div class="row mb">
-        <!-- page start-->
-        <div class="content-panel">
-            <div class="adv-table">
-                <table cellpadding="0" cellspacing="0" border="0" class="display table table-bordered"
-                    id="hidden-table-info">
-                    {{-- foreach candidats in table --}}
-                    <thead>
+            </h3>
+            <nav aria-label="breadcrumb">
+              <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="#">Tableau de bord</a></li>
+                <li class="breadcrumb-item active" aria-current="page">Liste des candidats</li>
+              </ol>
+            </nav>
+          </div>
+          <div class="card">
+            <div class="card-body">
+              <h4 class="card-title">les candidats</h4>
+              <div class="row">
+                <div class="col-12">
+                  <div class="table-responsive">
+                    <table id="order-listing" class="table">
+                      <thead>
                         <tr>
-                            <th class="hidden-phone">Id</th>
-                            <th class="hidden-phone">Nom</th>
-                            <th class="hidden-phone">Photos</th>
-                            <th class="hidden-phone">Action</th>
+                            <th>id #</th>
+                            <th>Noms & Prénom(s)</th>
+                            <th>Photos</th>
+                            <th>Action</th>
+                           
                         </tr>
-                    </thead>
-                    <tbody>
-                        @foreach ($candidats as $candidat)
-                            <tr class="gradeX">
-                                 <!-- Modal pour éditer -->
+                      </thead>
+                      <tbody>
+                         @foreach ($candidats as $candidat)
+                        <tr>
                         <div class="modal fade" id="edit-modal-{{ $candidat->id }}" tabindex="-1" role="dialog"
                             aria-labelledby="edit-modal-{{ $candidat->id }}-label">
                             <div class="modal-dialog" role="document">
@@ -97,14 +109,12 @@
                                 </div>
                             </div>
                         </div>
-
-                                <td class="hidden-phone">{{ $candidat->id }}</td>
-                                <td class="hidden-phone">{{ $candidat->nom }}</td>
-                                <td class="hidden-phone">{{ $candidat->photo }}</td>
-                                <td class="hidden-phone">
-                                    <div class="d-flex">
-                                        <button class="btn btn-success btn-xs align-middle mr-3"><i
-                                                class="fa fa-check"></i></button>
+                            <td>{{ $candidat->id }}</td>
+                            <td>{{ $candidat->nom }}</td>
+                            <td>{{ $candidat->photo }}</td>
+                            <td>
+                                <div class="d-flex">
+                                       
                                         <style>
                                             .btn-xs {
                                                 text-align: center;
@@ -113,26 +123,25 @@
                                         </style>
                                         <button type="button" class="btn btn-primary btn-xs align-middle mr-1"
                                             data-toggle="modal" data-target="#edit-modal-{{ $candidat->id }}"><i
-                                                class="fa fa-pencil"></i></button>
+                                                class="fa fa-edit"></i></button>
                                         <form action="{{ route('candidats.destroy', $candidat->id) }}" method="POST">
                                             @csrf
                                             @method('DELETE')
                                             <button type="button" class="btn btn-danger btn-xs align-middle"
                                                 data-toggle="modal" data-target="#deleteModal{{ $candidat->id }}"><i
-                                                    class="fa fa-trash-o "></i></button>
+                                                    class="fa fa-trash "></i></button>
                                         </form>
                                     </div>
-                                </td>
-                            </tr>
-                        @endforeach
-
-
-                    </tbody>
-
-                </table>
+                            </td>
+                            
+                        </tr>
+                       @endforeach
+                     
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
             </div>
-        </div>
-        <!-- page end-->
-    </div>
-    <!-- /row -->
+          </div>
 @endsection

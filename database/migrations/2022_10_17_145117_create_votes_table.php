@@ -12,18 +12,21 @@ class CreateVotesTable extends Migration
      * @return void
      */
     public function up()
-    {
-        Schema::create('votes', function (Blueprint $table) {
-            $table->id();
-            $table->integer('candidat_id');
-            $table->integer('user_id');
-            $table->foreign('candidat_id')
-            ->references('id')->on('votes')->onDelete('cascade');
-            $table->foreign('user_id')
-            ->references('id')->on('users')->onDelete('cascade');
-            $table->timestamps();
-        });
-    }
+{
+    Schema::create('votes', function (Blueprint $table) {
+        $table->id();
+        $table->unsignedBigInteger('candidat_id'); // Utilisation de unsignedBigInteger pour la clé étrangère
+        $table->unsignedBigInteger('user_id');
+        $table->foreign('candidat_id')
+            ->references('id')->on('candidats') // Remplacez 'votes' par le nom de votre table candidats
+            ->onDelete('cascade');
+        $table->foreign('user_id')
+            ->references('id')->on('users')
+            ->onDelete('cascade');
+        $table->timestamps();
+    });
+}
+
 
     /**
      * Reverse the migrations.
