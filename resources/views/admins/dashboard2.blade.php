@@ -24,14 +24,14 @@
   <div class="container-scroller">
     <nav class="navbar horizontal-layout-navbar fixed-top navbar-expand-lg">
       <div class="text-center navbar-brand-wrapper d-flex align-items-center justify-content-start">
-        <a class="navbar-brand brand-logo" href="/new-template/index-2.html"><img src="/new-template/images/logo.svg" alt="logo"/></a>
-        <a class="navbar-brand brand-logo-mini" href="/new-template/index-2.html"><img src="/new-template/images/logo-mini.svg" alt="logo"/></a>                    
+        <h2 style=" font-family: 'ADlaMDisplay', sans-serif;"><span style=" font-family: 'ADlaMDisplay', sans-serif;"
+              class="text-warning">Sup-</span><span class="text-white">Vote</span></h2>
       </div>
       <div class="navbar-menu-wrapper d-flex flex-grow">
         <ul class="navbar-nav navbar-nav-left collapse navbar-collapse" id="horizontal-top-example">
-          <li class="nav-item dropdown">
+          <li class="nav-item dropdown ml-4">
             <a class="nav-link dropdown-toggle active" href="#" id="projects-dropdown" data-toggle="dropdown" aria-expanded="false">
-              Tableau de bord
+              Acceuil
             </a>
             <div class="dropdown-menu navbar-dropdown" aria-labelledby="projects-dropdown">
               <a class="dropdown-item" href="{{route('dashboard')}}">
@@ -41,28 +41,25 @@
               <div class="dropdown-divider"></div>
               <a class="dropdown-item" href="#">
                 <i class="mdi mdi-database mr-2 text-primary"></i>
-                Big data
+               Ajouter un étudiant
               </a>
               <div class="dropdown-divider"></div>                
-              <a class="dropdown-item" href="#">
-                <i class="mdi mdi-cellphone-android mr-2 text-primary"></i>
-                Mobile App
-              </a>
+              
             </div>
           </li>
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" id="employees-dropdown" data-toggle="dropdown" aria-expanded="false">
-              Employees
+              Décomptes
             </a>
             <div class="dropdown-menu navbar-dropdown" aria-labelledby="employees-dropdown">
-              <a class="dropdown-item" href="#">
+              <a class="dropdown-item" href="{{route('depouillement')}}">
                 <i class="mdi mdi-monitor-multiple mr-2 text-primary"></i>
-                Developers
+                faire un décompte
               </a>
               <div class="dropdown-divider"></div>
-              <a class="dropdown-item" href="#">
+              <a class="dropdown-item" href="{{route('re_dep')}}">
                 <i class="mdi mdi-scale-balance mr-2 text-primary"></i>
-                Testers
+                Resultat des décomptes
               </a>
               <div class="dropdown-divider"></div>                
               <a class="dropdown-item" href="#">
@@ -73,18 +70,39 @@
           </li>
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" id="actions-dropdown" data-toggle="dropdown" aria-expanded="false">
-              Events
+              Résultats
             </a>
             <div class="dropdown-menu navbar-dropdown" aria-labelledby="actions-dropdown">
-              <a class="dropdown-item" href="#">
+              <a class="dropdown-item" href="{{route('re_dep')}}">
                 <i class="mdi mdi-launch mr-2 text-primary"></i>
-                App Launch
+                Résultats des décomptes
               </a>
               <div class="dropdown-divider"></div>
-              <a class="dropdown-item" href="#">
+              <a class="dropdown-item" href="{{route('re_online')}}">
                 <i class="fa fa-user-multiple-outline mr-2 text-primary"></i>
-                Board Meeting
+                Résultats des votes en ligne
               </a>
+              <a class="dropdown-item" href="{{route('re_final')}}">
+                <i class="fa fa-user-multiple-outline mr-2 text-primary"></i>
+                Résultats finaux 
+              </a>
+            </div>
+          </li>
+           <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="actions-dropdown" data-toggle="dropdown" aria-expanded="false">
+              Candidats
+            </a>
+            <div class="dropdown-menu navbar-dropdown" aria-labelledby="actions-dropdown">
+              <a class="dropdown-item" href="{{route('candidats.create')}}">
+                <i class="mdi mdi-launch mr-2 text-primary"></i>
+                Ajouter
+              </a>
+              <div class="dropdown-divider"></div>
+              <a class="dropdown-item" href="{{route('candidats.edit_candidat')}}">
+                <i class="fa fa-user-multiple-outline mr-2 text-primary"></i>
+               Liste
+              </a>
+              
             </div>
           </li>
         </ul>
@@ -92,10 +110,10 @@
           <li class="nav-item nav-profile">
             <a class="nav-link">
               <div class="nav-profile-text">
-                Jane Robert
+                {{$actel_user->name}}
               </div>
               <div class="nav-profile-img">
-                <img src="/new-template/images/faces/face5.jpg" alt="image" class="img-xs rounded-circle ml-3">
+                <img src="/new-template/images/sup.jpeg" alt="image" class="img-xs rounded-circle ml-3">
                 <span class="availability-status online"></span>             
               </div>
             </a>

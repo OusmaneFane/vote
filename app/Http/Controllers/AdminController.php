@@ -18,29 +18,47 @@ class AdminController extends Controller
     {
       return view ('admins.login');
 }
-    public function administrator(Request $request)
+ public function administrator(Request $request)
     {
 
-        $demba = Vote::where('candidat_id', '1')->count();
-        $demba2=  $demba * 20;
-        $abibatou =  Vote::where('candidat_id', '3')->count();
-        $abibatou2=  $abibatou * 20;
-        $kader = Vote::where('candidat_id', '2')->count();
-        $kader2 = $kader * 20;
+    $candidats = Candidat::all();
+    $votes = Vote::all();
+    $totalVotes = $votes->count();
 
-        $vote_nul = Vote::where('candidat_id', '5')->count();
-        $vote_nul2 = $vote_nul * 20;
-        $som =  ($demba +  $abibatou +  $kader);
-        $candidats = Candidat::all();
-        $votes = Vote::all();
 
-        $PasseUser = $request->session()->get('PasseUser');
-        $actel_user = Admin::find($PasseUser);
-        return view ('/admins/dashboard', ['actel_user'=>$actel_user, 'demba'=>$demba, 'abibatou'=>$abibatou, 'kader'=>$kader,
-                                           'demba2'=>$demba2, 'abibatou2'=>$abibatou2, 'kader2'=>$kader2, 'candidats'=>$candidats,
-                                           'som'=>$som, 'vote_nul'=>$vote_nul, 'vote_nul2'=>$vote_nul2]);
+    $pieChartData = [];
+    $barChartData = [];
 
+    foreach ($candidats as $candidat) {
+        $candidatName = $candidat->nom;
+        $candidatVotes = $votes->where('candidat_id', $candidat->id)->count();
+        $candidatPercentage = ($totalVotes > 0) ? ($candidatVotes / $totalVotes) * 100 : 0;
+        $randomColor = '#' . str_pad(dechex(mt_rand(0, 0xFFFFFF)), 6, '0', STR_PAD_LEFT);
+
+        $pieChartData[] = [
+            'data' => $candidatPercentage,
+            'color' => $randomColor,
+            'label' => $candidatName,
+        ];
+
+          $barChartData[] = [$candidatName, $candidatVotes];
+        
+       
+        $candidat->totalVotes = $candidatVotes;
+        $candidat->percentageVotes = $candidatPercentage;
     }
+
+
+    $PasseUser = $request->session()->get('PasseUser');
+    $actel_user = Admin::find($PasseUser);
+
+    return view('/admins.index', [
+        'actel_user' => $actel_user,
+        'candidats' => $candidats,
+        'totalVotes' => $totalVotes,
+        'pieChartData' => $pieChartData, // Ajoutez les données du premier graphique à la vue
+        'barChartData' => $barChartData, // Ajoutez les données du deuxième graphique à la vue
+    ]);    }    
     public function check(Request $request)
     {
         $PasseUser = $request->session()->get('PasseUser');
@@ -218,24 +236,44 @@ public function dep_results(Request $request)
     public function final_results(Request $request)
     {
 
-        $demba = Vote::where('candidat_id', '1')->count();
-        $demba2=  $demba * 1/2;
-        $abibatou =  Vote::where('candidat_id', '3')->count();
-        $abibatou2=  $abibatou * 1/2;
-        $kader = Vote::where('candidat_id', '2')->count();
-        $kader2 = $kader * 1/2;
-        $vote_nul = Vote::where('candidat_id', '5')->count();
-        $vote_nul2 = $vote_nul *1/2;
+    $candidats = Candidat::all();
+    $votes = Vote::all();
+    $totalVotes = $votes->count();
 
-        $som =  ($demba +  $abibatou +  $kader );
-        $candidats = Candidat::all();
-        $PasseUser = $request->session()->get('PasseUser');
-        $actel_user = Admin::find($PasseUser);
-        return view ('/admins/final_results', ['actel_user'=>$actel_user, 'demba'=>$demba, 'abibatou'=>$abibatou, 'kader'=>$kader,
-                                           'vote_nul'=>$vote_nul,'demba2'=>$demba2, 'abibatou2'=>$abibatou2, 'kader2'=>$kader2,
-                                           'vote_nul2'=>$vote_nul2,'candidats'=>$candidats,'som'=>$som, ]);
 
+    $pieChartData = [];
+    $barChartData = [];
+
+    foreach ($candidats as $candidat) {
+        $candidatName = $candidat->nom;
+        $candidatVotes = $votes->where('candidat_id', $candidat->id)->count();
+        $candidatPercentage = ($totalVotes > 0) ? ($candidatVotes / $totalVotes) * 100 : 0;
+        $randomColor = '#' . str_pad(dechex(mt_rand(0, 0xFFFFFF)), 6, '0', STR_PAD_LEFT);
+
+        $pieChartData[] = [
+            'data' => $candidatPercentage,
+            'color' => $randomColor,
+            'label' => $candidatName,
+        ];
+
+          $barChartData[] = [$candidatName, $candidatVotes];
+        
+       
+        $candidat->totalVotes = $candidatVotes;
+        $candidat->percentageVotes = $candidatPercentage;
     }
+
+
+    $PasseUser = $request->session()->get('PasseUser');
+    $actel_user = Admin::find($PasseUser);
+
+    return view('/admins.final_results', [
+        'actel_user' => $actel_user,
+        'candidats' => $candidats,
+        'totalVotes' => $totalVotes,
+        'pieChartData' => $pieChartData, // Ajoutez les données du premier graphique à la vue
+        'barChartData' => $barChartData, // Ajoutez les données du deuxième graphique à la vue
+    ]);    }
 
     public function import(Request $request)
     {

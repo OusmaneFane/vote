@@ -43,7 +43,7 @@
                     Statistique des votes en ligne
                   </h4>
                   <canvas id="votes-chart"></canvas>
-                  <div id="votes-chart-legend" class="orders-chart-legend"></div>                  
+                  <div id="orders-chart-legend" class="orders-chart-legend"></div>                  
                 </div>
               </div>
             </div>

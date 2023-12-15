@@ -117,6 +117,12 @@
 /* === Import template variables === */
 /*-------------------------------------------------------------------*/
 /* === SCSS Compass Functions === */
+@font-face {
+  font-family: 'ADlaMDisplay';
+  src: url('../fonts/PT_Sans/ADLaMDisplay-Regular.ttf');
+  font-weight: normal;
+  font-style: normal;
+}
 @-moz-keyframes flash {
   0% {
     opacity: 1;
@@ -18877,7 +18883,7 @@ input:focus {
 }
 
 .navbar.default-layout-navbar .navbar-brand-wrapper {
-  background: #ffffff;
+  background: linear-gradient(85deg, #2697ab, #c2681d);
   transition: width 0.25s ease, background 0.25s ease;
   -webkit-transition: width 0.25s ease, background 0.25s ease;
   -moz-transition: width 0.25s ease, background 0.25s ease;
@@ -18928,8 +18934,8 @@ input:focus {
 }
 
 .navbar.default-layout-navbar .navbar-menu-wrapper {
-  background: #ffffff;
-  transition: width 0.25s ease, background 0.25s ease;
+background: linear-gradient(85deg,#c2681d, #2697ab);
+transition: width 0.25s ease, background 0.25s ease;
   -webkit-transition: width 0.25s ease, background 0.25s ease;
   -moz-transition: width 0.25s ease, background 0.25s ease;
   -ms-transition: width 0.25s ease, background 0.25s ease;
@@ -22544,7 +22550,7 @@ code {
 }
 
 .card.card-statistics {
-  background: linear-gradient(85deg, #392c70, #6a005b);
+  background: linear-gradient(85deg, #2697ab, #c2681d);
   color: #ffffff;
 }
 

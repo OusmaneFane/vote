@@ -24,8 +24,9 @@
     <!-- partial:partials/_navbar.html -->
     <nav class="navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row default-layout-navbar">
       <div class="text-center navbar-brand-wrapper d-flex align-items-center justify-content-center">
-        <a class="navbar-brand brand-logo" href="index-2.html"><img src="/new-template/images/logo.svg" alt="logo"/></a>
-        <a class="navbar-brand brand-logo-mini" href="index-2.html"><img src="/new-template/images/logo-mini.svg" alt="logo"/></a>
+  <h2 style=" font-family: 'ADlaMDisplay', sans-serif;"><span style=" font-family: 'ADlaMDisplay', sans-serif;"
+              class="text-warning">Sup-</span><span class="text-primary">Vote</span>
+  </h2>        
       </div>
       <div class="navbar-menu-wrapper d-flex align-items-stretch">
         <button class="navbar-toggler navbar-toggler align-self-center" type="button" data-toggle="minimize">
@@ -388,11 +389,11 @@
           <li class="nav-item nav-profile">
             <div class="nav-link">
               <div class="profile-image">
-                <img src="/new-template/images/faces/face5.jpg" alt="image"/>
+                <img src="/new-template/images/sup.jpeg" alt="image"/>
               </div>
               <div class="profile-name">
                 <p class="name">
-                  Welcome Jane
+                  {{$actel_user->name}}
                 </p>
                 <p class="designation">
                   Super Admin
