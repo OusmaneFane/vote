@@ -52,7 +52,7 @@
                             <div class="modal-dialog" role="document">
                                 <div class="modal-content">
                                     <div class="modal-header">
-                                        <h5 class="modal-title" id="edit-modal-{{ $candidat->id }}-label">Modifier Candidat
+                                        <h5 class="modal-title" id="edit-modal-{{ $candidat->id }}-label">Modifier {{ $candidat->nom }}
                                         </h5>
                                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                             <span aria-hidden="true">&times;</span>
@@ -98,7 +98,7 @@
                                             </button>
                                         </div>
                                         <div class="modal-body">
-                                            <p>Etes-vous sûr de vouloir supprimer ce candidat?</p>
+                                            <p>Etes-vous sûr de vouloir supprimer le candidat {{ $candidat->nom }}?</p>
                                         </div>
                                         <div class="modal-footer">
                                             <button type="button" class="btn btn-secondary"

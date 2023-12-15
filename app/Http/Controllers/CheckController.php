@@ -3,8 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\Student;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use App\Models\Vote;
 
 class CheckController extends Controller
 {
@@ -77,19 +79,20 @@ class CheckController extends Controller
         }
         $matricule = $actel_user->matricule;
 
-
-            $query = DB::table('votes')
-               ->insert([
+            if (Student::find($actel_user->id)) {
+        $query = Vote::create([
             'user_id' => $actel_user->id,
             'candidat_id' => $request->candidat_id,
         ]);
-            if($query){
-                session()->pull('PasseUser');
-                return redirect('/')->with('success', 'Vote enregistré avec succèss');
-            }
-            else{
-                return back()->with('fail', 'une erreur s\'est produite');
-            //}
-     }
+
+        if ($query) {
+            session()->pull('PasseUser');
+            return redirect('/')->with('success', 'Vote enregistré avec succès');
+        } else {
+            return back()->with('fail', 'Une erreur s\'est produite lors de l\'enregistrement du vote');
+        }
+    } else {
+        return back()->with('fail', 'L\'utilisateur n\'existe pas');
+    }
     }
 }

@@ -74,141 +74,146 @@ class AdminController extends Controller
         }
     }
 
+
+
+
+
     public function dep(Request $request)
-    {
+{
 
-
-        $oumou = Vote::where('candidat_id', '1')->count();
-        $oumou2=  $oumou * 20;
-        $kaba =  Vote::where('candidat_id', '2')->count();
-        $kaba2=  $kaba * 20;
-        $junior = Vote::where('candidat_id', '3')->count();
-        $junior2 = $junior * 20;
-
-        $vote_nul = Vote::where('candidat_id', '5')->count();
-        $vote_nul2 = $vote_nul * 20;
-        $som =  ($oumou +  $kaba +  $junior);
         $candidats = Candidat::all();
-        $votes = Vote::all();
+        $votesForFictiveUser = Vote::where('user_id', 1)->get();
+        $totalVotes = $votesForFictiveUser->count();
+
+        foreach ($candidats as $candidat) {
+        $candidat->totalVotes = $votesForFictiveUser->where('candidat_id', $candidat->id)->count();
+        $candidat->percentageVotes = ($totalVotes > 0) ? ($candidat->totalVotes / $totalVotes) * 100 : 0;        
+    }      
+      //  $som =  ($candidat1 +  $candidat2 +  $candidat3 + $candidat4 + $candidat5 + $candidat6);
         $PasseUser = $request->session()->get('PasseUser');
         $actel_user = Admin::find($PasseUser);
-        $demba = Vote::where('candidat_id', '1')->count();
-        $demba2=  $demba * 6;
-        $abibatou =  Vote::where('candidat_id', '3')->count();
-        $abibatou2=  $abibatou * 6;
-        $kader = Vote::where('candidat_id', '2')->count();
-        $kader2 = $kader * 6;
-        $vote_nul = Vote::where('candidat_id', '5')->count();
-        $vote_nul2 = $vote_nul *6;
 
 
-        if( $request->has('filtre'))
-        {
-            if($request->query('filtre') == 'DEMBA TOUNKARA'){
-                $query = DB::table('votes')
-                ->insert([
-                    'user_id' => '0',
-                    'candidat_id' => '1',
-                ]);
-               }
-            else if($request->query('filtre') == 'ABIBATOU TRAORE'){
-                $query = DB::table('votes')
-                ->insert([
-                    'user_id' => '0',
-                    'candidat_id' => '3',]);
+    $userId = 1;
+        if ($request->has('filtre')) {
+        $candidatNom = $request->query('filtre');
+        $candidatId = Candidat::where('nom', $candidatNom)->value('id');
+        
+        if ($candidatId !== null) {
+            $query = Vote::create([
+                'user_id' => $userId,
+                'candidat_id' => $candidatId,
+            ]);
+           
+            if ($query) {
+                return redirect('/admins/dep')->with('success', 'Un vote pour ' . $candidatNom);
+            } else {
+                return redirect('/admins/dep')->with('fail', 'Erreur lors de l\'enregistrement du vote.');
             }
-            else if($request->query('filtre') == 'ABDOUL KADER DOUCOURE'){
-                $query = DB::table('votes')
-                ->insert([
-                    'user_id' => '0',
-                    'candidat_id' => '2',]);
-            }
-            else if($request->query('filtre') == 'VOTE NUL'){
-                $query = DB::table('votes')
-                ->insert([
-                    'user_id' => '0',
-                    'candidat_id' => '5',]);
-            }
-
-
-
+                }
         }
 
+            if ($request->has('delete')) {
+                $candidatIdToDelete = $request->query('delete');
 
-        if($request->query('filtre')){
-            return redirect('/admins/dep')->with('success', 'Un vote pour '.$request->query('filtre'));
+       
+        $query = DB::table('votes')
+            ->where('user_id', $userId)
+            ->where('candidat_id', $candidatIdToDelete)
+            ->orderBy("id", "DESC")
+            ->take(1)
+            ->delete();
+
+        if ($query) {
+            return redirect('/admins/dep')->with('success', 'Retrait d\'un vote pour le candidat N°' . $candidatIdToDelete);
+        } else {
+            return redirect('/admins/dep')->with('fail', 'Erreur lors du retrait du vote.');
         }
-        if($request->has('delete')){
-            $query = DB::table('votes')
-                    ->where('user_id', '0')
-                    ->where('candidat_id', $request->query('delete'))
-                    ->orderBy("id", "DESC")
-                    ->take(1)
-                    ->delete();
-         return redirect('/admins/dep')->with('fail', 'Retrait d\'un vote pour le candidat N°'.$request->query('delete') );
 
-        }
-
-        return view('/admins.dep', ['actel_user'=>$actel_user, 'oumou'=>$oumou, 'kaba'=>$kaba, 'junior'=>$junior,
-        'candidats'=>$candidats, 'votes'=>$votes,'som'=>$som, 'vote_nul'=>$vote_nul, 'vote_nul2'=>$vote_nul2,
-    'demba'=>$demba, 'demba2'=>$demba2, 'abibatou'=>$abibatou, 'abibatou2'=>$abibatou2,
- 'kader'=>$kader, 'kader2'=>$kader2, ]);
     }
+        return view('/admins.dep', ['actel_user'=>$actel_user, 'candidats'=>$candidats, 'totalVotes' => $totalVotes ]);
+}
 
     public function statut(Request $request)
     {
 
-        $demba = Vote::where('candidat_id', '1') ->where('user_id', '!=', '0')->count();
-        $demba2=  $demba * 20;
-        $abibatou =  Vote::where('candidat_id', '3') ->where('user_id', '!=', '0')->count();
-        $abibatou2=  $abibatou * 20;
-        $kader = Vote::where('candidat_id', '2') ->where('user_id', '!=', '0')->count();
-        $kader2 = $kader * 20;
-        $vote_nul = Vote::where('candidat_id', '5') ->where('user_id', '!=', '0')->count();
-        $vote_nul2 = $vote_nul * 20;
-        $som =  ($demba +  $abibatou +  $kader);
+    $candidats = Candidat::all();
+    $votesForFictiveUser = Vote::where('user_id', '!=',  1)->get();
+    $totalVotes = $votesForFictiveUser->count();
+ 
 
-        $candidats = Candidat::all();
+    $pieChartData = [];
+    $barChartData = [];
+
+    foreach ($candidats as $candidat) {
+        $candidatName = $candidat->nom;
+        $candidatVotes = $votesForFictiveUser->where('candidat_id', $candidat->id)->count();
+        $candidatPercentage = ($totalVotes > 0) ? ($candidatVotes / $totalVotes) * 100 : 0;
+        $randomColor = '#' . str_pad(dechex(mt_rand(0, 0xFFFFFF)), 6, '0', STR_PAD_LEFT);
+
+        $pieChartData[] = [
+            'data' => $candidatPercentage,
+            'color' => $randomColor,
+            'label' => $candidatName,
+        ];
+
+          $barChartData[] = [$candidatName, $candidatVotes];
+        
+       
+        $candidat->totalVotes = $candidatVotes;
+        $candidat->percentageVotes = $candidatPercentage;
+    }
 
         $PasseUser = $request->session()->get('PasseUser');
         $actel_user = Admin::find($PasseUser);
-        return view('/admins.statut', ['actel_user'=>$actel_user, 'demba'=>$demba, 'abibatou'=>$abibatou, 'kader'=>$kader,
-        'demba2'=>$demba2, 'abibatou2'=>$abibatou2, 'kader2'=>$kader2,'candidats'=>$candidats,
-        'som'=>$som, 'vote_nul'=>$vote_nul, 'vote_nul2'=>$vote_nul2]);
+        return view('/admins.statut', ['actel_user'=>$actel_user, 'candidats'=>$candidats, 'totalVotes' => $totalVotes, 
+                'barChartData' => $barChartData, 'pieChartData' => $pieChartData ]);
     }
 
 
-    public function dep_results(Request $request)
-    {
+public function dep_results(Request $request)
+{
+    $candidats = Candidat::all();
+    $votesForFictiveUser = Vote::where('user_id', 1)->get();
+    $totalVotes = $votesForFictiveUser->count();
+    
 
-        $demba_dec = Vote::where('candidat_id', '1')
-                       ->where('user_id', '0')
-                       ->count();
-        $demba2=  $demba_dec * 1/2;
-        $abiba_dec =  Vote::where('candidat_id', '3')
-                        ->where('user_id', '0')
-                        ->count();
-        $abiba2=  $abiba_dec * 1/2;
-        $kader_dec = Vote::where('candidat_id', '2')
-                        ->where('user_id', '0')
-                        ->count();
-        $kader2 = $kader_dec * 1/2;
-        $vote_nul_dec = Vote::where('candidat_id', '5')
-                        ->where('user_id', '0')
-                        ->count();
-        $vote_nul2 = $vote_nul_dec *1/2;
+    $pieChartData = [];
+    $barChartData = [];
 
+    foreach ($candidats as $candidat) {
+        $candidatName = $candidat->nom;
+        $candidatVotes = $votesForFictiveUser->where('candidat_id', $candidat->id)->count();
+        $candidatPercentage = ($totalVotes > 0) ? ($candidatVotes / $totalVotes) * 100 : 0;
+        $randomColor = '#' . str_pad(dechex(mt_rand(0, 0xFFFFFF)), 6, '0', STR_PAD_LEFT);
 
-        $vote_nul2 = $vote_nul_dec * 1/2;
-        $som =  ($demba_dec +  $abiba_dec +  $kader_dec );
-        $candidats = Candidat::all();
+        $pieChartData[] = [
+            'data' => $candidatPercentage,
+            'color' => $randomColor,
+            'label' => $candidatName,
+        ];
 
-        $PasseUser = $request->session()->get('PasseUser');
-        $actel_user = Admin::find($PasseUser);
-        return view('/admins.dep_results', ['actel_user'=>$actel_user, 'demba_dec'=>$demba_dec, 'abiba2'=>$abiba2, 'kader_dec'=>$kader_dec,
-        'vote_nul_dec'=>$vote_nul_dec, 'demba2'=>$demba2, 'abiba_dec'=>$abiba_dec, 'kader2'=>$kader2, 'vote_nul2'=>$vote_nul2,
-        'candidats'=>$candidats,'som'=>$som, ]);
+          $barChartData[] = [$candidatName, $candidatVotes];
+        
+       
+        $candidat->totalVotes = $candidatVotes;
+        $candidat->percentageVotes = $candidatPercentage;
     }
+
+
+    $PasseUser = $request->session()->get('PasseUser');
+    $actel_user = Admin::find($PasseUser);
+
+    return view('/admins.dep_results', [
+        'actel_user' => $actel_user,
+        'candidats' => $candidats,
+        'totalVotes' => $totalVotes,
+        'pieChartData' => $pieChartData, // Ajoutez les données du premier graphique à la vue
+        'barChartData' => $barChartData, // Ajoutez les données du deuxième graphique à la vue
+    ]);
+}
+
+
 
     public function final_results(Request $request)
     {

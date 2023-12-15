@@ -264,23 +264,11 @@ article.card .infos .details {
 <div class="content">
 @foreach ($candidats as  $candidat)
 
-
-        {{-- <div class="junior">
-            <input type="radio" name="candidat_id" value=" {{ $candidat['id'] }} ">
-            <label  for="JUNIOR"> <b>{{ $candidat['nom']  }}</b></label><br>
-            <div class="gallery-item h-100">
-            <img class="img-fluid" src="/{{ $candidat['photo']  }}" alt="" /><br>
-            <div class="gallery-links d-flex align-items-center justify-content-center">
-                <a href="/{{ $candidat['photo']  }}" title="{{ $candidat['nom']  }}" class="glightbox preview-link"><i class="bi bi-arrows-angle-expand"></i></a>
-              </div>
-            </div>
-        </div> --}}
-
         <div class="note">
             <article class="card" >
             <input type="radio" name="candidat_id" class='radioChoice' hidden value="{{ $candidat['id'] }}">
             <div class="thumb" stype="postion: relative">
-            <img class="btnImgCan" src="/{{ $candidat['photo']  }}" style="position: absolute; height: 100%;width: 100%;left:0; top:0;" />
+            <img class="btnImgCan" src="/storage/candidats/{{ $candidat['photo']  }}" style="position: absolute; height: 100%;width: 100%;left:0; top:0;" />
 
             </div>
 
