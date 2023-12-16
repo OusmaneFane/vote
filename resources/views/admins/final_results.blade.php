@@ -11,14 +11,7 @@
               <div class="card card-statistics">
                 <div class="card-body">
                   <div class="d-flex flex-column flex-md-row align-items-center justify-content-between">
-                      <div class="statistics-item">
-                        <p>
-                          <i class="icon-sm fa fa-users mr-2"></i>
-                          Total des votes
-                        </p>
-                        <h2 class="mt-5">{{$totalVotes}}</h2>
-                        <label class="badge badge-outline-success badge-pill">100% </label>
-                      </div>
+                      
                     @foreach($candidats as $candidat )
                       <div class="statistics-item">
                         <p>
@@ -51,34 +44,31 @@
               <div class="card">
                 <div class="card-body">
                   <h4 class="card-title">
-                    <i class="far fa-futbol"></i>
+                    <i class="fa fa-users"></i>
                     Total des votes
                   </h4>
                   <ul class="solid-bullet-list">
+                     @foreach($candidats as $candidat )
                     <li>
-                      <h5>{{$totalVotes}} vote(s) enregistré(s)
+                      <h5>{{ $candidat->totalVotes }} vote(s) enregistré(s)
                       </h5>
-                      <p class="text-muted">It was an awesome work!</p>
+                      <p class="text-muted">{{ $candidat->nom }}</p>
 
                     </li>
-                    <li>
-                      @foreach($candidats as $candidat )
-                        @if($candidat->nom == 'VOTE NUL')
-                          <h5>{{ $candidat->totalVotes }} vote(s) nul(s)                      
-                          </h5>
-                      <p class="text-muted">The team has done a great job</p>
-                      @endif
-                      @endforeach
-                    </li>
+                    @endforeach
+
                     
                   </ul>
                   <div class="border-top pt-3">
                     <div class="d-flex justify-content-between">
-                      <button class="btn btn-outline-dark">More</button>
-                      <button class="btn btn-primary btn-icon-text">
-                        Add new task
-                        <i class="btn-icon-append fas fa-plus"></i>
-                      </button>
+                      <button class="btn btn-primary">{{ $totalVotes }} votes au total</button>
+                        @foreach($candidats as $candidat )
+                        @if($candidat->nom == 'VOTE NUL')
+                          <button class="btn btn-danger">{{ $candidat->totalVotes }} vote(s) nul(s)                      
+                          </button >
+                      @endif
+                      @endforeach
+
                     </div>
                   </div>
                 </div>
@@ -226,7 +216,8 @@
                         xAxes: [
                             {
                                 ticks: {
-                                    fontColor: "#686868"
+                                    fontColor: "#686868",
+                                     minRotation: 45,
                                 },
                                 gridLines: {
                                     display: false,
