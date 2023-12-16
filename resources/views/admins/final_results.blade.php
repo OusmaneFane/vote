@@ -63,7 +63,7 @@
                     </li>
                     <li>
                       @foreach($candidats as $candidat )
-                        @if($candidat->nom == 'vote nul')
+                        @if($candidat->nom == 'VOTE NUL')
                           <h5>{{ $candidat->totalVotes }} vote(s) nul(s)                      
                           </h5>
                       <p class="text-muted">The team has done a great job</p>

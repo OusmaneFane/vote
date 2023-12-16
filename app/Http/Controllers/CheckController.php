@@ -18,26 +18,27 @@ public function check(Request $request)
         'matricule' => ['required'],
         'password' => ['required'],
     ]);
-
-    // Vérifier si le matricule existe dans la base de données locale
-    $userInfo = DB::table('students')
+     $student = DB::table('students')
         ->where('matricule', $request->matricule)
         ->first();
-
-    if (!$userInfo) {
-        return back()->with('fail', 'Ce matricule n\'existe pas');
+if (!$student) {
+        return back()->with('fail', 'Ce matricule n\'est pas autorisé pour voter');
     }
-
-    // Vérifier si le matricule a déjà voté
+    // Vérifier si l'étudiant a déjà voté
     $hasVoted = DB::table('votes')
-        ->where('user_id', '=', $userInfo->id)
+         ->where('user_id', '=', $student->id)
         ->count();
 
     if ($hasVoted > 0) {
-        return back()->with('fail', 'Ce matricule a déjà voté');
+        return back()->with('fail', 'Vous avez déjà voté');
     }
 
-    // Faire la requête à l'API externe
+    // Vérifier si le matricule existe dans la base de données locale
+   
+
+    
+
+    // Faire la requête à l'API externe pour vérifier le mot de passe
     $apiResponse = Http::withHeaders([
         'accept' => '*/*',
         'Content-Type' => 'application/json',
@@ -46,33 +47,31 @@ public function check(Request $request)
         'password' => $request->password,
         'rememberMe' => true,
     ]);
-
+    $data = $apiResponse->json(); 
+    //dd($data['message']) ;
+    if($data['message'] == 'Invalid credentials'){
+           return back()->with('fail', 'Mot de passe incorrect');
+    }
     if ($apiResponse->successful()) {
         $token = $apiResponse->body();
         $request->session()->put('jwt_token', $token);
-        dd($token);
-        
+
         // Enregistrement de l'adresse IP
         DB::table('addresses')->insert([
-            'user_id' => $userInfo->id,
+            'user_id' => $student->id,
             'ip_address' => $request->ip(),
         ]);
 
-        $request->session()->put('PasseUser', $userInfo->id);
+        $request->session()->put('PasseUser', $student->id);
 
         return redirect('/posts/form');
     } else {
-        // L'authentification a échoué avec l'API externe
-        $errorData = $apiResponse->json();
-            return back()->with('fail', 'Erreur d\'accès au serveur');
 
-        if ($apiResponse->status() === 401) {
-            return back()->with('fail', 'Mot de passe incorrect');
-        }
 
-        return back()->with('fail', 'Échec de l\'authentification avec l\'API externe: ' . $errorData['message']);
+        return back()->with('fail', 'Échec de l\'authentification avec l\'API externe: ' );
     }
 }
+
 
 
     public function valide(Request $request){
