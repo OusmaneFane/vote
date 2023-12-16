@@ -35,7 +35,7 @@
             </div>
           </div>
           <div class="row">
-            <div class="col-md-6 grid-margin stretch-card">
+            <div class="col-md-8 grid-margin stretch-card">
               <div class="card">
                 <div class="card-body">
                   <h4 class="card-title">
@@ -47,18 +47,18 @@
                 </div>
               </div>
             </div>
-          <div class="col-md-6 grid-margin stretch-card">
+          <div class="col-md-4 grid-margin stretch-card">
               <div class="card">
                 <div class="card-body">
                   <h4 class="card-title">
-                    <i class="far fa-futbol"></i>
+                    <i class="fa fa-users"></i>
                     Total des votes
                   </h4>
                   <ul class="solid-bullet-list">
                     <li>
                       <h5>{{$totalVotes}} vote(s) enregistré(s)
                       </h5>
-                      <p class="text-muted">It was an awesome work!</p>
+                      <p class="text-muted">{{$totalVotes}} vote(s) enregistré(s)</p>
 
                     </li>
                     <li>
@@ -66,26 +66,13 @@
                         @if($candidat->nom == 'VOTE NUL')
                           <h5>{{ $candidat->totalVotes }} vote(s) nul(s)                      
                           </h5>
-                      <p class="text-muted">The team has done a great job</p>
+                      <p class="text-muted">{{ $candidat->totalVotes }} vote(s) nul(s)</p>
                       @endif
                       @endforeach
                     </li>
-                    <li>
-                      <h5>Dobrick posted in material
-                        <span class="float-right text-muted font-weight-normal small">4:30 PM</span>
-                      </h5>
-                      <p class="text-muted">Great work. Keep it up!</p>
-                    </li>
+                    
                   </ul>
-                  <div class="border-top pt-3">
-                    <div class="d-flex justify-content-between">
-                      <button class="btn btn-outline-dark">More</button>
-                      <button class="btn btn-primary btn-icon-text">
-                        Add new task
-                        <i class="btn-icon-append fas fa-plus"></i>
-                      </button>
-                    </div>
-                  </div>
+
                 </div>
               </div>
             </div>
@@ -231,7 +218,8 @@
                         xAxes: [
                             {
                                 ticks: {
-                                    fontColor: "#686868"
+                                    fontColor: "#686868",
+                                     minRotation: 45,
                                 },
                                 gridLines: {
                                     display: false,

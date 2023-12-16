@@ -24,8 +24,7 @@
   <link href="{{ url('formulaire/assets/vendor/swiper/swiper-bundle.min.css')}}" rel="stylesheet">
   <link href="{{ url('formulaire/assets/vendor/glightbox/css/glightbox.min.css')}}" rel="stylesheet">
   <link href="{{ url('formulaire/assets/vendor/aos/aos.css') }}" rel="stylesheet">
-
-  <!-- Template Main CSS File -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.2/css/fontawesome.min.css" integrity="sha384-BY+fdrpOd3gfeRvTSMT+VUZmA728cfF9Z2G42xpaRkUGu2i3DyzpTURDo5A6CaLK" crossorigin="anonymous">  <!-- Template Main CSS File -->
   <link href="{{ url('formulaire/assets/css/main.css') }}" rel="stylesheet">
 
   <!-- =======================================================
@@ -41,41 +40,17 @@
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous"></script>
 
   <!-- ======= Header ======= -->
-  <header id="header" class="header d-flex align-items-center fixed-top">
+  <header id="header" class="header d-flex align-items-center fixed-top bg-white">
     <div class="container-fluid d-flex align-items-center justify-content-between">
 
-      <div href="index.html" class="logo d-flex align-items-center  me-auto me-lg-0">
+      <div href="" class="logo d-flex align-items-center  me-auto me-lg-0">
         <!-- Uncomment the line below if you also wish to use an image logo -->
         <!-- <img src="assets/img/logo.png" alt=""> -->
         <i><img src="/picturesform/supmanagement.png" alt=""></i>
-        <h1>Sup'Management</h1>
+        <h1 class="text-black">Sup'Management</h1>
       </div>
 
-      {{-- <nav id="navbar" class="navbar">
-        <ul>
-          <li><a href="index.html" class="active">Home</a></li>
-          <li><a href="about.html">About</a></li>
-          <li class="dropdown"><a href="#"><span>Gallery</span> <i class="bi bi-chevron-down dropdown-indicator"></i></a>
-            <ul>
-              <li><a href="gallery.html">Nature</a></li>
-              <li><a href="gallery.html">People</a></li>
-              <li><a href="gallery.html">Architecture</a></li>
-              <li><a href="gallery.html">Animals</a></li>
-              <li><a href="gallery.html">Sports</a></li>
-              <li><a href="gallery.html">Travel</a></li>
-              <li class="dropdown"><a href="#"><span>Sub Menu</span> <i class="bi bi-chevron-down dropdown-indicator"></i></a>
-                <ul>
-                  <li><a href="#">Sub Menu 1</a></li>
-                  <li><a href="#">Sub Menu 2</a></li>
-                  <li><a href="#">Sub Menu 3</a></li>
-                </ul>
-              </li>
-            </ul>
-          </li>
-          <li><a href="services.html">Services</a></li>
-          <li><a href="contact.html">Contact</a></li>
-        </ul>
-      </nav><!-- .navbar --> --}}
+
       <style>
         @font-face {
   font-family: "Grotesque";
@@ -308,7 +283,7 @@ article.card .infos .details {
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
-          <h1 class="modal-title fs-5 bg-danger" id="exampleModalLabel">Attention !!!</h1>
+          <h1 class="modal-title fs-5 " id="exampleModalLabel">Attention !!!</h1>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">

@@ -48,12 +48,8 @@ if (!$student) {
         'rememberMe' => true,
     ]);
     $data = $apiResponse->json(); 
-    //dd($data['message']) ;
-    if($data['message'] == 'Invalid credentials'){
-           return back()->with('fail', 'Mot de passe incorrect');
-    }
-    if ($apiResponse->successful()) {
-        $token = $apiResponse->body();
+    if($data == null) {
+               $token = $apiResponse->body();
         $request->session()->put('jwt_token', $token);
 
         // Enregistrement de l'adresse IP
@@ -65,11 +61,18 @@ if (!$student) {
         $request->session()->put('PasseUser', $student->id);
 
         return redirect('/posts/form');
-    } else {
+
+    }else if($data['message'] == 'Invalid credentials'){
+           return back()->with('fail', 'Mot de passe incorrect');
+    }else{
+        return back()->with('fail', 'Une erreur s\'est produite');
+
+    }
+
 
 
         return back()->with('fail', 'Échec de l\'authentification avec l\'API externe: ' );
-    }
+    
 }
 
 
