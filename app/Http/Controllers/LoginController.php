@@ -75,6 +75,7 @@ class LoginController extends Controller
         $PasseUser = $request->session()->get('PasseUser');
         $actel_user = Student::find($PasseUser);
         $candidats = Candidat::all();
+       // dd($candidats);
         return view('posts.form', ['candidats'=>$candidats, 'actel_user'=>$actel_user]);
     }
     public function login(){
