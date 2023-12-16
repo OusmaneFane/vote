@@ -70,12 +70,7 @@
                       @endif
                       @endforeach
                     </li>
-                    <li>
-                      <h5>Dobrick posted in material
-                        <span class="float-right text-muted font-weight-normal small">4:30 PM</span>
-                      </h5>
-                      <p class="text-muted">Great work. Keep it up!</p>
-                    </li>
+                    
                   </ul>
                   <div class="border-top pt-3">
                     <div class="d-flex justify-content-between">
@@ -217,7 +212,7 @@
                                     drawBorder: false,
                                 },
                                 ticks: {
-                                    stepSize: 1, // Ajustez la gradation en fonction de vos besoins
+                                    stepSize: @json($totalVotes), // Ajustez la gradation en fonction de vos besoins
                                     beginAtZero: true,
                                     fontColor: "#686868"
                                 },

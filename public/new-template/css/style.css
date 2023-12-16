@@ -19453,7 +19453,7 @@ transition: width 0.25s ease, background 0.25s ease;
   -webkit-align-items: stretch;
   align-items: stretch;
   padding: 0 2rem;
-  background: linear-gradient(85deg, #392c70, #6a005b);
+  background: linear-gradient(85deg, #2697ab, #c2681d)
 }
 
 .navbar.horizontal-layout-navbar .navbar-brand-wrapper .navbar-brand img {

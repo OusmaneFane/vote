@@ -7,7 +7,7 @@
   <!-- Required meta tags -->
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <title>Melody Admin</title>
+  <title>Sup'Vote</title>
   <!-- plugins:css -->
   <link rel="stylesheet" href="/new-template/vendors/iconfonts/font-awesome/css/all.min.css">
   <link rel="stylesheet" href="/new-template/vendors/css/vendor.bundle.base.css">
@@ -18,7 +18,7 @@
   <!-- inject:css -->
   <link rel="stylesheet" href="/new-template/css/style.css">
   <!-- endinject -->
-  <link rel="shortcut icon" href="/new-template/images/favicon.png" />
+  <link rel="shortcut icon" href="/new-template/images/sup.jpeg" />
 </head>
 <body class="horizontal-menu">
   <div class="container-scroller">
@@ -53,7 +53,7 @@
             </a>
             <div class="dropdown-menu navbar-dropdown" aria-labelledby="employees-dropdown">
               <a class="dropdown-item" href="{{route('depouillement')}}">
-                <i class="mdi mdi-monitor-multiple mr-2 text-primary"></i>
+                <i class="fa fa-user mr-2 text-primary"></i>
                 faire un décompte
               </a>
               <div class="dropdown-divider"></div>
@@ -94,7 +94,7 @@
             </a>
             <div class="dropdown-menu navbar-dropdown" aria-labelledby="actions-dropdown">
               <a class="dropdown-item" href="{{route('candidats.create')}}">
-                <i class="mdi mdi-launch mr-2 text-primary"></i>
+                 <i class="fa fa-user mr-2 text-primary"></i>
                 Ajouter
               </a>
               <div class="dropdown-divider"></div>
@@ -154,7 +154,7 @@
         <!-- partial:/new-template/partials/_footer.html -->
         <footer class="footer">
           <div class="d-sm-flex justify-content-center justify-content-sm-between">
-            <span class="text-muted text-center text-sm-left d-block d-sm-inline-block">Copyright © 2018 <a href="https://www.urbanui.com/" target="_blank">Urbanui</a>. All rights reserved.</span>
+            <span class="text-muted text-center text-sm-left d-block d-sm-inline-block">Copyright © 2023 <a href="https://www.supmanagement.ml/" target="_blank">Sup'Management</a>. All rights reserved.</span>
             <span class="float-none float-sm-right d-block mt-1 mt-sm-0 text-center">Hand-crafted & made with <i class="far fa-heart text-danger"></i></span>
           </div>
         </footer>
