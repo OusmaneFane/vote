@@ -119,6 +119,19 @@
               
             </div>
           </li>
+           <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle text-white" href="#" id="actions-dropdown" data-toggle="dropdown" aria-expanded="false">
+              Classes
+            </a>
+            <div class="dropdown-menu navbar-dropdown" aria-labelledby="actions-dropdown">
+              <div class="dropdown-divider"></div>
+              <a class="dropdown-item" href="/import_classes">
+                <i class="fa fa-user-multiple-outline mr-2 text-primary"></i>
+               Importer
+              </a>
+              
+            </div>
+          </li>
         </ul>
         <ul class="navbar-nav navbar-nav-right">
           <li class="nav-item nav-profile">

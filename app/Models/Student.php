@@ -11,7 +11,7 @@ use App\Models\Address;
 class Student extends Model
 {
     use HasFactory;
-    protected $fillable = ['matricule', 'password'];
+    protected $fillable = ['matricule', 'password', 'classe_id'];
     public function addresses()
     {
         return $this->hasMany(Address::class);

@@ -89,11 +89,12 @@ if (!$student) {
 
         }
         $matricule = $actel_user->matricule;
-
+        $classe_id = $actel_user->classe_id;
             if (Student::find($actel_user->id)) {
         $query = Vote::create([
             'user_id' => $actel_user->id,
             'candidat_id' => $request->candidat_id,
+            'classe_id' => $classe_id,
         ]);
 
         if ($query) {

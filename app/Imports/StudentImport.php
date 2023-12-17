@@ -5,6 +5,7 @@ namespace App\Imports;
 use App\Models\Student;
 use Maatwebsite\Excel\Concerns\ToModel;
 use Maatwebsite\Excel\Concerns\WithHeadingRow;
+use App\Models\Classe;
 
 class StudentImport implements ToModel, WithHeadingRow
 {
@@ -15,9 +16,14 @@ class StudentImport implements ToModel, WithHeadingRow
     */
     public function model(array $row)
     {
+        $classeName = $row['classe'];
+        $classe = Classe::where('name', $classeName)->first();
+
+        // Créez un nouvel étudiant en attribuant l'ID de la classe
         return new Student([
-            'matricule'     => $row['matricule'],
-            'password'    => $row['password'],
-        ]);
+            'matricule' => $row['matricule'],
+            'password' => $row['password'],
+            'classe_id' => $classe ? $classe->id : null,
+        ]);    
     }
 }

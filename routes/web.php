@@ -38,6 +38,7 @@ Route::post('/posts/validate', [CheckController::class, 'valide'])->name('valida
 Route::get('/admins/login', [AdminController::class, 'Admincheck']);
 Route::post('/admins/check', [AdminController::class, 'check']);
 Route::post('/import', [AdminController::class, 'import']);
+Route::post('/import_classes', [AdminController::class, 'import_classe']);
 
 
 Route::middleware(['isAdmin'])->group(function () {
@@ -50,6 +51,8 @@ Route::middleware(['isAdmin'])->group(function () {
     Route::get('/admins/final_results', [AdminController::class, 'final_results'])->name('re_final');
     Route::get('/posts/inscrit', [LoginController::class, 'inscription'])->name('add_student');
     Route::get('/import_file', [AdminController::class, 'file']);
+    Route::get('/import_classes', [AdminController::class, 'file_classe']);
+
     // create candidat
     Route::get('/create_candidat', [CandidatController::class, 'create'])->name('candidats.create');
     Route::post('/admins/store', [CandidatController::class, 'store'])->name('candidats.store');

@@ -49,6 +49,15 @@
                       <label for="exampleInputPassword4">Password</label>
                       <input type="password" name="password" class="form-control" id="exampleInputPassword4" placeholder="Mot de passe">
                     </div>
+                    <div class="form-group">
+                    <label for="classe">Classe</label>
+                    <select class="form-control" name="classe_id">
+                      <option value="" selected>Choisir la classe</option>
+                        @foreach($classes as $classe)
+                            <option value="{{ $classe->id }}">{{ $classe->name }}</option>
+                        @endforeach
+                   </select>
+                   </div>
                     <button type="submit" class="btn btn-primary mr-2">Envoyer</button>
                     <button class="btn btn-light">Annuler</button>
                   </form>

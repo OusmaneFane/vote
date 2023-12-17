@@ -8,6 +8,7 @@ use App\Models\Student;
 use App\Models\Candidat;
 use Illuminate\Http\Request;
 use App\Imports\StudentImport;
+use App\Imports\ClasseImport;
 use Illuminate\Support\Facades\DB;
 use Maatwebsite\Excel\Facades\Excel;
 use Illuminate\Support\Facades\Hash;
@@ -285,6 +286,16 @@ public function dep_results(Request $request)
 
         return redirect()->back()->with('success', 'fichier importé avec succès');
     }
+        public function import_classe(Request $request)
+    {
+        $request->validate([
+            'excel_file' => 'required|mimes:xlsx',
+        ]);
+        $data = Excel::import(new ClasseImport,request()->file('excel_file'));
+        
+
+        return redirect()->back()->with('success', 'fichier importé avec succès');
+    }
 
     public function file(Request $request){
         $PasseUser = $request->session()->get('PasseUser');
@@ -292,6 +303,13 @@ public function dep_results(Request $request)
 
         return view('/admins/import_file', ['actel_user'=>$actel_user]);
     }
+        public function file_classe(Request $request){
+        $PasseUser = $request->session()->get('PasseUser');
+        $actel_user = Admin::find($PasseUser);
+
+        return view('/admins/import_classes', ['actel_user'=>$actel_user]);
+    }
+
 
 
 }
