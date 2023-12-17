@@ -19,7 +19,7 @@
                          {{$candidat->nom}}
                         </p>
                         <h2>{{ $candidat->totalVotes }}</h2>
-                        <label class="badge badge-outline-success badge-pill">{{ number_format($candidat->percentageVotes, 2) }}% de votes</label>
+                        <label class="badge badge-outline-primary badge-pill"><b>{{ number_format($candidat->percentageVotes, 2) }}% de votes</b></label>
                       </div>
                     @endforeach
                   </div>
