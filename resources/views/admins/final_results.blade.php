@@ -28,7 +28,7 @@
             </div>
           </div>
           <div class="row">
-            <div class="col-md-6 grid-margin stretch-card">
+            <div class="col-md-8 grid-margin stretch-card">
               <div class="card">
                 <div class="card-body">
                   <h4 class="card-title">
@@ -40,26 +40,14 @@
                 </div>
               </div>
             </div>
-          <div class="col-md-6 grid-margin stretch-card">
+          <div class="col-md-4 grid-margin stretch-card">
               <div class="card">
                 <div class="card-body">
                   <h4 class="card-title">
                     <i class="fa fa-users"></i>
                     Total des votes
                   </h4>
-                  <ul class="solid-bullet-list">
-                     @foreach($candidats as $candidat )
-                    <li>
-                      <h5>{{ $candidat->totalVotes }} vote(s) enregistré(s)
-                      </h5>
-                      <p class="text-muted">{{ $candidat->nom }}</p>
-
-                    </li>
-                    @endforeach
-
-                    
-                  </ul>
-                  <div class="border-top pt-3">
+                   <div class="border-top pt-3">
                     <div class="d-flex justify-content-between">
                       <button class="btn btn-primary">{{ $totalVotes }} votes au total</button>
                         @foreach($candidats as $candidat )
@@ -71,6 +59,19 @@
 
                     </div>
                   </div>
+                  <ul class="solid-bullet-list mt-4">
+                     @foreach($candidats as $candidat )
+                    <li>
+                      <h5>{{ $candidat->totalVotes }} vote(s) enregistré(s)
+                      </h5>
+                      <p class="text-muted">{{ $candidat->nom }}</p>
+
+                    </li>
+                    @endforeach
+
+                    
+                  </ul>
+                 
                 </div>
               </div>
             </div>

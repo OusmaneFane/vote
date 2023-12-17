@@ -2,35 +2,16 @@
 
 @section("content")
 
-<style>
-    .chart-legend {
-        margin-top: 10px;
-        font-size: 14px;
-        display: flex;
-        flex-wrap: wrap;
-    }
 
-    .legend-item {
-        margin-right: 15px;
-        display: inline-flex;
-        align-items: center;
-    }
-
-    .legend-item::before {
-        content: '\25A0'; /* Utilisez le caractère carré noir comme symbole de la légende */
-        margin-right: 5px;
-        font-size: 18px;
-    }
-</style>
 
  <div class="page-header">
         <h3 class="page-title">
-            Flot chart
+           Résultas des décomptes
         </h3>
         <nav aria-label="breadcrumb">
             <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="#">Charts</a></li>
-                <li class="breadcrumb-item active" aria-current="page">Flot chart</li>
+                <li class="breadcrumb-item"><a href="{{route('dashboard')}}">Accueil</a></li>
+                <li class="breadcrumb-item active" aria-current="page">Résultas des décomptes</li>
             </ol>
         </nav>
     </div>
@@ -38,14 +19,13 @@
         <div class="col-lg-6 grid-margin stretch-card">
             <div class="card">
                 <div class="card-body">
-                    <h4 class="card-title">Pie chart</h4>
+                    <h4 class="card-title"> STATISTIQUE 1 des Votes</h4>
                     <div class="flot-chart-container">
-                        <div id="custom-pie-chart" class="flot-chart"></div>
-                        <div class="chart-legend">
-                    @foreach ($pieChartData as $data)
-                        <span class="legend-item" style="color: {{ $data['color'] }};"> {{ $data['label'] }} ({{ number_format($data['data'], 2) }}%)</span> <br>
-                    @endforeach
-                </div>
+                                           <canvas id="sales-status-chart-pie" class="mt-3"></canvas>
+                    <div class="pt-4">
+                      <div id="sales-status-chart-legend" class="sales-status-chart-legend"></div>
+                    </div>
+
                     </div>
                     
                 </div>
@@ -54,7 +34,7 @@
         <div class="col-lg-6 grid-margin stretch-card">
             <div class="card">
                 <div class="card-body">
-                    <h4 class="card-title">Bar Chart</h4>
+                    <h4 class="card-title">STATISTIQUE 2 des Votes</h4>
                     <div class="flot-chart-container">
                         <div id="column-chart-pie" class="flot-chart"></div>
                     </div>
@@ -66,34 +46,61 @@
 <script src="https://cdn.jsdelivr.net/npm/flot@0.8.3/jquery.flot.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/flot@0.8.3/jquery.flot.pie.min.js"></script>
 
+<script>
+    $(function () {
+        @php
+            $pieLabels = [];
+            $pieData = [];
+            
+            foreach ($pieChartData as $data) {
+                $pieLabels[] = $data['label'];
+                $pieData[] = $data['data'];
+            }
+        @endphp
 
-    <script>
-        // Pie Chart
- var customPieChartOptions = {
-            series: {
-                pie: {
-                    show: true,
-                    radius: 1,
-                    label: {
-                        show: true,
-                        radius: 3 / 4,
-                        formatter: labelFormatter,
-                        background: {
-                            opacity: 0.5
+        if ($("#sales-status-chart-pie").length) {
+            var pieChartCanvas = $("#sales-status-chart-pie").get(0).getContext("2d");
+            var pieChart = new Chart(pieChartCanvas, {
+                type: 'pie',
+                data: {
+                    datasets: [{
+                        data: @json($pieData),
+                        backgroundColor: @json(array_column($pieChartData, 'color')),
+                        borderColor: @json(array_column($pieChartData, 'color')),
+                    }],
+                    labels: @json($pieLabels)
+                },
+                options: {
+                    responsive: true,
+                    animation: {
+                        animateScale: true,
+                        animateRotate: true
+                    },
+                    legend: {
+                        display: false
+                    },
+                    legendCallback: function (chart) {
+                        var text = [];
+                        text.push('<ul class="legend' + chart.id + '">');
+                        for (var i = 0; i < chart.data.datasets[0].data.length; i++) {
+                            text.push('<li><span class="legend-label" style="background-color:' + chart.data.datasets[0].backgroundColor[i] + '"></span>');
+                            if (chart.data.labels[i]) {
+                                text.push(chart.data.labels[i]);
+                            }
+                            text.push('<label class="badge badge-light badge-pill legend-percentage ml-auto">' + chart.data.datasets[0].data[i] + '%</label>');
+                            text.push('</li>');
                         }
+                        text.push('</ul>');
+                        return text.join("");
                     }
                 }
-            },
-            legend: {
-                show: false
-            }
-        };
-
-        $.plot("#custom-pie-chart", {!! json_encode($pieChartData) !!}, customPieChartOptions);
-
-        function labelFormatter(label, series) {
-            return "<div style='font-size:8pt; text-align:center; padding:2px; color:white;'>" + label + "<br/>" + Math.round(series.percent) + "%</div>";
+            });
+            document.getElementById('sales-status-chart-legend').innerHTML = pieChart.generateLegend();
         }
+    });
+</script>
+    <script>
+        // Pie Chart
 
         // Script pour le column chart
   $(function() {

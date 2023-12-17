@@ -24,7 +24,7 @@ class AdminMiddleware
         if(!empty($userInfo) && $userInfo->user_type == 'Administrator'){
             return $next($request);
             } else {
-                abort(401);
+                 return view('layouts.401');
            }
     }
 }

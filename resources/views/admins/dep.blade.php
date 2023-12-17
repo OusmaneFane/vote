@@ -9,7 +9,7 @@
 
 <div class="page-header">
             <h3 class="page-title">
-              Dashboard
+              Dépouillement
               <div class="results">
                             @if(Session::get('fail'))
                             <div class="alert alert-danger">
@@ -39,7 +39,7 @@
                          {{$candidat->nom}}
                         </p>
                         <h2>{{ $candidat->totalVotes }}</h2>
-                        <label class="badge badge-outline-success badge-pill">{{ number_format($candidat->percentageVotes, 2) }}% increase</label>
+                        <label class="badge badge-outline-primary badge-pill"><b>{{ number_format($candidat->percentageVotes, 2) }}% de voix</b></label>
                       </div>
                     @endforeach
                      

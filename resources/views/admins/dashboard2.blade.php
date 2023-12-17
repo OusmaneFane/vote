@@ -28,13 +28,13 @@
               class="text-warning">Sup-</span><span class="text-white">Vote</span></h2>
       </div>
       <div class="navbar-menu-wrapper d-flex flex-grow">
-        <ul class="navbar-nav navbar-nav-left collapse navbar-collapse" id="horizontal-top-example">
+        <ul class="navbar-nav navbar-nav-left collapse navbar-collapse " id="horizontal-top-example">
           <li class="nav-item dropdown ml-4">
-            <a class="nav-link dropdown-toggle active" href="#" id="projects-dropdown" data-toggle="dropdown" aria-expanded="false">
+            <a class="nav-link dropdown-toggle active text-white" href="#" id="projects-dropdown" data-toggle="dropdown" aria-expanded="false">
               Acceuil
             </a>
             <div class="dropdown-menu navbar-dropdown" aria-labelledby="projects-dropdown">
-              <a class="dropdown-item" href="{{route('dashboard')}}">
+              <a class="dropdown-item " href="{{route('dashboard')}}">
                 <i class="mdi mdi-laptop-mac mr-2 text-primary"></i>
                 Tableau de bord
               </a>
@@ -48,7 +48,7 @@
             </div>
           </li>
           <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" id="employees-dropdown" data-toggle="dropdown" aria-expanded="false">
+            <a class="nav-link dropdown-toggle text-white" href="#" id="employees-dropdown" data-toggle="dropdown" aria-expanded="false">
               Décomptes
             </a>
             <div class="dropdown-menu navbar-dropdown" aria-labelledby="employees-dropdown">
@@ -62,14 +62,11 @@
                 Resultat des décomptes
               </a>
               <div class="dropdown-divider"></div>                
-              <a class="dropdown-item" href="#">
-                <i class="fa fa-user mr-2 text-primary"></i>
-                Managers
-              </a>
+             
             </div>
           </li>
           <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" id="actions-dropdown" data-toggle="dropdown" aria-expanded="false">
+            <a class="nav-link dropdown-toggle text-white" href="#" id="actions-dropdown" data-toggle="dropdown" aria-expanded="false">
               Résultats
             </a>
             <div class="dropdown-menu navbar-dropdown" aria-labelledby="actions-dropdown">
@@ -89,7 +86,7 @@
             </div>
           </li>
            <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" id="actions-dropdown" data-toggle="dropdown" aria-expanded="false">
+            <a class="nav-link dropdown-toggle text-white" href="#" id="actions-dropdown" data-toggle="dropdown" aria-expanded="false">
               Candidats
             </a>
             <div class="dropdown-menu navbar-dropdown" aria-labelledby="actions-dropdown">
@@ -101,6 +98,23 @@
               <a class="dropdown-item" href="{{route('candidats.edit_candidat')}}">
                 <i class="fa fa-user-multiple-outline mr-2 text-primary"></i>
                Liste
+              </a>
+              
+            </div>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle text-white" href="#" id="actions-dropdown" data-toggle="dropdown" aria-expanded="false">
+              Etudiant
+            </a>
+            <div class="dropdown-menu navbar-dropdown" aria-labelledby="actions-dropdown">
+              <a class="dropdown-item" href="{{route('add_student')}}">
+                 <i class="fa fa-user mr-2 text-primary"></i>
+                Ajouter
+              </a>
+              <div class="dropdown-divider"></div>
+              <a class="dropdown-item" href="/import_file">
+                <i class="fa fa-user-multiple-outline mr-2 text-primary"></i>
+               Importer
               </a>
               
             </div>
@@ -118,22 +132,7 @@
               </div>
             </a>
           </li>
-          <li class="nav-item nav-search">
-            <div class="nav-link">
-              <div class="search-field d-none d-md-block">
-                <form class="d-flex align-items-stretch h-100" action="#">
-                  <div class="input-group">
-                    <div class="input-group-prepend">
-                        <span class="input-group-text">
-                          <i class="fas fa-search"></i>                                          
-                        </span>
-                    </div>
-                    <input type="text" class="form-control" placeholder="Search your projects ...">
-                  </div>
-                </form>
-              </div>
-            </div>
-          </li>
+        
           <li class="nav-item">
             <a class="nav-link">
               <i class="fas fa-power-off font-weight-bold icon-sm"></i>
@@ -155,7 +154,7 @@
         <footer class="footer">
           <div class="d-sm-flex justify-content-center justify-content-sm-between">
             <span class="text-muted text-center text-sm-left d-block d-sm-inline-block">Copyright © 2023 <a href="https://www.supmanagement.ml/" target="_blank">Sup'Management</a>. All rights reserved.</span>
-            <span class="float-none float-sm-right d-block mt-1 mt-sm-0 text-center">Hand-crafted & made with <i class="far fa-heart text-danger"></i></span>
+            <span class="float-none float-sm-right d-block mt-1 mt-sm-0 text-center">Sup'Management - MALI  <i class="far fa-heart text-danger"></i></span>
           </div>
         </footer>
         <!-- partial -->

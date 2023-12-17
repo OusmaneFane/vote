@@ -26,7 +26,7 @@
                          {{$candidat->nom}}
                         </p>
                         <h2>{{ $candidat->totalVotes }}</h2>
-                        <label class="badge badge-outline-success badge-pill">{{ number_format($candidat->percentageVotes, 2) }}% de votes</label>
+                        <label class="badge badge-outline-primary badge-pill"><b>{{ number_format($candidat->percentageVotes, 2) }}% de votes</b></label>
                       </div>
                     @endforeach
                   </div>
@@ -35,7 +35,7 @@
             </div>
           </div>
           <div class="row">
-            <div class="col-md-6 grid-margin stretch-card">
+            <div class="col-md-8 grid-margin stretch-card">
               <div class="card">
                 <div class="card-body">
                   <h4 class="card-title">
@@ -47,40 +47,37 @@
                 </div>
               </div>
             </div>
-          <div class="col-md-6 grid-margin stretch-card">
+          <div class="col-md-4 grid-margin stretch-card">
               <div class="card">
                 <div class="card-body">
                   <h4 class="card-title">
-                    <i class="far fa-futbol"></i>
+                    <i class="fa fa-users"></i>
                     Total des votes
                   </h4>
-                  <ul class="solid-bullet-list">
-                    <li>
-                      <h5>{{$totalVotes}} vote(s) enregistré(s)
-                      </h5>
-                      <p class="text-muted">It was an awesome work!</p>
-
-                    </li>
-                    <li>
-                      @foreach($candidats as $candidat )
-                        @if($candidat->nom == 'VOTE NUL')
-                          <h5>{{ $candidat->totalVotes }} vote(s) nul(s)                      
-                          </h5>
-                      <p class="text-muted">The team has done a great job</p>
-                      @endif
-                      @endforeach
-                    </li>
-                    
-                  </ul>
                   <div class="border-top pt-3">
                     <div class="d-flex justify-content-between">
-                      <button class="btn btn-outline-dark">More</button>
-                      <button class="btn btn-primary btn-icon-text">
-                        Add new task
-                        <i class="btn-icon-append fas fa-plus"></i>
-                      </button>
+                      <button class="btn btn-primary">{{ $totalVotes }} votes au total</button>
+                        @foreach($candidats as $candidat )
+                        @if($candidat->nom == 'VOTE NUL')
+                          <button class="btn btn-danger">{{ $candidat->totalVotes }} vote(s) nul(s)                      
+                          </button >
+                      @endif
+                      @endforeach
+
                     </div>
-                  </div>
+                  </div> <br>
+                  <ul class="solid-bullet-list">
+                     @foreach($candidats as $candidat )
+                    <li>
+                      <h5>{{$candidat->totalVotes}} voix enregistré(s)
+                      </h5>
+                      <p class="text-muted">{{$candidat->nom}}</p>
+
+                    </li>
+                    @endforeach
+                    
+                  </ul>
+                  
                 </div>
               </div>
             </div>
@@ -226,7 +223,8 @@
                         xAxes: [
                             {
                                 ticks: {
-                                    fontColor: "#686868"
+                                    fontColor: "#686868",
+                                    minRotation: 45,
                                 },
                                 gridLines: {
                                     display: false,

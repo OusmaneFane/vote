@@ -109,7 +109,9 @@
                                 </div>
                             </div>
                         </div>
-                            <td>{{ $candidat->id }}</td>
+                            <td>
+                                <img class="rounded-circle" height="50" width="50" src="/storage/candidats/{{$candidat->photo}}" alt="">
+                            </td>
                             <td>{{ $candidat->nom }}</td>
                             <td>{{ $candidat->photo }}</td>
                             <td>

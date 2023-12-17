@@ -19,7 +19,7 @@
                          {{$candidat->nom}}
                         </p>
                         <h2>{{ $candidat->totalVotes }}</h2>
-                        <label class="badge badge-outline-success badge-pill">{{ number_format($candidat->percentageVotes, 2) }}% de votes</label>
+                        <label class="badge badge-outline-primary badge-pill"><b>{{ number_format($candidat->percentageVotes, 2) }}% de voix</b></label>
                       </div>
                     @endforeach
                   </div>
@@ -47,25 +47,25 @@
                     <i class="fa fa-users"></i>
                     Total des votes
                   </h4>
-                  <ul class="solid-bullet-list">
-                     @foreach($candidats as $candidat )
-                    <li>
-                      <h5>{{ $candidat->totalVotes }} vote(s) enregistré(s)
-                      </h5>
-                      <p class="text-muted">{{ $candidat->nom }} </p>
-
-                    </li>
-                    @endforeach
-                    <li>
-                      <button class="btn btn-primary">{{$totalVotes}} Vote(s) au total
+                   <button class="btn btn-primary">{{$totalVotes}} Vote(s) au total
                       </button >
                        @foreach($candidats as $candidat )
                         @if($candidat->nom == 'VOTE NUL')
                          <button class="btn btn-danger">{{ $candidat->totalVotes }} vote(s) nul(s)                      
                          </button>
                       @endif
-                      @endforeach
+                      @endforeach 
+                      
+                  <ul class="solid-bullet-list mt-4">
+                     @foreach($candidats as $candidat )
+                    <li>
+                      <h5>{{ $candidat->totalVotes }} voix enregistré(s)
+                      </h5>
+                      <p class="text-muted">{{ $candidat->nom }} </p>
+
                     </li>
+                    @endforeach
+`
 
                     <li>
                      
