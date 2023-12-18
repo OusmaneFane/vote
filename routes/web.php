@@ -39,7 +39,10 @@ Route::get('/admins/login', [AdminController::class, 'Admincheck']);
 Route::post('/admins/check', [AdminController::class, 'check']);
 Route::post('/import', [AdminController::class, 'import']);
 Route::post('/import_classes', [AdminController::class, 'import_classe']);
-
+ // Route pour le vote en Ajax
+    Route::post('/admins/vote', [AdminController::class, 'vote'])->name('admin.vote');
+    // Route pour le retrait de vote en Ajax
+    Route::post('/admins/remove-vote', [AdminController::class, 'removeVote'])->name('admin.removeVote');
 
 Route::middleware(['isAdmin'])->group(function () {
     Route::get('/admins/dashboard', [AdminController::class, 'administrator'])->name('dashboard');
@@ -62,6 +65,7 @@ Route::middleware(['isAdmin'])->group(function () {
     Route::put('/admins/update/{id}', [CandidatController::class, 'update'])->name('candidats.update');
     //delete candidat
     Route::delete('/admins/delete/{id}', [CandidatController::class, 'delete'])->name('candidats.destroy');
+    
 
 
   });

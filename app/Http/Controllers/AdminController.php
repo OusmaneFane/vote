@@ -12,9 +12,16 @@ use App\Imports\ClasseImport;
 use Illuminate\Support\Facades\DB;
 use Maatwebsite\Excel\Facades\Excel;
 use Illuminate\Support\Facades\Hash;
+use App\Events\VoteUpdated;
 
 class AdminController extends Controller
 {
+    public function getTotalVotes()
+    {
+        // Logique pour obtenir le total des votes
+        $votesForFictiveUser = Vote::where('user_id', 1)->get();
+        return $votesForFictiveUser->count();
+    }
     public function AdminCheck(Request $request)
     {
       return view ('admins.login');
@@ -97,61 +104,60 @@ class AdminController extends Controller
 
 
 
-    public function dep(Request $request)
-{
+ public function dep(Request $request)
+    {
+                $PasseUser = $request->session()->get('PasseUser');
+        $actel_user = Admin::find($PasseUser);
 
         $candidats = Candidat::all();
         $votesForFictiveUser = Vote::where('user_id', 1)->get();
         $totalVotes = $votesForFictiveUser->count();
 
         foreach ($candidats as $candidat) {
-        $candidat->totalVotes = $votesForFictiveUser->where('candidat_id', $candidat->id)->count();
-        $candidat->percentageVotes = ($totalVotes > 0) ? ($candidat->totalVotes / $totalVotes) * 100 : 0;        
-    }      
-      //  $som =  ($candidat1 +  $candidat2 +  $candidat3 + $candidat4 + $candidat5 + $candidat6);
-        $PasseUser = $request->session()->get('PasseUser');
-        $actel_user = Admin::find($PasseUser);
+            $candidat->totalVotes = $votesForFictiveUser->where('candidat_id', $candidat->id)->count();
+            $candidat->percentageVotes = ($totalVotes > 0) ? ($candidat->totalVotes / $totalVotes) * 100 : 0;
+        }
 
+        $userId = 1;
 
-    $userId = 1;
         if ($request->has('filtre')) {
-        $candidatNom = $request->query('filtre');
-        $candidatId = Candidat::where('nom', $candidatNom)->value('id');
-        
-        if ($candidatId !== null) {
-            $query = Vote::create([
-                'user_id' => $userId,
-                'candidat_id' => $candidatId,
-            ]);
-           
-            if ($query) {
+            $candidatNom = $request->query('filtre');
+            $candidatId = Candidat::where('nom', $candidatNom)->value('id');
+
+            if ($candidatId !== null) {
+                Vote::create([
+                    'user_id' => $userId,
+                    'candidat_id' => $candidatId,
+                ]);
+
+                event(new VoteUpdated($candidatId));
+
                 return redirect('/admins/dep')->with('success', 'Un vote pour ' . $candidatNom);
             } else {
                 return redirect('/admins/dep')->with('fail', 'Erreur lors de l\'enregistrement du vote.');
             }
-                }
         }
 
-            if ($request->has('delete')) {
-                $candidatIdToDelete = $request->query('delete');
+        if ($request->has('delete')) {
+            $candidatIdToDelete = $request->query('delete');
 
-       
-        $query = DB::table('votes')
-            ->where('user_id', $userId)
-            ->where('candidat_id', $candidatIdToDelete)
-            ->orderBy("id", "DESC")
-            ->take(1)
-            ->delete();
+            $query = Vote::where('user_id', $userId)
+                ->where('candidat_id', $candidatIdToDelete)
+                ->orderBy("id", "DESC")
+                ->take(1)
+                ->delete();
 
-        if ($query) {
-            return redirect('/admins/dep')->with('success', 'Retrait d\'un vote pour le candidat N°' . $candidatIdToDelete);
-        } else {
-            return redirect('/admins/dep')->with('fail', 'Erreur lors du retrait du vote.');
+            if ($query) {
+                event(new VoteUpdated($candidatIdToDelete));
+
+                return redirect('/admins/dep')->with('success', 'Retrait d\'un vote pour le candidat N°' . $candidatIdToDelete);
+            } else {
+                return redirect('/admins/dep')->with('fail', 'Erreur lors du retrait du vote.');
+            }
         }
 
+        return view('/admins.dep', ['candidats' => $candidats, 'totalVotes' => $totalVotes, 'actel_user'=>$actel_user]);
     }
-        return view('/admins.dep', ['actel_user'=>$actel_user, 'candidats'=>$candidats, 'totalVotes' => $totalVotes ]);
-}
 
     public function statut(Request $request)
     {
@@ -309,6 +315,49 @@ public function dep_results(Request $request)
 
         return view('/admins/import_classes', ['actel_user'=>$actel_user]);
     }
+
+public function vote(Request $request)
+{
+    $userId = 1;
+    $candidatId = $request->input('candidat_id');
+    $currentVotes = $request->input('current_votes');  // Récupérez le nombre actuel de votes
+
+    $query = Vote::create([
+        'user_id' => $userId,
+        'candidat_id' => $candidatId,
+    ]);
+
+    if ($query) {
+        $totalVotes = $currentVotes + 1;  // Calculez le nouveau total
+        return response()->json(['success' => true, 'totalVotes' => $totalVotes]);
+    } else {
+        return response()->json(['success' => false, 'message' => 'Erreur lors de l\'enregistrement du vote.']);
+    }
+}
+
+
+public function removeVote(Request $request)
+{
+    $userId = 1;
+    $candidatId = $request->input('candidat_id');
+    $currentVotes = $request->input('current_votes');  // Récupérez le nombre actuel de votes
+
+    $query = DB::table('votes')
+        ->where('user_id', $userId)
+        ->where('candidat_id', $candidatId)
+        ->orderBy("id", "DESC")
+        ->take(1)
+        ->delete();
+
+    if ($query) {
+        $totalVotes = $currentVotes - 1;  // Calculez le nouveau total
+        return response()->json(['success' => true, 'totalVotes' => $totalVotes]);
+    } else {
+        return response()->json(['success' => false, 'message' => 'Erreur lors du retrait du vote.']);
+    }
+}
+
+
 
 
 
