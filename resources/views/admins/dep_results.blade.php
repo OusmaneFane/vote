@@ -79,6 +79,7 @@
                     legend: {
                         display: false
                     },
+                    
                     legendCallback: function (chart) {
                         var text = [];
                         text.push('<ul class="legend' + chart.id + '">');
@@ -87,7 +88,7 @@
                             if (chart.data.labels[i]) {
                                 text.push(chart.data.labels[i]);
                             }
-                            text.push('<label class="badge badge-light badge-pill legend-percentage ml-auto">' + chart.data.datasets[0].data[i] + '%</label>');
+                            text.push('<label class="badge badge-light badge-pill legend-percentage ml-auto">' + chart.data.datasets[0].data[i].toFixed(2) + '%</label>');
                             text.push('</li>');
                         }
                         text.push('</ul>');
@@ -103,52 +104,57 @@
         // Pie Chart
 
         // Script pour le column chart
-  $(function() {
+// Pie Chart
+$(function() {
+    var barChartData = {!! json_encode($barChartData) !!};
 
-        var barChartData = {!! json_encode($barChartData) !!};
+    var candidates = barChartData.map(function(entry) {
+        return entry[0];
+    });
 
-        // Extraire les noms des candidats depuis barChartData
-        var candidates = barChartData.map(function(entry) {
-            return entry[0];
-        });
+    var votes = barChartData.map(function(entry) {
+        return entry[1];
+    });
 
-        // Extraire les valeurs (nombre de votes) des candidats depuis barChartData
-        var votes = barChartData.map(function(entry) {
-            return entry[1];
-        });
+    var data = [];
 
-        var data = [];
-
-        // Construire le tableau de données avec les noms des candidats et les valeurs
-        for (var i = 0; i < candidates.length; i++) {
-            data.push([candidates[i], votes[i]]);
-        }
+    for (var i = 0; i < candidates.length; i++) {
+        // Remplacez le nom du candidat par son numéro
+        var candidateNumber = "N*" + (i + 1);
+        data.push([candidateNumber, votes[i]]);
+    }
 
     if ($("#column-chart-pie").length) {
-      $.plot("#column-chart-pie", [data], {
-        series: {
-          bars: {
-            show: true,
-            barWidth: 0.6,
-            align: "center"
-          }
-        },
-        xaxis: {
-          mode: "categories",
-          tickLength: 0
-        },
-
-        grid: {
-          borderWidth: 0,
-          labelMargin: 10,
-          hoverable: true,
-          clickable: true,
-          mouseActiveRadius: 6,
-        }
-
-      });
+        $.plot("#column-chart-pie", [data], {
+            series: {
+                bars: {
+                    show: true,
+                    barWidth: 0.6,
+                    align: "center"
+                }
+            },
+            xaxis: {
+                mode: "categories",
+                tickLength: 0
+            },
+            grid: {
+                borderWidth: 0,
+                labelMargin: 10,
+                hoverable: true,
+                clickable: true,
+                mouseActiveRadius: 6
+            },
+            xaxes: [{
+                axisLabel: "Candidats",
+                axisLabelUseCanvas: true,
+                axisLabelFontSizePixels: 12,
+                axisLabelFontFamily: "Arial",
+                axisLabelPadding: 10,
+                rotateTicks: 45 // Angle de rotation
+            }]
+        });
     }
-  });     
+});
   </script>
      
 @endsection
