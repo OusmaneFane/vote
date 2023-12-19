@@ -38,7 +38,7 @@ class CheckController extends Controller
         if (!$student) {
             return back()->with(
                 'fail',
-                'Ce matricule n\'est pas autorisé pour voter'
+                'Ce matricule n\'est pas autorisé à voter'
             );
         }
         // Vérifier si l'étudiant a déjà voté
