@@ -1228,10 +1228,16 @@ h6 {
 /*--------------------------------------------------------------
 # Hero Section
 --------------------------------------------------------------*/
+@font-face {
+  font-family: 'ADlaMDisplay';
+  src: url('../../../new-template/fonts/PT_Sans/ADLaMDisplay-Regular.ttf');
+  font-weight: normal;
+  font-style: normal;
+}
 .hero {
   width: 100%;
   min-height: 30vh;
- background-image: url(/picturesform/loin.jpg);
+  background-image: url(/new-template/images/cover.jpg);
   background-size: cover;
   position: relative;
   padding: 140px 0 60px 0;

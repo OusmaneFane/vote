@@ -18,8 +18,8 @@
                          <img class="rounded-circle" height="50" width="50" src="/storage/candidats/{{$candidat->photo}}" alt="">
                          {{$candidat->nom}}
                         </p>
-                        <h2>{{ $candidat->totalVotes }}</h2>
-                        <label class="badge badge-outline-primary badge-pill"><b>{{ number_format($candidat->percentageVotes, 2) }}% de voix</b></label>
+                        <h2 id="totalVotes-{{$candidat->id}}">{{ $candidat->totalVotes }}</h2>
+                        <label class="badge badge-outline-primary badge-pill"><b><span id="pourcentage-{{$candidat->id}}">{{ number_format($candidat->percentageVotes, 2) }}</span>% de voix</b></label>
                       </div>
                     @endforeach
                   </div>
@@ -172,98 +172,139 @@
             }
         @endphp
 
-        if ($("#votes-chart").length) {
-            var votesChartCanvas = $("#votes-chart").get(0).getContext("2d");
-            var votesChart = new Chart(votesChartCanvas, {
-                type: 'bar',
-                data: {
-                    labels: @json($candidates),
-                    datasets: [
-                        {
-                            label: 'Votes',
-                            data: @json($votes),
-                            backgroundColor: '#392c70'
-                        }
-                    ]
-                },
-                options: {
-                    responsive: true,
-                    maintainAspectRatio: true,
-                    layout: {
-                        padding: {
-                            left: 0,
-                            right: 0,
-                            top: 20,
-                            bottom: 0
-                        }
-                    },
-                    scales: {
-                        yAxes: [
-                            {
-                                gridLines: {
-                                    drawBorder: false,
-                                },
-                                ticks: {
-                                    stepSize: 1, // Ajustez la gradation en fonction de vos besoins
-                                    beginAtZero: true,
-                                    fontColor: "#686868"
-                                },
-                                scaleLabel: {
-                                    display: true,
-                                    labelString: 'Votes',
-                                    fontColor: "#686868"
-                                }
-                            }
-                        ],
-                        xAxes: [
-                            {
-                                ticks: {
-                                    fontColor: "#686868",
-                                     minRotation: 45,
-                                },
-                                gridLines: {
-                                    display: false,
-                                },
-                                barPercentage: 0.4
-                            }
-                        ]
-                    },
-                    legend: {
-                        display: false
-                    },
-                    tooltips: {
-                        callbacks: {
-                            label: function (tooltipItem, data) {
-                                var datasetLabel = data.datasets[tooltipItem.datasetIndex].label || '';
-                                return datasetLabel + ': ' + tooltipItem.yLabel;
-                            }
-                        }
-                    },
-                    hover: {
-                        animationDuration: 0
-                    },
-                    animation: {
-                        onComplete: function () {
-                            var chartInstance = this.chart;
-                            var ctx = chartInstance.ctx;
-                            ctx.font = Chart.helpers.fontString(Chart.defaults.global.defaultFontSize, Chart.defaults.global.defaultFontStyle, Chart.defaults.global.defaultFontFamily);
-                            ctx.fillStyle = "#686868";
-                            ctx.textAlign = 'center';
-                            ctx.textBaseline = 'bottom';
+        let candidats = @json($candidates)
 
-                            this.data.datasets.forEach(function (dataset, i) {
-                                var meta = chartInstance.controller.getDatasetMeta(i);
-                                meta.data.forEach(function (bar, index) {
-                                    var data = dataset.data[index];
-                                    ctx.fillText(data, bar._model.x, bar._model.y - 5);
-                                });
-                            });
-                        }
-                    }
-                }
-            });
-            document.getElementById('votes-chart-legend').innerHTML = votesChart.generateLegend();
+        let votes = @json($votes)
+
+        
+        if ($("#votes-chart").length) {
+          var votesChartCanvas = $("#votes-chart").get(0).getContext("2d");
+          var votesChart = new Chart(votesChartCanvas, {
+              type: 'bar',
+              data: {
+                  labels:(candidats),
+                  datasets: [
+                      {
+                          label: 'Votes',
+                          data: (votes),
+                          backgroundColor: '#392c70'
+                      }
+                  ]
+              },
+              options: {
+                  responsive: true,
+                  maintainAspectRatio: true,
+                  layout: {
+                      padding: {
+                          left: 0,
+                          right: 0,
+                          top: 20,
+                          bottom: 0
+                      }
+                  },
+                  scales: {
+                      yAxes: [
+                          {
+                              gridLines: {
+                                  drawBorder: false,
+                              },
+                              ticks: {
+                                  stepSize: 1, // Ajustez la gradation en fonction de vos besoins
+                                  beginAtZero: true,
+                                  fontColor: "#686868"
+                              },
+                              scaleLabel: {
+                                  display: true,
+                                  labelString: 'Votes',
+                                  fontColor: "#686868"
+                              }
+                          }
+                      ],
+                      xAxes: [
+                          {
+                              ticks: {
+                                  fontColor: "#686868",
+                                    minRotation: 45,
+                              },
+                              gridLines: {
+                                  display: false,
+                              },
+                              barPercentage: 0.4
+                          }
+                      ]
+                  },
+                  legend: {
+                      display: false
+                  },
+                  tooltips: {
+                      callbacks: {
+                          label: function (tooltipItem, data) {
+                              var datasetLabel = data.datasets[tooltipItem.datasetIndex].label || '';
+                              return datasetLabel + ': ' + tooltipItem.yLabel;
+                          }
+                      }
+                  },
+                  hover: {
+                      animationDuration: 0
+                  },
+                  animation: {
+                      onComplete: function () {
+                          var chartInstance = this.chart;
+                          var ctx = chartInstance.ctx;
+                          ctx.font = Chart.helpers.fontString(Chart.defaults.global.defaultFontSize, Chart.defaults.global.defaultFontStyle, Chart.defaults.global.defaultFontFamily);
+                          ctx.fillStyle = "#686868";
+                          ctx.textAlign = 'center';
+                          ctx.textBaseline = 'bottom';
+
+                          this.data.datasets.forEach(function (dataset, i) {
+                              var meta = chartInstance.controller.getDatasetMeta(i);
+                              meta.data.forEach(function (bar, index) {
+                                  var data = dataset.data[index];
+                                  ctx.fillText(data, bar._model.x, bar._model.y - 5);
+                              });
+                          });
+                      }
+                  }
+              }
+          });
+          document.getElementById('votes-chart-legend').innerHTML = votesChart.generateLegend();
+
+          setInterval(() => {
+          $.ajax({
+              type: 'GET',
+              url: '/admins/status-data',
+              success: function (response) {
+
+                  candidates = []
+                  votes = []
+
+                  response.barChartData.forEach(function(data){
+                      candidates.push(data[0]);
+                      votes.push(data[1]);
+                  })
+
+                  votesChart.data.labels = candidates
+                  votesChart.data.datasets[0].data = votes
+
+                  response.candidats.forEach(function(candidat) {
+                    let ttvEl = document.querySelector('#totalVotes-'+candidat.id)
+                    ttvEl.innerHTML = candidat.totalVotes
+                    
+                  })
+
+                  votesChart.update()
+
+
+              },
+              error: function (error) {
+                  console.log(error);
+              }
+          });
+        }, 2000);
         }
+
+
+        
     });
 </script>
 <script>

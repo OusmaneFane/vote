@@ -33,6 +33,161 @@
   * Author: BootstrapMade.com
   * License: https://bootstrapmade.com/license/
   ======================================================== -->
+      <style>
+        @font-face {
+          font-family: "Grotesque";
+          src: url("https://s3-us-west-2.amazonaws.com/s.cdpn.io/397014/BrandonGrotesque-Regular.eot"), url("https://s3-us-west-2.amazonaws.com/s.cdpn.io/397014/BrandonGrotesque-Regular.ttf"), url("https://s3-us-west-2.amazonaws.com/s.cdpn.io/397014/BrandonGrotesque-Regular.woff");
+          font-weight: normal;
+        }
+        @font-face {
+          font-family: "Grotesque Black";
+          src: url("https://s3-us-west-2.amazonaws.com/s.cdpn.io/397014/BrandonGrotesque-Black.eot"), url("https://s3-us-west-2.amazonaws.com/s.cdpn.io/397014/BrandonGrotesque-Black.ttf"), url("https://s3-us-west-2.amazonaws.com/s.cdpn.io/397014/BrandonGrotesque-Black.woff");
+          font-weight: bold;
+        }
+
+        form .content{
+          display: flex;
+          flex-wrap: wrap;
+          justify-content: center;
+          margin: auto;
+        }
+        * {
+          box-sizing: border-box;
+        }
+        html, body {
+          font-size: 100%;
+        }
+        body {
+          padding: 0;
+          margin: 0;
+          background: #152536;
+        }
+        a[href] {
+          position: relative;
+        }
+        a[href], a[href]:link, a[href]:visited, a[href]:active {
+          text-decoration: none;
+          color: #d8276c;
+          text-shadow: 2px 2px 2px #070c11;
+          padding-bottom: 3px;
+          font-weight: bold;
+        }
+        a[href]::after {
+          content: "";
+          position: absolute;
+          left: 0;
+          left: 0;
+          bottom: 0;
+          background: #fff;
+          width: 0;
+          height: 1px;
+          transition: 0.35s cubic-bezier(0.17, 0.67, 0.5, 1.03);
+        }
+        a[href]:hover::after {
+          width: 100%;
+          box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3);
+        }
+        .note {
+          color: #fff;
+          font-size: 1rem;
+          font-family: 'Merriweather', sans-serif;
+          line-height: 1.5;
+          text-align: center;
+
+          display: flex;
+          justify-content: center;
+          align-items: center;
+        }
+        article.card {
+          width: 350px;
+          height: 370px;
+          border-radius: 3px;
+          box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3);
+          overflow: hidden;
+          margin: 8px;
+          display: block;
+        }
+        article.card .thumb {
+          width: auto;
+          height: 260px;
+          /* background: url("https://i.ibb.co/F7xw8SK/junior.jpg") no-repeat center; */
+          background-size: cover;
+          border-radius: 3px;
+        }
+        article.card .infos {
+          width: auto;
+          height: 370px;
+          position: relative;
+          padding: 14px 24px;
+          background: #fff;
+          transition: 0.3s;
+        }
+        article.card .infos .title {
+          position: relative;
+          margin: 10px 0;
+          letter-spacing: 3px;
+          color: #152536;
+          font-family: 'Grotesque Black', sans-serif;
+          font-size: 1rem;
+          text-transform: uppercase;
+          text-shadow: 0 0 0px #32577f;
+        }
+        article.card .infos .date, article.card .infos .seats {
+          margin-bottom: 10px;
+          text-transform: uppercase;
+          font-size: 0.85rem;
+          color: rgba(21, 37, 54, 0.7);
+          font-family: 'Grotesque', sans-serif;
+        }
+        article.card .infos .seats {
+          display: inline-block;
+          margin-bottom: 24px;
+          padding-bottom: 24px;
+          border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+        }
+        article.card .infos .txt {
+          font-family: 'Merriweather', sans-serif;
+          line-height: 2;
+          font-size: 0.95rem;
+          color: rgba(21, 37, 54, 0.7);
+        }
+        article.card .infos .details {
+          position: absolute;
+          left: 0;
+          left: 0;
+          bottom: 0;
+          margin: 10px 0;
+          padding: 20px 24px;
+          letter-spacing: 1px;
+          color: #4e958b;
+          font-family: 'Grotesque Black', sans-serif;
+          font-size: 0.9rem;
+          text-transform: uppercase;
+          cursor: pointer;
+        }
+        .infos.opened {
+          transform: translateY(-260px);
+        }
+
+        .btnDesc{
+          border: 1px solid #101010;
+          border-raduis: 4px;
+          margin-bottom: 8px;
+        }
+        .voteGreen{
+          fill: current-color;
+          color: green;
+        }
+
+        #ruberText{
+          font-family: 'ADlaMDisplay', sans-serif;font-size: 16px; text-align: center;width: 100%; white-space: nowrap;
+        }
+        @media (min-width: 480px){
+          #ruberText{
+          font-size: 14px;
+        }
+        }
+      </style>
 </head>
 
 <body>
@@ -40,189 +195,27 @@
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous"></script>
 
   <!-- ======= Header ======= -->
-  <header id="header" class="header d-flex align-items-center fixed-top bg-white">
-    <div class="container-fluid d-flex align-items-center justify-content-between">
-
-      <div href="" class="logo d-flex align-items-center  me-auto me-lg-0">
+    <div href="" class="logo d-flex align-items-center  me-auto me-lg-0">
         <!-- Uncomment the line below if you also wish to use an image logo -->
         <!-- <img src="assets/img/logo.png" alt=""> -->
-        <i><img src="/picturesform/supmanagement.png" alt=""></i>
-        <h1 class="text-black">Sup'Management</h1>
+        <img src="/picturesform/supmanagement.png" style="object-fit: cover" height="36px" width="50px" alt="">
+        <h1 id="ruberText"  class="text-black pt-1">Election LEADER MANAGER 2022-2023</h1>
       </div>
-
-
-      <style>
-        @font-face {
-  font-family: "Grotesque";
-  src: url("https://s3-us-west-2.amazonaws.com/s.cdpn.io/397014/BrandonGrotesque-Regular.eot"), url("https://s3-us-west-2.amazonaws.com/s.cdpn.io/397014/BrandonGrotesque-Regular.ttf"), url("https://s3-us-west-2.amazonaws.com/s.cdpn.io/397014/BrandonGrotesque-Regular.woff");
-  font-weight: normal;
-}
-@font-face {
-  font-family: "Grotesque Black";
-  src: url("https://s3-us-west-2.amazonaws.com/s.cdpn.io/397014/BrandonGrotesque-Black.eot"), url("https://s3-us-west-2.amazonaws.com/s.cdpn.io/397014/BrandonGrotesque-Black.ttf"), url("https://s3-us-west-2.amazonaws.com/s.cdpn.io/397014/BrandonGrotesque-Black.woff");
-  font-weight: bold;
-}
-
-form .content{
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  margin: auto;
-}
-* {
-  box-sizing: border-box;
-}
-html, body {
-  font-size: 100%;
-}
-body {
-  padding: 0;
-  margin: 0;
-  background: #152536;
-}
-a[href] {
-  position: relative;
-}
-a[href], a[href]:link, a[href]:visited, a[href]:active {
-  text-decoration: none;
-  color: #d8276c;
-  text-shadow: 2px 2px 2px #070c11;
-  padding-bottom: 3px;
-  font-weight: bold;
-}
-a[href]::after {
-  content: "";
-  position: absolute;
-  left: 0;
-  left: 0;
-  bottom: 0;
-  background: #fff;
-  width: 0;
-  height: 1px;
-  transition: 0.35s cubic-bezier(0.17, 0.67, 0.5, 1.03);
-}
-a[href]:hover::after {
-  width: 100%;
-  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3);
-}
-.note {
-  color: #fff;
-  font-size: 1rem;
-  font-family: 'Merriweather', sans-serif;
-  line-height: 1.5;
-  text-align: center;
-
-	display: flex;
-	justify-content: center;
-	align-items: center;
-}
-article.card {
-  width: 350px;
-  height: 370px;
-  border-radius: 3px;
-  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3);
-  overflow: hidden;
-  margin: 8px;
-  display: block;
-}
-article.card .thumb {
-  width: auto;
-  height: 260px;
-  /* background: url("https://i.ibb.co/F7xw8SK/junior.jpg") no-repeat center; */
-  background-size: cover;
-  border-radius: 3px;
-}
-article.card .infos {
-  width: auto;
-  height: 370px;
-  position: relative;
-  padding: 14px 24px;
-  background: #fff;
-	transition: 0.3s;
-}
-article.card .infos .title {
-  position: relative;
-  margin: 10px 0;
-  letter-spacing: 3px;
-  color: #152536;
-  font-family: 'Grotesque Black', sans-serif;
-  font-size: 1rem;
-  text-transform: uppercase;
-  text-shadow: 0 0 0px #32577f;
-}
-article.card .infos .date, article.card .infos .seats {
-  margin-bottom: 10px;
-  text-transform: uppercase;
-  font-size: 0.85rem;
-  color: rgba(21, 37, 54, 0.7);
-  font-family: 'Grotesque', sans-serif;
-}
-article.card .infos .seats {
-  display: inline-block;
-  margin-bottom: 24px;
-  padding-bottom: 24px;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.2);
-}
-article.card .infos .txt {
-  font-family: 'Merriweather', sans-serif;
-  line-height: 2;
-  font-size: 0.95rem;
-  color: rgba(21, 37, 54, 0.7);
-}
-article.card .infos .details {
-  position: absolute;
-  left: 0;
-  left: 0;
-  bottom: 0;
-  margin: 10px 0;
-  padding: 20px 24px;
-  letter-spacing: 1px;
-  color: #4e958b;
-  font-family: 'Grotesque Black', sans-serif;
-  font-size: 0.9rem;
-  text-transform: uppercase;
-  cursor: pointer;
-}
-.infos.opened {
-  transform: translateY(-260px);
-}
-
-.btnDesc{
-	border: 1px solid #101010;
-	border-raduis: 4px;
-	margin-bottom: 8px;
-}
-.voteGreen{
-	fill: current-color;
-	color: green;
-}
-      </style>
-
-      <div class="header-social-links">
-        <a href="#" class="twitter"><i class="bi bi-twitter"></i></a>
-        <a href="#" class="facebook"><i class="bi bi-facebook"></i></a>
-        <a href="#" class="instagram"><i class="bi bi-instagram"></i></a>
-        <a href="#" class="linkedin"><i class="bi bi-linkedin"></i></i></a>
-      </div>
-      <i class="mobile-nav-toggle mobile-nav-show bi bi-list"></i>
-      <i class="mobile-nav-toggle mobile-nav-hide d-none bi bi-x"></i>
-
-    </div>
-  </header><!-- End Header -->
 
   <!-- ======= Hero Section ======= -->
-  <section id="hero" class="hero d-flex flex-column justify-content-center align-items-center" data-aos="fade" data-aos-delay="1500">
-    <div class="container">
-      <div class="row justify-content-center">
-        <div class="col-lg-6 text-center" >
-          <h2 >Le moment tant attendu est <span>enfin arrivé</span></h2>
-          <h2 >Celui de choisir un président au poste de LEADER MANAGER.</h2>
-          <p  class="btn-get-started">Bienvenue {{ $actel_user->matricule }}</p>
-        </div>
-      </div>
+  <section id="hero" class="hero d-flex flex-column justify-content-center align-items-center" style="position: relative" data-aos="fade" data-aos-delay="1500">
+    <img src="/new-template/images/cover.jpg" style="position: absolute; width: 100%; height: 100%;top: 0" alt="" srcset="">
+    <div class="" style="background-color: #101010; opacity: .6;position: absolute; width: 100%; height: 100%;top: 0">
+      
+    </div>
+    <div class="d-flex flex-column justify-content-center align-items-center " style="z-index: 3">
+      <h5 class="text-warning">Bienvenue, </h5>
+      <h2 style="font-family: 'ADlaMDisplay', sans-serif; margin:0 15px;" class="text-white">{{ $actel_user2['firstname']}} {{ $actel_user2['lastname']}} !</h2>
     </div>
   </section><!-- End Hero Section -->
-
+  <div class="d-flex flex-column justify-content-center align-items-center mt-4">
+    <h1 style="font-family: 'ADlaMDisplay', sans-serif;" class="text-black">Choisissez votre Candidat !</h1>
+  </div>
   <main id="main" data-aos="fade" data-aos-delay="1500">
 
     <!-- ======= Gallery Section ======= -->
@@ -255,9 +248,8 @@ article.card .infos .details {
 
                     </h2>
 
-                <button type="button" class="date btnDesc">Slogan</button>
-                <p class="txt" style="color: orange"><b>{{ $candidat['slogan']  }}</b></p>
-                <h3 class="details btnTextVote">Choisir</h3>
+                <h4 class="btn btn-warning mb-4 text-white">{{ $candidat['slogan']  }}</h4>
+                
             </div>
         </article>
         </div>
@@ -283,7 +275,7 @@ article.card .infos .details {
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
-          <h1 class="modal-title fs-5 " id="exampleModalLabel">Attention !!!</h1>
+          <h1 class="modal-title fs-5 " id="exampleModalLabel">Confirmation !!!</h1>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
@@ -301,7 +293,7 @@ article.card .infos .details {
   <footer id="footer" class="footer">
     <div class="container">
       <div class="copyright">
-        &copy; Copyright <strong><span>2022 Sup'Management </span></strong>. All Rights Reserved
+        &copy; Copyright <strong><span>2023 Sup'Management </span></strong>. All Rights Reserved
       </div>
       <div class="credits">
         <!-- All the links in the footer should remain intact. -->
