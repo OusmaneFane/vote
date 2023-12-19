@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\DB;
 use App\Models\Vote;
 use Illuminate\Support\Facades\Http;
 use GuzzleHttp\Client;
+use Carbon\Carbon;
 
 class CheckController extends Controller
 {
@@ -18,6 +19,19 @@ class CheckController extends Controller
             'matricule' => ['required'],
             'password' => ['required'],
         ]);
+
+        // Vérifier si le temps de vote est dépassé
+        $currentTime = now(); // Obtenez la date et l'heure actuelles
+        $votingEndTime = Carbon::create($currentTime->year, 12, 21, 23, 59, 59); // Définir la fin du temps de vote
+
+        if ($currentTime > $votingEndTime) {
+            // Temps de vote dépassé, affichez un message et redirigez l'utilisateur
+            return back()->with(
+                'fail',
+                'Merci de votre intérêt, mais vous ne pouvez plus participer.'
+            );
+        }
+
         $student = DB::table('students')
             ->where('matricule', $request->matricule)
             ->first();

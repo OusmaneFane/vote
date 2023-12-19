@@ -31,6 +31,14 @@
           <div class="col-lg-6 d-flex align-items-center justify-content-center">
             <div class="auth-form-transparent text-left p-3">
               <div class="brand-logo">
+               <div class="d-flex justify-content-between">
+                  <h5>Temps restant</h5>
+                  </b><button style="margin-top:-10px" id="timer" class="btn btn-danger"></button></b>
+                </div>
+                <br>
+
+
+
         <h2 style=" font-family: 'ADlaMDisplay', sans-serif;"><span style=" font-family: 'ADlaMDisplay', sans-serif;"
               class="text-warning">Sup-</span><span class="text-primary">Vote</span></h2>
               </div>
@@ -103,6 +111,45 @@
   <script src="/new-template/js/todolist.js"></script>
   <!-- endinject -->
 </body>
+<script>
+    function updateTimer() {
+        // Récupérer la date actuelle
+        var currentTime = new Date();
+
+        // Définir la date de début du minuteur (demain à 10h)
+        var startDate = new Date();
+        startDate.setDate(currentTime.getDate() + 1); // Demain
+        startDate.setHours(10, 0, 0, 0); // 10h00 demain
+
+        // Définir la date de fin du minuteur (21 décembre du mois actuel)
+        var endDate = new Date(currentTime.getFullYear(), 11, 21, 23, 59, 59, 999); // Mois 11 = décembre
+
+        // Calculer la différence entre la date de fin et la date actuelle
+        var timeDifference = endDate - currentTime;
+
+        // Convertir la différence en secondes
+        var seconds = Math.floor(timeDifference / 1000);
+
+        // Calculer les jours, heures, minutes et secondes
+        var days = Math.floor(seconds / (24 * 60 * 60));
+        var hours = Math.floor((seconds % (24 * 60 * 60)) / 3600);
+        var minutes = Math.floor((seconds % 3600) / 60);
+        seconds = seconds % 60;
+
+        // Afficher le minuteur sur la page
+        $('#timer').text(days + ' jours ' + hours + ' heures ' + minutes + ' min ' + seconds + ' s');
+    }
+
+    // Mettre à jour le minuteur toutes les secondes
+    setInterval(updateTimer, 1000);
+
+    // Appeler la fonction de mise à jour du minuteur au chargement de la page
+    $(document).ready(function () {
+        updateTimer();
+    });
+</script>
+
+
 
 
 <!-- Mirrored from www.urbanui.com/melody/template/pages/samples/login-2.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 15 Sep 2018 06:08:53 GMT -->

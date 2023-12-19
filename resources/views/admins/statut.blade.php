@@ -47,11 +47,11 @@
                     <i class="fa fa-users"></i>
                     Total des votes
                   </h4>
-                   <button class="btn btn-primary">{{$totalVotes}} Vote(s) au total
+                   <button class="btn btn-primary" ><span id="btnTotal">{{$totalVotes}}</span> Vote(s) au total
                       </button >
                        @foreach($candidats as $candidat )
                         @if($candidat->nom == 'VOTE NUL')
-                         <button class="btn btn-danger">{{ $candidat->totalVotes }} vote(s) nul(s)                      
+                         <button class="btn btn-danger" ><span id="btnVoteNul">{{ $candidat->totalVotes }}</span> vote(s) nul(s)                      
                          </button>
                       @endif
                       @endforeach 
@@ -59,7 +59,7 @@
                   <ul class="solid-bullet-list mt-4">
                      @foreach($candidats as $candidat )
                     <li>
-                      <h5>{{ $candidat->totalVotes }} voix enregistré(s)
+                      <h5 id="totalVotes-{{$candidat->id}}">{{ $candidat->totalVotes }} voix enregistré(s)
                       </h5>
                       <p class="text-muted">{{ $candidat->nom }} </p>
 
@@ -94,66 +94,7 @@
                 </div>
               </div>
             </div>
-            <div class="col-md-4 grid-margin stretch-card">
-              <div class="card">
-                <div class="card-body">
-                  <h4 class="card-title">
-                    <i class="far fa-futbol"></i>
-                    Activity
-                  </h4>
-                  <ul class="solid-bullet-list">
-                    <li>
-                      <h5>4 people shared a post
-                        <span class="float-right text-muted font-weight-normal small">8:30 AM</span>
-                      </h5>
-                      <p class="text-muted">It was an awesome work!</p>
-                      <div class="image-layers">
-                        <div class="img-sm profile-image-text bg-warning rounded-circle image-layer-item">M</div>
-                        <img class="img-sm rounded-circle image-layer-item" src="../../images/faces/face3.jpg" alt="profile"/>
-                        <img class="img-sm rounded-circle image-layer-item" src="../../images/faces/face5.jpg" alt="profile"/>
-                        <img class="img-sm rounded-circle image-layer-item" src="../../images/faces/face8.jpg" alt="profile"/>
-                      </div>
-                    </li>
-                    <li>
-                      <h5>Stella posted in a group
-                        <span class="float-right text-muted font-weight-normal small">11:40 AM</span>
-                      </h5>
-                      <p class="text-muted">The team has done a great job</p>
-                    </li>
-                    <li>
-                      <h5>Dobrick posted in material
-                        <span class="float-right text-muted font-weight-normal small">4:30 PM</span>
-                      </h5>
-                      <p class="text-muted">Great work. Keep it up!</p>
-                    </li>
-                  </ul>
-                  <div class="border-top pt-3">
-                    <div class="d-flex justify-content-between">
-                      <button class="btn btn-outline-dark">More</button>
-                      <button class="btn btn-primary btn-icon-text">
-                        Add new task
-                        <i class="btn-icon-append fas fa-plus"></i>
-                      </button>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="col-md-4 grid-margin stretch-card">
-              <div class="card">
-                <div class="card-body d-flex flex-column">
-                  <h4 class="card-title">
-                    <i class="fas fa-tachometer-alt"></i>
-                    Daily Sales
-                  </h4>
-                  <p class="card-description">Daily sales for the past one month</p>
-                  <div class="flex-grow-1 d-flex flex-column justify-content-between">
-                    <canvas id="daily-sales-chart" class="mt-3 mb-3 mb-md-0"></canvas>
-                    <div id="daily-sales-chart-legend" class="daily-sales-chart-legend pt-4 border-top"></div>
-                  </div>
-                </div>
-              </div>
-            </div>
+
           </div>
 
 
@@ -289,8 +230,16 @@
                   response.candidats.forEach(function(candidat) {
                     let ttvEl = document.querySelector('#totalVotes-'+candidat.id)
                     ttvEl.innerHTML = candidat.totalVotes
+
+                    document.querySelector('#pourcentage-'+candidat.id).innerHTML = candidat.percentageVotes
+
+                    if (candidat.nom == "VOTE NUL"){
+                      document.querySelector('#btnVoteNul').innerHTML = candidat.totalVotes
+                    }
+
                     
                   })
+                  document.querySelector('#btnTotal').innerHTML =response.totalVotes
 
                   votesChart.update()
 

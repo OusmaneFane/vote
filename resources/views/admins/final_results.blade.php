@@ -62,7 +62,7 @@
                   <ul class="solid-bullet-list mt-4">
                      @foreach($candidats as $candidat )
                     <li>
-                      <h5>{{ $candidat->totalVotes }} vote(s) enregistré(s)
+                      <h5 >{{ $candidat->totalVotes }} vote(s) enregistré(s)
                       </h5>
                       <p class="text-muted">{{ $candidat->nom }}</p>
 
@@ -82,7 +82,7 @@
                 <div class="card-body d-flex flex-column">
                   <h4 class="card-title">
                     <i class="fas fa-chart-pie"></i>
-                    Sales status
+                    Statistique final
                   </h4>
                   <div class="flex-grow-1 d-flex flex-column justify-content-between">
                     <canvas id="sales-status-chart-pie" class="mt-3"></canvas>
@@ -93,66 +93,7 @@
                 </div>
               </div>
             </div>
-            <div class="col-md-4 grid-margin stretch-card">
-              <div class="card">
-                <div class="card-body">
-                  <h4 class="card-title">
-                    <i class="far fa-futbol"></i>
-                    Activity
-                  </h4>
-                  <ul class="solid-bullet-list">
-                    <li>
-                      <h5>4 people shared a post
-                        <span class="float-right text-muted font-weight-normal small">8:30 AM</span>
-                      </h5>
-                      <p class="text-muted">It was an awesome work!</p>
-                      <div class="image-layers">
-                        <div class="img-sm profile-image-text bg-warning rounded-circle image-layer-item">M</div>
-                        <img class="img-sm rounded-circle image-layer-item" src="../../images/faces/face3.jpg" alt="profile"/>
-                        <img class="img-sm rounded-circle image-layer-item" src="../../images/faces/face5.jpg" alt="profile"/>
-                        <img class="img-sm rounded-circle image-layer-item" src="../../images/faces/face8.jpg" alt="profile"/>
-                      </div>
-                    </li>
-                    <li>
-                      <h5>Stella posted in a group
-                        <span class="float-right text-muted font-weight-normal small">11:40 AM</span>
-                      </h5>
-                      <p class="text-muted">The team has done a great job</p>
-                    </li>
-                    <li>
-                      <h5>Dobrick posted in material
-                        <span class="float-right text-muted font-weight-normal small">4:30 PM</span>
-                      </h5>
-                      <p class="text-muted">Great work. Keep it up!</p>
-                    </li>
-                  </ul>
-                  <div class="border-top pt-3">
-                    <div class="d-flex justify-content-between">
-                      <button class="btn btn-outline-dark">More</button>
-                      <button class="btn btn-primary btn-icon-text">
-                        Add new task
-                        <i class="btn-icon-append fas fa-plus"></i>
-                      </button>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="col-md-4 grid-margin stretch-card">
-              <div class="card">
-                <div class="card-body d-flex flex-column">
-                  <h4 class="card-title">
-                    <i class="fas fa-tachometer-alt"></i>
-                    Daily Sales
-                  </h4>
-                  <p class="card-description">Daily sales for the past one month</p>
-                  <div class="flex-grow-1 d-flex flex-column justify-content-between">
-                    <canvas id="daily-sales-chart" class="mt-3 mb-3 mb-md-0"></canvas>
-                    <div id="daily-sales-chart-legend" class="daily-sales-chart-legend pt-4 border-top"></div>
-                  </div>
-                </div>
-              </div>
-            </div>
+
           </div>
 
 

@@ -60,7 +60,7 @@
         body {
           padding: 0;
           margin: 0;
-          background: #152536;
+          background: #faedb7;
         }
         a[href] {
           position: relative;
@@ -199,11 +199,11 @@
         <!-- Uncomment the line below if you also wish to use an image logo -->
         <!-- <img src="assets/img/logo.png" alt=""> -->
         <img src="/picturesform/supmanagement.png" style="object-fit: cover" height="36px" width="50px" alt="">
-        <h1 id="ruberText"  class="text-black pt-1">Election LEADER MANAGER 2022-2023</h1>
+        <h1 id="ruberText"  class="text-black pt-1">ELECTION LEADER MANAGER 2022-2023</h1>
       </div>
 
   <!-- ======= Hero Section ======= -->
-  <section id="hero" class="hero d-flex flex-column justify-content-center align-items-center" style="position: relative" data-aos="fade" data-aos-delay="1500">
+  <section   id="hero" class="hero d-flex flex-column justify-content-center align-items-center" style="position: relative" data-aos="fade" data-aos-delay="1500">
     <img src="/new-template/images/cover.jpg" style="position: absolute; width: 100%; height: 100%;top: 0" alt="" srcset="">
     <div class="" style="background-color: #101010; opacity: .6;position: absolute; width: 100%; height: 100%;top: 0">
       
@@ -213,10 +213,10 @@
       <h2 style="font-family: 'ADlaMDisplay', sans-serif; margin:0 15px;" class="text-white">{{ $actel_user2['firstname']}} {{ $actel_user2['lastname']}} !</h2>
     </div>
   </section><!-- End Hero Section -->
-  <div class="d-flex flex-column justify-content-center align-items-center mt-4">
-    <h1 style="font-family: 'ADlaMDisplay', sans-serif;" class="text-black">Choisissez votre Candidat !</h1>
+  <div  class="d-flex flex-column justify-content-center align-items-center mt-4">
+    <h1 style="font-family: 'ADlaMDisplay', sans-serif;" class="text-black">Merci de choisir votre Candidat !</h1>
   </div>
-  <main id="main" data-aos="fade" data-aos-delay="1500">
+  <main style="background: #faedb7;" id="main" data-aos="fade" data-aos-delay="1500">
 
     <!-- ======= Gallery Section ======= -->
     <section id="gallery" class="gallery">
