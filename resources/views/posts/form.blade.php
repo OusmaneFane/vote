@@ -198,7 +198,7 @@
     <div href="" class="logo d-flex align-items-center  me-auto me-lg-0">
         <!-- Uncomment the line below if you also wish to use an image logo -->
         <!-- <img src="assets/img/logo.png" alt=""> -->
-        <img src="/picturesform/supmanagement.png" style="object-fit: cover" height="36px" width="50px" alt="">
+        <img src="/new-template/images/sup.jpeg" style="object-fit: cover" height="36px" width="50px" alt="">
         <h1 id="ruberText"  class="text-black pt-1">ELECTION LEADER MANAGER 2022-2023</h1>
       </div>
 
