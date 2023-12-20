@@ -122,7 +122,7 @@
         startDate.setHours(10, 0, 0, 0); // 10h00 demain
 
         // Définir la date de fin du minuteur (21 décembre du mois actuel)
-        var endDate = new Date(currentTime.getFullYear(), 11, 23, 14, 59, 59, 999); // Mois 11 = décembre
+        var endDate = new Date(currentTime.getFullYear(), 11, 21, 23, 59, 59, 999); // Mois 11 = décembre
 
         // Calculer la différence entre la date de fin et la date actuelle
         var timeDifference = endDate - currentTime;
