@@ -231,7 +231,7 @@
                     let ttvEl = document.querySelector('#totalVotes-'+candidat.id)
                     ttvEl.innerHTML = candidat.totalVotes
 
-                    document.querySelector('#pourcentage-'+candidat.id).innerHTML = candidat.percentageVotes
+                    document.querySelector('#pourcentage-'+candidat.id).innerHTML = candidat.percentageVotes.toFixed(2) + '%'
 
                     if (candidat.nom == "VOTE NUL"){
                       document.querySelector('#btnVoteNul').innerHTML = candidat.totalVotes
