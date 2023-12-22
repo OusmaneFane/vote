@@ -210,11 +210,15 @@
           });
           document.getElementById('votes-chart-legend').innerHTML = votesChart.generateLegend();
 
+          let oldTotalVotes = null
+
           setInterval(() => {
           $.ajax({
               type: 'GET',
               url: '/admins/status-data',
               success: function (response) {
+                if(oldTotalVotes == response.totalVotes) return
+                else oldTotalVotes = response.totalVotes
 
                   candidates = []
                   votes = []
@@ -240,6 +244,8 @@
                     
                   })
                   document.querySelector('#btnTotal').innerHTML =response.totalVotes
+
+
 
                   votesChart.update()
 
