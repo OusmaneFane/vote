@@ -83,7 +83,7 @@
                 <div class="card-body d-flex flex-column">
                   <h4 class="card-title">
                     <i class="fas fa-chart-pie"></i>
-                    Sales status
+                    Satistique 2 des votes
                   </h4>
                   <div class="flex-grow-1 d-flex flex-column justify-content-between">
                     <canvas id="sales-status-chart-pie" class="mt-3"></canvas>
@@ -303,7 +303,7 @@
                             if (chart.data.labels[i]) {
                                 text.push(chart.data.labels[i]);
                             }
-                            text.push('<label class="badge badge-light badge-pill legend-percentage ml-auto">' + chart.data.datasets[0].data[i] + '%</label>');
+                            text.push('<label class="badge badge-light badge-pill legend-percentage ml-auto">' + chart.data.datasets[0].data[i].toFixed(2) + '%</label>');
                             text.push('</li>');
                         }
                         text.push('</ul>');
