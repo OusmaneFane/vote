@@ -150,7 +150,7 @@
                                   drawBorder: false,
                               },
                               ticks: {
-                                  stepSize: 1, // Ajustez la gradation en fonction de vos besoins
+                                  stepSize: @json($totalVotes),
                                   beginAtZero: true,
                                   fontColor: "#686868"
                               },
