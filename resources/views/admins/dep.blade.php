@@ -57,20 +57,42 @@
 
 <!-- Assurez-vous d'inclure jQuery avant ce script si vous utilisez jQuery -->
 <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+<link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 
 <script>
     $(document).ready(function () {
         // Gestion du vote
         $('.btn-vote').on('click', function () {
             var candidatId = $(this).data('candidat-id');
+            animateVote(candidatId);
             castVote(candidatId);
         });
 
         // Gestion du retrait de vote
         $('.btn-remove-vote').on('click', function () {
             var candidatId = $(this).data('candidat-id');
+            animateRemoveVote(candidatId);
             removeVote(candidatId);
         });
+
+         // Fonction pour animer la croissance lors du vote
+    function animateVote(candidatId) {
+        var targetElement = $('#total-votes-' + candidatId);
+        targetElement.animate({ fontSize: '+=50px' }, 'fast', function () {
+            // Animation terminée
+            targetElement.animate({ fontSize: '-=50px' }, 'fast');
+        });
+    }
+
+    // Fonction pour animer la réduction lors du retrait de vote
+    function animateRemoveVote(candidatId) {
+        var targetElement = $('#total-votes-' + candidatId);
+        targetElement.animate({ fontSize: '-=20px' }, 'fast', function () {
+            // Animation terminée
+            targetElement.animate({ fontSize: '+=20px' }, 'fast');
+        });
+    }
 
 // Fonction pour envoyer la requête Ajax pour le vote
 function castVote(candidatId) {
