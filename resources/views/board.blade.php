@@ -31,11 +31,7 @@
           <div class="col-lg-6 d-flex align-items-center justify-content-center">
             <div class="auth-form-transparent text-left p-3">
               <div class="brand-logo">
-               <div class="d-flex justify-content-between">
-                  <h5>Temps restant</h5>
-                  </b><button style="margin-top:-10px" id="timer" class="btn btn-danger"></button></b>
-                </div>
-                <br>
+               
 
 
 
