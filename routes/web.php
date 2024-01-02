@@ -78,6 +78,9 @@ Route::middleware(['isAdmin'])->group(function () {
     );
     Route::get('/import_file', [AdminController::class, 'file']);
     Route::get('/import_classes', [AdminController::class, 'file_classe']);
+    Route::get('/classement', [AdminController::class, 'classement'])->name(
+        'classement'
+    );
 
     // create candidat
     Route::get('/create_candidat', [CandidatController::class, 'create'])->name(

@@ -463,4 +463,73 @@ class AdminController extends Controller
             ]);
         }
     }
+    public function classement(Request $request)
+    {
+        $candidats = Candidat::all();
+        $candidats = $candidats->sortByDesc('totalVotes')->take(3);
+        // dd($candidats);
+        $votes = Vote::all();
+        $totalVotes = $votes->count();
+
+        $pieChartData = [];
+        $barChartData = [];
+
+        foreach ($candidats as $key => $candidat) {
+            $candidatName = $candidat->nom;
+            $candidatVotes = $votes
+                ->where('candidat_id', $candidat->id)
+                ->count();
+            $candidatPercentage =
+                $totalVotes > 0 ? ($candidatVotes / $totalVotes) * 100 : 0;
+            $randomColor =
+                '#' .
+                str_pad(dechex(mt_rand(0, 0xffffff)), 6, '0', STR_PAD_LEFT);
+
+            $pieChartData[] = [
+                'data' => $candidatPercentage,
+                'color' => $randomColor,
+                'label' => $candidatName,
+            ];
+
+            $barChartData[] = [$candidatName, $candidatVotes];
+
+            $candidat->totalVotes = $candidatVotes;
+            $candidat->percentageVotes = $candidatPercentage;
+            switch ($key) {
+                case 0:
+                    $candidat->color = 'success';
+                    break;
+                case 1:
+                    $candidat->color = 'warning';
+                    break;
+                case 2:
+                    $candidat->color = 'primary';
+                    break;
+                default:
+                    $candidat->color = 'secondary';
+            }
+            switch ($key) {
+                case 0:
+                    $candidat->titre = 'Président LEADER MANAGER';
+                    break;
+                case 1:
+                    $candidat->titre = 'Vice-Président';
+                    break;
+                case 2:
+                    $candidat->titre = 'Secrétaire Général';
+                    break;
+                default:
+                    $candidat->titre = 'Autre'; // Vous pouvez définir un titre par défaut si nécessaire
+            }
+        }
+
+        $PasseUser = $request->session()->get('PasseUser');
+        $actel_user = Admin::find($PasseUser);
+
+        return view('/admins.classement', [
+            'actel_user' => $actel_user,
+            'candidats' => $candidats,
+            'totalVotes' => $totalVotes,
+        ]);
+    }
 }
