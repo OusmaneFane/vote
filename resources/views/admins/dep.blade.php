@@ -14,7 +14,7 @@
         <div class="card card-statistics">
             <div class="card-body">
                 <div class="d-flex flex-column flex-md-row align-items-center justify-content-between">
-                    @foreach($candidats as $candidat )
+                    @foreach($candidats as $candidat)
                         <div class="statistics-item">
                             <p>
                                 <img class="rounded-circle" height="50" width="50" src="/storage/candidats/{{$candidat->photo}}" alt="">
@@ -22,7 +22,9 @@
                             </p>
                             <h2 id="total-votes-{{ $candidat->id }}">{{ $candidat->totalVotes }}</h2>
                             <label class="badge badge-outline-primary badge-pill">
-                                <b>{{ number_format($candidat->percentageVotes, 2) }}% de voix</b>
+                                <span id="pourcentage-{{ $candidat->id }}">
+                                    <b>{{ number_format($candidat->percentageVotes, 2) }}% de voix</b>
+                                </span>
                             </label>
                         </div>
                     @endforeach
@@ -53,12 +55,38 @@
             </div>
         </div>
     @endforeach
-</div>
 
-<!-- Assurez-vous d'inclure jQuery avant ce script si vous utilisez jQuery -->
-<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
-<link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <!-- Assurez-vous d'inclure jQuery avant ce script si vous utilisez jQuery -->
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
+   <script>
+    $(function () {
+        let oldTotalVotes = null;
+
+        setInterval(() => {
+            $.ajax({
+                type: 'GET',
+                url: '/admins/dep-data',
+                success: function (response) {
+                    if (oldTotalVotes === response.totalVotes) return;
+                    else oldTotalVotes = response.totalVotes;
+
+                    response.candidats.forEach(function (candidat) {
+                        // Utilisez directement les variables globales candidates et votes
+                        let pourcentageElement = document.getElementById('pourcentage-' + candidat.id);
+                         pourcentageElement.innerHTML = candidat.percentageVotes.toFixed(2) + '%';
+                    });
+                },
+                error: function (error) {
+                    console.log('Erreur AJAX', error);
+                }
+            });
+        }, 2000);
+    });
+</script>
+
 
 <script>
     $(document).ready(function () {

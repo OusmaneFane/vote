@@ -64,6 +64,8 @@ Route::middleware(['isAdmin'])->group(function () {
         're_online'
     );
     Route::get('/admins/status-data', [AdminController::class, 'statutData']);
+    Route::get('/admins/dep-data', [AdminController::class, 'depData']);
+
     Route::get('/admins/results', [AdminController::class, 'results']);
     Route::get('/admins/dep_results', [
         AdminController::class,

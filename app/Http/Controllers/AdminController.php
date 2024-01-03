@@ -261,6 +261,32 @@ class AdminController extends Controller
             'pieChartData' => $pieChartData,
         ];
     }
+    public function depData(Request $request)
+    {
+        $candidats = Candidat::all();
+        $votesForFictiveUser = Vote::where('user_id', '=', 1)->get();
+        $totalVotes = $votesForFictiveUser->count();
+
+        foreach ($candidats as $candidat) {
+            $candidatName = $candidat->nom;
+            $candidatVotes = $votesForFictiveUser
+                ->where('candidat_id', $candidat->id)
+                ->count();
+            $candidatPercentage =
+                $totalVotes > 0 ? ($candidatVotes / $totalVotes) * 100 : 0;
+
+            $candidat->totalVotes = $candidatVotes;
+            $candidat->percentageVotes = $candidatPercentage;
+        }
+
+        $PasseUser = $request->session()->get('PasseUser');
+        $actel_user = Admin::find($PasseUser);
+        return [
+            'actel_user' => $actel_user,
+            'candidats' => $candidats,
+            'totalVotes' => $totalVotes,
+        ];
+    }
 
     public function getRealtimeVotes(Request $request)
     {
