@@ -76,7 +76,7 @@
                     response.candidats.forEach(function (candidat) {
                         // Utilisez directement les variables globales candidates et votes
                         let pourcentageElement = document.getElementById('pourcentage-' + candidat.id);
-                         pourcentageElement.innerHTML = candidat.percentageVotes.toFixed(2) + '%';
+                         pourcentageElement.innerHTML = candidat.percentageVotes.toFixed(2) + '% de voix';
                     });
                 },
                 error: function (error) {
@@ -107,18 +107,28 @@
          // Fonction pour animer la croissance lors du vote
     function animateVote(candidatId) {
         var targetElement = $('#total-votes-' + candidatId);
+        var targetElementTwo = $('#pourcentage-' + candidatId);
         targetElement.animate({ fontSize: '+=50px' }, 'fast', function () {
             // Animation terminée
             targetElement.animate({ fontSize: '-=50px' }, 'fast');
+        });
+        targetElementTwo.animate({ fontSize: '+=10px' }, 'fast', function () {
+            // Animation terminée
+            targetElementTwo.animate({ fontSize: '-=10px' }, 'fast');
         });
     }
 
     // Fonction pour animer la réduction lors du retrait de vote
     function animateRemoveVote(candidatId) {
         var targetElement = $('#total-votes-' + candidatId);
+         var targetElementTwo = $('#pourcentage-' + candidatId);
         targetElement.animate({ fontSize: '-=20px' }, 'fast', function () {
             // Animation terminée
             targetElement.animate({ fontSize: '+=20px' }, 'fast');
+        });
+        targetElementTwo.animate({ fontSize: '-=20px' }, 'fast', function () {
+            // Animation terminée
+            targetElementTwo.animate({ fontSize: '+=12px' }, 'fast');
         });
     }
 
