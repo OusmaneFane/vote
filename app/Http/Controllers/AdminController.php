@@ -491,33 +491,35 @@ class AdminController extends Controller
     }
     public function classement(Request $request)
     {
+        // Récupération des candidats et des votes
         $candidats = Candidat::all();
-        $candidats = $candidats->sortByDesc('totalVotes')->take(3);
-        // dd($candidats);
         $votes = Vote::all();
+
+        // Calcul du total des votes
         $totalVotes = $votes->count();
+        // dd($totalVotes);
+        // Calcul des votes pour chaque candidat et tri par ordre décroissant
+        $candidats = $candidats
+            ->map(function ($candidat) use ($votes) {
+                $candidatVotes = $votes
+                    ->where('candidat_id', $candidat->id)
+                    ->count();
 
-        $pieChartData = [];
-        $barChartData = [];
+                $candidat->totalVotes = $candidatVotes;
 
+                return $candidat;
+            })
+            ->sortByDesc('totalVotes')
+            ->take(3);
+        //  dd($candidats);
         foreach ($candidats as $key => $candidat) {
             $candidatName = $candidat->nom;
             $candidatVotes = $votes
                 ->where('candidat_id', $candidat->id)
                 ->count();
+
             $candidatPercentage =
                 $totalVotes > 0 ? ($candidatVotes / $totalVotes) * 100 : 0;
-            $randomColor =
-                '#' .
-                str_pad(dechex(mt_rand(0, 0xffffff)), 6, '0', STR_PAD_LEFT);
-
-            $pieChartData[] = [
-                'data' => $candidatPercentage,
-                'color' => $randomColor,
-                'label' => $candidatName,
-            ];
-
-            $barChartData[] = [$candidatName, $candidatVotes];
 
             $candidat->totalVotes = $candidatVotes;
             $candidat->percentageVotes = $candidatPercentage;
@@ -532,7 +534,7 @@ class AdminController extends Controller
                     $candidat->color = 'primary';
                     break;
                 default:
-                    $candidat->color = 'secondary';
+                    $candidat->color = 'primary';
             }
             switch ($key) {
                 case 0:
