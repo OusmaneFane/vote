@@ -1,67 +1,62 @@
 @extends('admins.dashboard2')
 
 @section("content")
-<style>
-    .president-animation {
-        animation: shake 0.5s ease-in-out infinite;
+ <script src="https://cdn.jsdelivr.net/npm/confetti-js"></script>
+ <style>
+    body {
+        margin: 0;
     }
 
-    @keyframes shake {
-        0%, 100% {
-            transform: translateX(0);
-        }
-        50% {
-            transform: translateX(10px);
-        }
+    #confetti-canvas {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        margin-top: -10px; /* Ajustez cette valeur selon vos besoins */
     }
+
+    /* ... (votre code CSS existant) ... */
 </style>
 
- <div class="page-header">
-            <h3 class="page-title">
-              Classement
-            </h3>
-            <nav aria-label="breadcrumb">
-              <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="">Accueil</a></li>
-                <li class="breadcrumb-item active" aria-current="page">Classement</li>
-              </ol>
-            </nav>
-          </div>
-          <div class="row">
-            @foreach ($candidats as $candidat )  
-            <div class="col-md-4 grid-margin stretch-card ">
-              <div class="card bg-{{ $candidat->color}} @if($candidat->titre === 'Président LEADER MANAGER') president-animation @endif">
-                <div class="card-body">
-                  <h2 class="card-title text-white">{{ $candidat->titre}}</h2>
-                  <p class="card-description text-center"><code><b>{{ $candidat->nom}}</b></code></p>
-                  <div class="template-demo text-center ">
-                    <img class="rounded-circle"  src="/storage/candidats/{{$candidat->photo}}" alt="">
-                  </div>
-                </div>
-              </div>
-            </div>
-            @endforeach   
-          </div>
-  <!-- Inclure le script particles.js -->
-    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+<canvas id="confetti-canvas"></canvas>
 
-    <script>
-        // Initialiser particles.js pour le candidat président
-        particlesJS('president-particles', {
-            particles: {
-                number: {
-                    value: 80,
-                },
-                shape: {
-                    type: 'circle',
-                },
-                size: {
-                    value: 5,
-                },
-                move: {
-                    speed: 3,
-                },
-            },
-        });
-    </script>
+<div class="col-12 grid-margin">
+    <div class="card">
+        <div class="card-body">
+            <h4 class="card-title">Classement de l'ELECTION LEADER MANAGER 2023-2024</h4>
+            <p class="card-description"></p>
+            <div class="row">
+                @foreach ($candidats as $candidat )  
+                <div class="col-md-4 h-100">
+                    <div class="bg-{{ $candidat->color}} p-4 @if($candidat->titre === 'Président LEADER MANAGER') president-animation @endif fireworks-container">
+                        <h6 class="card-title">{{ $candidat->titre}}</h6>
+                        <div id="profile-list-left" class="py-2">
+                            <div class="card rounded mb-2">
+                                <div class="card-body p-3">
+                                    <div class="media">
+                                        <img class="rounded-circle"  src="/storage/candidats/{{$candidat->photo}}" alt="">
+                                        <div class="media-body text-center">
+                                            <h6 class="mb-1">{{ $candidat->nom}}</h6>
+                                            <p class="mb-0 text-muted">
+                                                <b>{{ $candidat->totalVotes}} (voix)</b>                         
+                                            </p>
+                                        </div>                              
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                @endforeach
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    // Trigger confetti animation
+    confetti.create(document.getElementById('confetti-canvas'), {
+        resize: true,
+        useWorker: true
+    });
+</script>
 @endsection

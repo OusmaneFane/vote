@@ -512,45 +512,24 @@ class AdminController extends Controller
             ->sortByDesc('totalVotes')
             ->take(3);
         //  dd($candidats);
-        foreach ($candidats as $key => $candidat) {
-            $candidatName = $candidat->nom;
-            $candidatVotes = $votes
-                ->where('candidat_id', $candidat->id)
-                ->count();
+        // Obtenez le candidat avec le plus grand nombre de votes (indice 0 après le tri)
+        $president = $candidats->first();
 
-            $candidatPercentage =
-                $totalVotes > 0 ? ($candidatVotes / $totalVotes) * 100 : 0;
+        // Obtenez le candidat avec le deuxième plus grand nombre de votes (indice 1 après le tri)
+        $vicePresident = $candidats->skip(1)->first();
 
-            $candidat->totalVotes = $candidatVotes;
-            $candidat->percentageVotes = $candidatPercentage;
-            switch ($key) {
-                case 0:
-                    $candidat->color = 'success';
-                    break;
-                case 1:
-                    $candidat->color = 'warning';
-                    break;
-                case 2:
-                    $candidat->color = 'primary';
-                    break;
-                default:
-                    $candidat->color = 'primary';
-            }
-            switch ($key) {
-                case 0:
-                    $candidat->titre = 'Président LEADER MANAGER';
-                    break;
-                case 1:
-                    $candidat->titre = 'Vice-Président';
-                    break;
-                case 2:
-                    $candidat->titre = 'Secrétaire Général';
-                    break;
-                default:
-                    $candidat->titre = 'Autre'; // Vous pouvez définir un titre par défaut si nécessaire
-            }
-        }
+        // Obtenez le candidat avec le troisième plus grand nombre de votes (indice 2 après le tri)
+        $secretaireGeneral = $candidats->skip(2)->first();
 
+        // Attribuez les titres et couleurs en fonction du classement
+        $president->color = 'success';
+        $president->titre = 'Président LEADER MANAGER';
+
+        $vicePresident->color = 'warning';
+        $vicePresident->titre = 'Vice-Président';
+
+        $secretaireGeneral->color = 'primary';
+        $secretaireGeneral->titre = 'Secrétaire Général';
         $PasseUser = $request->session()->get('PasseUser');
         $actel_user = Admin::find($PasseUser);
 
