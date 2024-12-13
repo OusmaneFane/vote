@@ -1,153 +1,151 @@
-
-
 <!DOCTYPE html>
 <html lang="en">
-
-
-<!-- Mirrored from www.urbanui.com/melody/template/pages/samples/login-2.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 15 Sep 2018 06:08:53 GMT -->
 <head>
-  <!-- Required meta tags -->
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <title>Sup'Vote Login</title>
-  <!-- plugins:css -->
-  <link rel="stylesheet" href="/new-template/vendors/iconfonts/font-awesome/css/all.min.css">
-  <link rel="stylesheet" href="/new-template/vendors/css/vendor.bundle.base.css">
-  <link rel="stylesheet" href="/new-template/vendors/css/vendor.bundle.addons.css">
-  <!-- endinject -->
-  <!-- plugin css for this page -->
-  <!-- End plugin css for this page -->
-  <!-- inject:css -->
-  <link rel="stylesheet" href="/new-template/css/style.css">
-  <!-- endinject -->
-  <link rel="shortcut icon" href="/new-template/images/sup.jpeg" />
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Connexion - Sup'Vote</title>
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Animate.css -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+  <!-- Toastr CSS -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"/>
+
+  <style>
+    body {
+      background: #f9fafb;
+      font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont,
+        "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    }
+  </style>
 </head>
+<body class="min-h-screen flex items-center justify-center px-4">
+  <div class="w-full max-w-sm bg-white rounded-2xl shadow-xl overflow-hidden animate__animated animate__fadeInUp flex flex-col">
+    <!-- Illustration -->
+    <div class="relative w-full h-44 flex items-center justify-center bg-cover bg-center" 
+     style="background-image: url('/new-template/images/login-vote-mobile.png');">
+  <div class="absolute inset-0 bg-black bg-opacity-30"></div>
+  <img src="/new-template/images/sup.jpeg" 
+       alt="Illustration" 
+       class="relative h-32 w-32 object-cover rounded-full border-4 border-white shadow-lg animate__animated animate__fadeInDown"/>
+</div>
 
-<body>
-  <div class="container-scroller">
-    <div class="container-fluid page-body-wrapper full-page-wrapper">
-      <div class="content-wrapper d-flex align-items-stretch auth auth-img-bg">
-        <div class="row flex-grow">
-          <div class="col-lg-6 d-flex align-items-center justify-content-center">
-            <div class="auth-form-transparent text-left p-3">
-              <div class="brand-logo">
-               
+    <div class="p-6 flex flex-col items-center">
+      <!-- Logo & Titre -->
+      <h1 class="text-2xl font-bold text-blue-700 tracking-tight mb-1 animate__animated animate__fadeInDown">Sup-<span class="text-orange-500">Vote</span></h1>
+      <p class="text-gray-600 text-sm text-center mb-4 animate__animated animate__fadeInDown">Élection du Leader Manager</p>
 
-
-
-        <h2 style=" font-family: 'ADlaMDisplay', sans-serif;"><span style=" font-family: 'ADlaMDisplay', sans-serif;"
-              class="text-warning">Sup-</span><span class="text-primary">Vote</span></h2>
-              </div>
-              <div class="results">
-                @if(Session::get('fail'))
-                <div class="alert alert-danger">
-                    <h4>{{ Session::get('fail') }}</h4>
-                </div>
-                @endif
-            </div>
-                <div class="results">
-                    @if(Session::get('success'))
-                    <div class="alert alert-success">
-                        <h4>{{ Session::get('success') }}</h4>
-                    </div>
-                     @endif
-               </div>
-              <h6 class="font-weight-light">Merci de vous authentifier avant de voter !</h6>
-              <form class="pt-3" method="post" action="/posts/check">
-                @csrf
-                <div class="form-group">
-                  <label for="exampleInputName">Matricule</label>
-                  <div class="input-group">
-                    <div class="input-group-prepend bg-transparent">
-                      <span class="input-group-text bg-transparent border-right-0">
-                        <i class="fa fa-user text-primary"></i>
-                      </span>
-                    </div>
-                    <input type="text" name="matricule" class="form-control form-control-lg border-left-0" id="exampleInputName" placeholder="950XXXX">
-                  </div>
-                </div>
-                <div class="form-group">
-                  <label for="exampleInputPassword">Password</label>
-                  <div class="input-group">
-                    <div class="input-group-prepend bg-transparent">
-                      <span class="input-group-text bg-transparent border-right-0">
-                        <i class="fa fa-lock text-primary"></i>
-                      </span>
-                    </div>
-                    <input type="password" name="password" class="form-control form-control-lg border-left-0" id="exampleInputPassword" placeholder="Mot de passe">                        
-                  </div>
-                </div>
-
-                <div class="my-3">
-                  <button type="submit" class="btn btn-block btn-primary btn-lg font-weight-medium auth-form-btn">CONNEXION</button>
-                </div>
-
-              </form>
-            </div>
+      <!-- Timer -->
+      <div class="bg-blue-50 p-4 rounded-xl w-full text-center mb-6 animate__animated animate__fadeIn timer-container">
+        <div class="flex items-center justify-center gap-2 mb-3 text-blue-700 font-semibold text-sm">
+          <span>⏳</span>
+          <span>Temps restant pour voter</span>
+        </div>
+        <div class="flex justify-center gap-4 text-blue-700">
+          <div class="text-center">
+            <span class="text-lg font-bold" id="days">00</span>
+            <div class="text-gray-500 text-xs">Jours</div>
           </div>
-          <div class="col-lg-6 login-half-bg d-flex flex-row">
-            <p class="text-white font-weight-medium text-center flex-grow align-self-end">Copyright &copy; 2023  All rights reserved.</p>
+          <div class="text-center">
+            <span class="text-lg font-bold" id="hours">00</span>
+            <div class="text-gray-500 text-xs">Heures</div>
+          </div>
+          <div class="text-center">
+            <span class="text-lg font-bold" id="minutes">00</span>
+            <div class="text-gray-500 text-xs">Minutes</div>
+          </div>
+          <div class="text-center">
+            <span class="text-lg font-bold" id="seconds">00</span>
+            <div class="text-gray-500 text-xs">Secondes</div>
           </div>
         </div>
       </div>
-      <!-- content-wrapper ends -->
+
+      <!-- Formulaire -->
+      <form method="post" action="/posts/check" class="w-full space-y-5 animate__animated animate__fadeInRight">
+        @csrf
+        <div>
+          <label for="matricule" class="block mb-1 text-gray-700 font-semibold text-sm">Matricule</label>
+          <div class="relative">
+            <span class="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400"><i class="fa fa-user"></i></span>
+            <input type="text" name="matricule" id="matricule" placeholder="Entrez votre matricule" required
+              class="w-full pl-10 pr-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-300 text-sm" />
+          </div>
+        </div>
+
+        <div>
+          <label for="password" class="block mb-1 text-gray-700 font-semibold text-sm">Mot de passe</label>
+          <div class="relative">
+            <span class="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400"><i class="fa fa-lock"></i></span>
+            <input type="password" name="password" id="password" placeholder="Entrez votre mot de passe" required
+              class="w-full pl-10 pr-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-300 text-sm" />
+          </div>
+        </div>
+
+        <button type="submit" class="w-full py-2 bg-blue-600 text-white font-semibold rounded-lg hover:bg-orange-500 transition transform hover:scale-105 text-sm animate__animated animate__bounceIn">
+          Se connecter
+        </button>
+      </form>
+
+      <!-- Footer -->
+      <footer class="mt-6 text-gray-400 text-xs text-center animate__animated animate__fadeIn">
+        © 2024 <a href="https://supmanagement.ml" class="text-blue-600 hover:underline">Sup'Management</a>. Tous droits réservés.
+      </footer>
     </div>
-    <!-- page-body-wrapper ends -->
   </div>
-  <!-- container-scroller -->
-  <!-- plugins:js -->
-  <script src="/new-template/vendors/js/vendor.bundle.base.js"></script>
-  <script src="/new-template/vendors/js/vendor.bundle.addons.js"></script>
-  <!-- endinject -->
-  <!-- inject:js -->
-  <script src="/new-template/js/off-canvas.js"></script>
-  <script src="/new-template/js/hoverable-collapse.js"></script>
-  <script src="/new-template/js/misc.js"></script>
-  <script src="/new-template/js/settings.js"></script>
-  <script src="/new-template/js/todolist.js"></script>
-  <!-- endinject -->
-</body>
-<script>
+
+  <!-- Toastr & Timer Scripts -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+  <script>
+    $(document).ready(function() {
+      @if (Session::has('success'))
+        toastr.success("{{ Session::get('success') }}");
+      @endif
+      @if (Session::has('fail'))
+        toastr.error("{{ Session::get('fail') }}");
+      @endif
+      @if ($errors->any())
+        @foreach ($errors->all() as $error)
+          toastr.error("{{ $error }}");
+        @endforeach
+      @endif
+
+      toastr.options = {
+        "closeButton": true,
+        "progressBar": true,
+        "positionClass": "toast-top-right",
+        "timeOut": "5000",
+        "extendedTimeOut": "2000",
+      };
+    });
+
     function updateTimer() {
-        // Récupérer la date actuelle
-        var currentTime = new Date();
+      const currentTime = new Date();
+      const endDate = new Date(currentTime.getFullYear(), 11, 22, 23, 59, 59);
+      const timeDifference = endDate - currentTime;
 
-        // Définir la date de début du minuteur (demain à 10h)
-        var startDate = new Date();
-        startDate.setDate(currentTime.getDate() + 1); // Demain
-        startDate.setHours(10, 0, 0, 0); // 10h00 demain
+      if (timeDifference <= 0) {
+        document.querySelector('.timer-container').innerHTML =
+          '<h5 class="text-red-600">Le temps de vote est écoulé.</h5>';
+        return;
+      }
 
-        // Définir la date de fin du minuteur (21 décembre du mois actuel)
-        var endDate = new Date(currentTime.getFullYear(), 11, 22, 23, 59, 59, 999); // Mois 11 = décembre
+      const seconds = Math.floor(timeDifference / 1000);
+      const days = Math.floor(seconds / (24 * 60 * 60));
+      const hours = Math.floor((seconds % (24 * 60 * 60)) / 3600);
+      const minutes = Math.floor((seconds % 3600) / 60);
+      const remainingSeconds = seconds % 60;
 
-        // Calculer la différence entre la date de fin et la date actuelle
-        var timeDifference = endDate - currentTime;
-
-        // Convertir la différence en secondes
-        var seconds = Math.floor(timeDifference / 1000);
-
-        // Calculer les jours, heures, minutes et secondes
-        var days = Math.floor(seconds / (24 * 60 * 60));
-        var hours = Math.floor((seconds % (24 * 60 * 60)) / 3600);
-        var minutes = Math.floor((seconds % 3600) / 60);
-        seconds = seconds % 60;
-
-        // Afficher le minuteur sur la page
-        $('#timer').text(days + ' jours ' + hours + ' heures ' + minutes + ' min ' + seconds + ' s');
+      document.getElementById('days').textContent = String(days).padStart(2, '0');
+      document.getElementById('hours').textContent = String(hours).padStart(2, '0');
+      document.getElementById('minutes').textContent = String(minutes).padStart(2, '0');
+      document.getElementById('seconds').textContent = String(remainingSeconds).padStart(2, '0');
     }
 
-    // Mettre à jour le minuteur toutes les secondes
     setInterval(updateTimer, 1000);
-
-    // Appeler la fonction de mise à jour du minuteur au chargement de la page
-    $(document).ready(function () {
-        updateTimer();
-    });
-</script>
-
-
-
-
-<!-- Mirrored from www.urbanui.com/melody/template/pages/samples/login-2.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 15 Sep 2018 06:08:53 GMT -->
+    document.addEventListener('DOMContentLoaded', updateTimer);
+  </script>
+</body>
 </html>
-

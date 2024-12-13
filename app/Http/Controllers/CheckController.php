@@ -4,12 +4,11 @@ namespace App\Http\Controllers;
 
 use App\Models\Student;
 use App\Models\User;
+use App\Models\Vote;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
-use App\Models\Vote;
 use Illuminate\Support\Facades\Http;
-use GuzzleHttp\Client;
-use Carbon\Carbon;
 
 class CheckController extends Controller
 {
@@ -23,23 +22,21 @@ class CheckController extends Controller
         // Vérifier si le temps de vote est dépassé
         $currentTime = now(); // Obtenez la date et l'heure actuelles
         $votingEndTime = Carbon::create($currentTime->year, 12, 22, 23, 59, 59);
+        // dd($votingEndTime, $currentTime);
         // Définir la fin du temps de vote
-        if ($currentTime < $votingEndTime) {
-            // Temps de vote dépassé, affichez un message et redirigez l'utilisateur
-            return back()->with(
-                'fail',
-                'Merci de votre intérêt, mais vous ne pouvez plus participer.'
-            );
+        if ($currentTime > $votingEndTime) {
+            toastr()->info('Merci de votre intérêt, mais vous ne pouvez plus participer.');
+
+            return back();
         }
 
         $student = DB::table('students')
             ->where('matricule', $request->matricule)
             ->first();
         if (!$student) {
-            return back()->with(
-                'fail',
-                'Ce matricule n\'est pas autorisé à voter'
-            );
+            toastr()->error('Ce matricule n\'est pas autorisé à voter');
+
+            return back();
         }
         // Vérifier si l'étudiant a déjà voté
         $hasVoted = DB::table('votes')
@@ -47,7 +44,9 @@ class CheckController extends Controller
             ->count();
 
         if ($hasVoted > 0) {
-            return back()->with('fail', 'Vous avez déjà voté');
+            toastr()->info('Vous avez déjà voté !');
+
+            return back();
         }
 
         // Vérifier si le matricule existe dans la base de données locale
@@ -62,14 +61,13 @@ class CheckController extends Controller
             'rememberMe' => true,
         ]);
         $data = $apiResponse->json();
-
         if ($data == null) {
             $token = $apiResponse->body();
             $userData = $request->session()->put('PasseUser', $token);
             $apiResponse = Http::withToken($token)->get(
                 'https://api-staging.supmanagement.ml/users/current'
             );
-            //dd('yooo', $apiResponse->json());
+            // dd('yooo', $apiResponse->json());
             // Enregistrement de l'adresse IP
             DB::table('addresses')->insert([
                 'user_id' => $student->id,
@@ -79,15 +77,17 @@ class CheckController extends Controller
 
             return redirect('/posts/form');
         } elseif ($data['message'] == 'Invalid credentials') {
-            return back()->with('fail', 'Mot de passe incorrect');
-        } else {
-            return back()->with('fail', 'Une erreur s\'est produite');
-        }
+            toastr()->error('Mot de passe incorrect');
 
-        return back()->with(
-            'fail',
-            'Échec de l\'authentification avec l\'API externe: '
-        );
+            return back();
+        } else {
+            toastr()->error('Une erreur s\'est produite');
+
+            return back();
+        }
+        toastr()->error('Échec de l\'authentification avec l\'API externe:');
+
+        return back();
     }
 
     public function valide(Request $request)
@@ -112,6 +112,7 @@ class CheckController extends Controller
 
             if ($query) {
                 session()->pull('PasseUser');
+
                 return redirect('/')->with(
                     'success',
                     'Vote enregistré avec succès'

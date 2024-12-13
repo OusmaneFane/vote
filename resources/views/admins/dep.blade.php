@@ -36,7 +36,7 @@
 
 <div class="row">
     @foreach ($candidats as $candidat)
-        <div class="col-md-2 grid-margin stretch-card">
+        <div class="col-md-3 grid-margin stretch-card">
             <div class="card">
                 <div class="card-body d-flex flex-column">
                     <h4 class="card-title">

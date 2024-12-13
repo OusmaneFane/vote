@@ -2,6 +2,7 @@
 
 @section('content')
 
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css"/>
 
 
 {{-- form to create a new candidat --}}
@@ -28,20 +29,7 @@
                         <h4 class="card-title">Ajouter un candidat</h4>
                         <p class="card-description">
                         Remplissez le formulaire
-                        <div class="results">
-                            @if(Session::get('fail'))
-                            <div class="alert alert-danger">
-                                {{ Session::get('fail') }}
-                            </div>
-                            @endif
-                        </div>
-                            <div class="results">
-                                @if(Session::get('success'))
-                                <div class="alert alert-success">
-                                    {{ Session::get('success') }}
-                                </div>
-                                @endif
-                        </div>
+                       
                         </p>
                         
                             <div class="form-group">
@@ -66,7 +54,7 @@
                         </p>
                         <div class="card">
                         
-                        <input type="file" name="profil" class="dropify" />
+                        <input type="file" name="profil"  />
                         
                     </div>
                         </div>
@@ -79,5 +67,30 @@
           
           </div>
           </form>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
 
+ <script>
+    $(document).ready(function() {
+      @if (Session::has('success'))
+        toastr.success("{{ Session::get('success') }}");
+      @endif
+      @if (Session::has('fail'))
+        toastr.error("{{ Session::get('fail') }}");
+      @endif
+      @if ($errors->any())
+        @foreach ($errors->all() as $error)
+          toastr.error("{{ $error }}");
+        @endforeach
+      @endif
+
+      toastr.options = {
+        "closeButton": true,
+        "progressBar": true,
+        "positionClass": "toast-top-right",
+        "timeOut": "5000",
+        "extendedTimeOut": "2000",
+      };
+    });
+ </script>   
 @endsection

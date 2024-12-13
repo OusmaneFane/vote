@@ -13,4 +13,8 @@ class Candidat extends Model
         'photo',
         'slogan'
     ];
+     public function votes()
+    {
+        return $this->hasMany(Vote::class, 'candidat_id'); // Assurez-vous que 'Vote' est le bon modèle
+    }
 }
