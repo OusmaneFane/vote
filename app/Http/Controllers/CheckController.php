@@ -21,7 +21,7 @@ class CheckController extends Controller
 
         // Vérifier si le temps de vote est dépassé
         $currentTime = now(); // Obtenez la date et l'heure actuelles
-        $votingEndTime = Carbon::create($currentTime->year, 12, 22, 23, 59, 59);
+        $votingEndTime = Carbon::create($currentTime->year, 12, 17, 23, 59, 59);
         // dd($votingEndTime, $currentTime);
         // Définir la fin du temps de vote
         if ($currentTime > $votingEndTime) {

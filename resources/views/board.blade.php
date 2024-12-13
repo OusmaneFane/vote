@@ -123,7 +123,7 @@
 
     function updateTimer() {
       const currentTime = new Date();
-      const endDate = new Date(currentTime.getFullYear(), 11, 22, 23, 59, 59);
+      const endDate = new Date(currentTime.getFullYear(), 11, 17, 23, 59, 59);
       const timeDifference = endDate - currentTime;
 
       if (timeDifference <= 0) {
