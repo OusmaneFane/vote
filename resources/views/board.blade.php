@@ -26,9 +26,9 @@
     <div class="relative w-full h-44 flex items-center justify-center bg-cover bg-center" 
      style="background-image: url('/new-template/images/login-vote-mobile.png');">
   <div class="absolute inset-0 bg-black bg-opacity-30"></div>
-  <img src="/new-template/images/sup.jpeg" 
+  <img  src="/new-template/images/sup.jpeg" 
        alt="Illustration" 
-       class="relative h-32 w-32 object-cover rounded-full border-4 border-white shadow-lg animate__animated animate__fadeInDown"/>
+       class="relative h-32 w-32 object-cover rounded-full border-4 border-white shadow-lg animate__animated animate__fadeInDown" style="margin-top: 92px;"/>
 </div>
 
     <div class="p-6 flex flex-col items-center">
