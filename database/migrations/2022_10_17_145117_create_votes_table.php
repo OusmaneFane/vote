@@ -20,7 +20,6 @@ class CreateVotesTable extends Migration
             $table->foreign('candidat_id')->references('id')->on('candidats');
             $table->foreign('user_id')->references('id')->on('students');
             $table->timestamps();
-            $table->unique('user_id');
         });
     }
 

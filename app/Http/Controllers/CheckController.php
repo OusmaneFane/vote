@@ -103,6 +103,14 @@ class CheckController extends Controller
         }
         $matricule = $actel_user->matricule;
         $classe_id = $actel_user->classe_id;
+        // Vérification si l'utilisateur a déjà voté
+
+        if (Vote::where('user_id', $actel_user->id)->exists()) {
+            return redirect('/')->with(
+                'error',
+                'Ce matricule a déjà voté !'
+            );
+        }
         if (Student::find($actel_user->id)) {
             $query = Vote::create([
                 'user_id' => $actel_user->id,
