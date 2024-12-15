@@ -34,7 +34,7 @@ class CheckController extends Controller
             ->where('matricule', $request->matricule)
             ->first();
         if (!$student) {
-            toastr()->error('Ce matricule n\'est pas autorisé à voter');
+            toastr()->error('Désolé, ce matricule ne figure pas parmi les électeurs autorisés. Veuillez vérifier vos informations.'); // Message modifié
 
             return back();
         }
@@ -44,7 +44,7 @@ class CheckController extends Controller
             ->count();
 
         if ($hasVoted > 0) {
-            toastr()->info('Vous avez déjà voté !');
+            toastr()->error('Votre vote a déjà été enregistré !');
 
             return back();
         }
