@@ -24,7 +24,7 @@
   <div class="w-full max-w-sm bg-white rounded-2xl shadow-xl overflow-hidden animate__animated animate__fadeInUp flex flex-col">
     <!-- Illustration -->
     <div class="relative w-full h-44 flex items-center justify-center bg-cover bg-center" 
-     style="background-image: url('/new-template/images/login-vote-mobile.png');">
+     style="background-image: url('/new-template/images/login-vote-mobile2.png');">
   <div class="absolute inset-0 bg-black bg-opacity-30"></div>
   <img  src="/new-template/images/sup.jpeg" 
        alt="Illustration" 
